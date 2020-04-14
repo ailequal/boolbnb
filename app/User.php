@@ -41,4 +41,9 @@ class User extends Authenticatable
         {
             return $this->hasOne('App\User_info');
         }
+
+    public function flats()
+        {
+            return $this->hasMany('App\Flat');
+        }
 }
