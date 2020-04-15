@@ -15,6 +15,7 @@
                     @endif
 
                     You are logged in!
+                    <a href="{{route('flats')}}">cliccla qui bastardo</a>
                 </div>
             </div>
         </div>

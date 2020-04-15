@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Flat;
+use Illuminate\Support\Facades\Auth;
 
 class FlatController extends Controller
 {
@@ -24,6 +25,9 @@ class FlatController extends Controller
         abort(404);
       }
 
+      if ($flats['user_id'] == Auth::id()) {
+          return view('user.show_flat', compact('flats'));
+      }
       return view('show-flat', compact('flats'));
     }
 }
