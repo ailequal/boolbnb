@@ -1,5 +1,5 @@
 @include('../partials._header')
 
-@yield('section')
+@yield('main')
 
 @include('../partials._footer')
