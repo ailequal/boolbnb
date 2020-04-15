@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserInfosTableSeeder::class);
         $this->call(FlatsTableSeeder::class);
         $this->call(ImageTableSeeder::class);
+        $this->call(MessagesTableSeeder::class);
     }
 }
