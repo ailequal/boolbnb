@@ -43,4 +43,8 @@ class Flat extends Model
     {
         return $this->belongsToMany('App\Extra_service');
     }
+
+    public function promo_service(){
+        return $this->belongsToMany('App\Promo_service');
+    }
 }
