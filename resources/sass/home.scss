@@ -1,0 +1,65 @@
+.promo{
+  margin-top: 60px;
+  h1{
+    color: rgb(167, 25, 81);
+    margin-bottom: 30px;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+  }
+    a{
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-bottom: 20px;
+      display: inline-block;
+      width: calc(100% / 3 - 20px);
+      color: black;
+      border: 1px solid lightgrey;
+      border-radius: 10px;
+      box-shadow: 6px 7px 10px -4px rgba(0,0,0,0.60);
+
+
+      &:hover{
+        color: black;
+      }
+
+      .box-flat{
+
+
+
+        h3{
+          margin-top: 10px;
+          padding-left: 5px;
+
+        }
+
+        p{
+          padding-left: 5px;
+        }
+
+
+        img {
+          width: 100%;
+          border-radius: 10px 10px 0 0;
+        }
+      }
+    }
+
+
+
+
+}
+
+@media screen and (max-width: 768px) {
+  .promo .row a{
+    width: calc(100% / 2 - 20px);
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .promo .row a{
+    width: calc(100% - 20px);
+  }
+}
