@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
 use App\User;
 use Faker\Generator as Faker;
@@ -13,11 +14,19 @@ class UserTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i < 10; $i++) {
+        // default user per test
+        $newUser = new User;
+        $newUser->name = 'Pippo';
+        $newUser->email = 'pippo@gmail.com';
+        $newUser->password = Hash::make('password');
+        $newUser->save();
+
+        // random users
+        for ($i=0; $i < 9; $i++) {
             $newUser = new User;
             $newUser->name = $faker->name();
             $newUser->email = $faker->email();
-            $newUser->password = $faker->password();
+            $newUser->password = Hash::make($faker->password());
             $newUser->save();
           }
     }
