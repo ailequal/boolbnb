@@ -22,7 +22,6 @@
            <div class="box-button">
              <button class="btn btn-warning mb-2" type="button" name="button">Modifica</button>
              <button class="btn btn-danger mb-2" type="button" name="button">Cancella</button>
-             <button class="btn btn-secondary mb-2" type="button" name="button">Promozioni</button>
              <button class="btn btn-secondary mb-2" type="button" name="button">Statistiche</button>
            </div>
          </div>
@@ -41,7 +40,6 @@
            <div class="box-button">
              <button class="btn btn-warning mb-2" type="button" name="button">Modifica</button>
              <button class="btn btn-danger mb-2" type="button" name="button">Cancella</button>
-             <button class="btn btn-secondary mb-2" type="button" name="button">Promozioni</button>
              <button class="btn btn-secondary mb-2" type="button" name="button">Statistiche</button>
            </div>
          </div>
