@@ -11021,6 +11021,7 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
+  color: #635c5f;
 }
 
 footer .footer-left ul {

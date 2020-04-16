@@ -17,7 +17,10 @@
           <ul>
             <li>
               <input class="search-bar" type="text" name="" value="">
-              <button class="search" type="button" name="button">Cerca</button>
+              <button class="search" type="button" name="button">
+                <i class="fas fa-search"></i>
+                Cerca
+              </button>
             </li>
             <li>
               <button class="" type="button" name="button">Accedi</button>
