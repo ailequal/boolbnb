@@ -22,7 +22,7 @@ class CreateFlatsTable extends Migration
             $table->integer('rooms');
             $table->decimal('mq', 6, 2);
             $table->string('cover');
-            $table->string('guest');
+            $table->string('guest')->nullable();
             $table->text('description');
             $table->decimal('price_day', 6, 2);
             $table->integer('beds');

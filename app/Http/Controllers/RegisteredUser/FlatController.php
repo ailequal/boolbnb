@@ -13,9 +13,31 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class FlatController extends Controller
 {
+
+    private $validateRules;
+
+    public function __construct(){
+
+        $this->middleware('auth');
+
+        $this->validateRules =[
+        'title'=> 'required|string|max:255',
+        'address'=> 'required|string|max:255',
+        'rooms'=> 'required|numeric|integer',
+        'mq'=> 'required|numeric|digits_between:1, 5|min:15',
+        'cover'=> 'required|image',
+        'guest'=> 'nullable|string|max:150',
+        'description'=> 'required|string|max:501',
+        'price_day'=> 'required|numeric|between:0,9999.99',
+        'beds'=> 'required|numeric|integer',
+        'bathrooms'=> 'required|numeric|integer',
+        'hidden'=> 'required|boolean'
+      ];
+    }
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +56,7 @@ class FlatController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create34');
     }
 
     /**
@@ -45,7 +67,34 @@ class FlatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $idUser = Auth::user()->id;
+        $request->validate($this->validateRules);
+        $data = $request->all();
+        $path = Storage::disk('public')->put('images', $data['cover']);
+
+        $newFlat = new Flat;
+        $newFlat->user_id = $idUser;
+        $newFlat->title = $data['title'];
+        $newFlat->address = $data['address'];
+        $newFlat->rooms = $data['rooms'];
+        $newFlat->guest = $data['guest'];
+        $newFlat->mq = $data['mq'];
+        $newFlat->description = $data['description'];
+        $newFlat->beds = $data['beds'];
+        $newFlat->hidden = $data['hidden'];
+        $newFlat->price_day = $data['price_day'];
+        $newFlat->bathrooms = $data['bathrooms'];
+        $newFlat->slug = Str::finish(Str::slug($newFlat->title), rand(1, 1000));
+        $newFlat->cover = $path;
+        $newFlat->lat = 237;
+        $newFlat->long = 743;
+
+        $saved = $newFlat->save();
+        if(!$saved) {
+            return redirect()->back();
+        } 
+
+        return redirect()->route('show-flat', $newFlat->slug);
     }
 
     /**
