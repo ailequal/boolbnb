@@ -39,7 +39,7 @@ class Flat extends Model
         return $this->hasMany('App\Message');
     }
 
-    public function extras()
+    public function extra_service()
     {
         return $this->belongsToMany('App\Extra_service');
     }

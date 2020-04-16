@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFlatExtraServiceTable extends Migration
+class CreateExtraServiceFlatTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,7 @@ class CreateFlatExtraServiceTable extends Migration
      */
     public function up()
     {
-        Schema::create('flat_extra_service', function (Blueprint $table) {
-
+        Schema::create('extra_service_flat', function (Blueprint $table) {
             $table->unsignedBigInteger('flat_id');
             $table->foreign('flat_id')->references('id')->on('flats')->onDelete('cascade');
 
@@ -30,6 +29,6 @@ class CreateFlatExtraServiceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('flat_extra_service');
+        Schema::dropIfExists('extra_service_flat');
     }
 }

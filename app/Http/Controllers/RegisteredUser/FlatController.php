@@ -57,8 +57,9 @@ class FlatController extends Controller
     public function create()
     {
         $extra_services = Extra_service::all();
+        $promo_services = Promo_service::all();
         
-        return view('user.create34', compact('extra_services'));
+        return view('user.create34', compact('extra_services', 'promo_services'));
     }
 
     /**
@@ -96,9 +97,15 @@ class FlatController extends Controller
         if(!$saved) {
             return redirect()->back();
         } 
+        
         $extra = $data['extra_service'];
         if(!empty($extra)) {
-            $newFlat->extra_services()->attach($extra);
+            $newFlat->extra_service()->attach($extra);
+        } 
+        
+        $promo = $data['promo_service'];
+        if(!empty($promo)) {
+            $newFlat->promo_service()->attach($promo);
         } 
 
         // $park = App\Park::find(1);

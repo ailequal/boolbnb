@@ -90,6 +90,17 @@
 
           </div>
 
+         <div class="form-group">
+            <label for="promo_service">Promozioni Aggiuntivi</label>
+            @foreach ($promo_services as $promo_service)
+              <div>
+                <span>{{$promo_service->description}}</span>
+                <input type="checkbox" name="promo_service[]"value="{{$promo_service->id}}">
+              </div>
+            @endforeach
+
+          </div>
+
         <button class="btn btn-success" type="submit">Salva</button>
       </form>
     </div>
