@@ -16,6 +16,7 @@
 
                     You are logged in!
                     <a href="{{route('flats')}}">Mostra appartamenti</a>
+                    <a href="{{route('registereduser.flats.create')}}">Crea un appartamento</a>
                 </div>
             </div>
         </div>

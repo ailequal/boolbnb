@@ -78,6 +78,17 @@
           <div class="form-group">
             <input type="file" name="cover" id="cover" accept="image/*">
          </div>
+          
+         <div class="form-group">
+            <label for="extra_service">Servizi Aggiuntivi</label>
+            @foreach ($extra_services as $extra_service)
+              <div>
+                <span>{{$extra_service->name}}</span>
+                <input type="checkbox" name="extra_service[]"value="{{$extra_service->id}}">
+              </div>
+            @endforeach
+
+          </div>
 
         <button class="btn btn-success" type="submit">Salva</button>
       </form>

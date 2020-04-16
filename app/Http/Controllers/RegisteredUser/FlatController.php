@@ -56,7 +56,9 @@ class FlatController extends Controller
      */
     public function create()
     {
-        return view('user.create34');
+        $extra_services = Extra_service::all();
+        
+        return view('user.create34', compact('extra_services'));
     }
 
     /**
@@ -71,7 +73,7 @@ class FlatController extends Controller
         $request->validate($this->validateRules);
         $data = $request->all();
         $path = Storage::disk('public')->put('images', $data['cover']);
-
+        
         $newFlat = new Flat;
         $newFlat->user_id = $idUser;
         $newFlat->title = $data['title'];
@@ -90,9 +92,18 @@ class FlatController extends Controller
         $newFlat->long = 743;
 
         $saved = $newFlat->save();
+        
         if(!$saved) {
             return redirect()->back();
         } 
+        $extra = $data['extra_service'];
+        if(!empty($extra)) {
+            $newFlat->extra_services()->attach($extra);
+        } 
+
+        // $park = App\Park::find(1);
+        // $weather = App\Weather::find($id);
+        // $user->parks()->attach($park->id, ['weather' => $weather->id]); 
 
         return redirect()->route('show-flat', $newFlat->slug);
     }
@@ -137,8 +148,14 @@ class FlatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Flat $flat)
     {
-        //
+        if(empty($flat)) {
+            abort(404);
+        }
+        $flat->extra_service()->detach();
+        $flat->delete();
+
+        return redirect()->route('registereduser.flats.index');
     }
 }
