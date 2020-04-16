@@ -14,7 +14,7 @@
   <header class="container">
     <nav>
       <div class="nav-left">
-        <a href="#">Boolbnb</a>
+      <a href="{{route('my-home')}}">Boolbnb</a>
       </div>
       <div class="nav-right">
         <ul>
