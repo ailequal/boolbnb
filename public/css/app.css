@@ -11125,3 +11125,86 @@ footer .footer-right ul li {
   }
 }
 
+.box-cover {
+  height: 300px;
+  background-image: url("/images/world.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.box-desc {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: black;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.box-desc .box-info {
+  max-width: 700px;
+}
+
+.box-images {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.box-images .image {
+  width: calc(100% / 3 - 20px);
+  overflow: hidden;
+  max-height: 200px;
+  margin: 10px;
+}
+
+.box-images .image img {
+  width: 100%;
+}
+
+.box-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.box-bottom .box-map {
+  height: 300px;
+  width: calc(100% / 2 - 20px);
+  margin: 10px;
+  text-align: center;
+  background-color: lightgreen;
+}
+
+.box-bottom .box-message {
+  width: calc(100% / 2 - 20px);
+  margin: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .box-desc {
+    display: block;
+  }
+
+  .box-images .image {
+    width: calc(100% / 2 - 20px);
+  }
+
+  .box-bottom .box-map {
+    width: calc(100% - 20px);
+  }
+
+  .box-bottom .box-message {
+    width: calc(100% - 20px);
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .box-images .image {
+    width: calc(100% - 20px);
+  }
+}
+
