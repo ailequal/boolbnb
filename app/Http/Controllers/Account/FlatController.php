@@ -30,10 +30,10 @@ class FlatController extends Controller
         'title'=> 'required|string|max:255',
         'address'=> 'required|string|max:255',
         'rooms'=> 'required|numeric|integer',
-        'mq'=> 'required|numeric|min:15',
+        'mq'=> 'required|numeric|integer|min:15',
         'guest'=> 'nullable|string|max:150',
         'description'=> 'required|string|max:501',
-        'price_day'=> 'required|numeric|between:0,9999.99',
+        'price_day'=> 'required|numeric|integer',
         'beds'=> 'required|numeric|integer',
         'bathrooms'=> 'required|numeric|integer',
         'hidden'=> 'required|boolean'

@@ -33,7 +33,7 @@
 
     <div class="form-group">
         <label for="mq">Metri quadri</label>
-        <input type="text" name="mq" placeholder="Metri quadri" value="{{$flat->mq}}">
+        <input type="number" name="mq" placeholder="Metri quadri" value="{{$flat->mq}}">
     </div>
 
     <div class="form-group">

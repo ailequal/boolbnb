@@ -20,11 +20,11 @@ class CreateFlatsTable extends Migration
             $table->string('address');
             $table->string('title');
             $table->integer('rooms');
-            $table->decimal('mq', 6, 2);
+            $table->integer('mq');
             $table->string('cover');
             $table->string('guest')->nullable();
             $table->text('description');
-            $table->decimal('price_day', 6, 2);
+            $table->integer('price_day');
             $table->integer('beds');
             $table->integer('bathrooms');
             $table->integer('lat');
