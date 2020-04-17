@@ -37,7 +37,7 @@
     </div>
 
     <div class="form-group">
-        <label for="cover">Immagine copertina</label>
+        <label for="cover">Modifica immagine copertina</label>
         <input type="file" name='cover' accept='image/*' value="{{$flat->cover}}">
     </div>
 
@@ -102,7 +102,7 @@
         @foreach ($promo_services as $promo_service)
           <div>
             <span>{{$promo_service->description}}</span>
-            <input type="radio" name="promo_service[]"value="{{$promo_service->id}}">
+            <input type="radio" name="promo_service[]"value="{{$promo_service->id}}" {{($flat->promo_service->contains($promo_service->id)) ? 'checked' : ''}}>
           </div>
         @endforeach
 

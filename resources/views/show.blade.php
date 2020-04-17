@@ -1,6 +1,5 @@
 @extends('layouts.boolbnb')
  @section('main')
-
    <div class="box-cover container"></div>
    <div class="box-desc container">
      <div class="box-info">

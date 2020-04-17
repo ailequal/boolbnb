@@ -19,6 +19,8 @@ class FlatController extends Controller
 {
 
     private $validateRules;
+    private $validateImage;
+    private $validateImageEdit;
 
     public function __construct(){
 
@@ -28,14 +30,19 @@ class FlatController extends Controller
         'title'=> 'required|string|max:255',
         'address'=> 'required|string|max:255',
         'rooms'=> 'required|numeric|integer',
-        'mq'=> 'required|numeric|digits_between:1, 5|min:15',
-        'cover'=> 'required|image',
+        'mq'=> 'required|numeric|min:15',
         'guest'=> 'nullable|string|max:150',
         'description'=> 'required|string|max:501',
         'price_day'=> 'required|numeric|between:0,9999.99',
         'beds'=> 'required|numeric|integer',
         'bathrooms'=> 'required|numeric|integer',
         'hidden'=> 'required|boolean'
+      ];
+      $this->validateImage = [
+          'cover'=> 'required|image'
+      ];
+      $this->validateImageEdit = [
+          'cover'=> 'nullable|image'
       ];
     }
     /**
@@ -72,6 +79,7 @@ class FlatController extends Controller
     {
         $idUser = Auth::user()->id;
         $request->validate($this->validateRules);
+        $request->validate($this->validateImage);
         $data = $request->all();
         $path = Storage::disk('public')->put('images', $data['cover']);
         
@@ -95,7 +103,7 @@ class FlatController extends Controller
         $saved = $newFlat->save();
         
         if(!$saved) {
-            return redirect()->back();
+            return redirect()->back()->withInput();
         } 
         
         $extra = $data['extra_service'];
@@ -109,7 +117,7 @@ class FlatController extends Controller
         } 
 
 
-        return redirect()->route('account.flats.show', $newFlat->slug);
+        return redirect()->route('show.flat', $newFlat->slug);
     }
 
     /**
@@ -120,8 +128,7 @@ class FlatController extends Controller
      */
     public function show($slug)
     {
-        $flats = Flat::where('slug', $slug)->first();
-        return view('show', compact('flats'));
+        // Usiamo show pubblica dell'altro controller
     }
 
     /**
@@ -150,9 +157,53 @@ class FlatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        $idUser = Auth::user()->id;
+        $flat = Flat::where('slug', $slug)->first();
+
+        if (empty($flat)) {
+            abort('404');
+        }
+
+        if($flat->user->id != $idUser){
+            abort(404);
+        }
+
+        $request->validate($this->validateRules);
+        $request->validate($this->validateImageEdit);
+        $data = $request->all();
+        $flat->title = $data['title'];
+        $flat->address = $data['address'];
+        $flat->rooms = $data['rooms'];
+        $flat->guest = $data['guest'];
+        $flat->mq = $data['mq'];
+        $flat->description = $data['description'];
+        $flat->beds = $data['beds'];
+        $flat->hidden = $data['hidden'];
+        $flat->price_day = $data['price_day'];
+        $flat->bathrooms = $data['bathrooms'];
+        $flat->slug = Str::finish(Str::slug($flat->title), rand(1, 1000));
+        $flat->lat = 237;
+        $flat->long = 743;
+        // if a new image was submitted
+        if (isset($data['cover'])) {
+            // delete old image stored
+            Storage::disk('public')->delete($flat->cover);
+            // save the image received
+            $flat->cover = Storage::disk('public')->put('images', $data['cover']);
+        }
+        $updated = $flat->update();
+
+        if (!$updated) {
+            return redirect()->back()->withInput();
+        }
+
+        $flat->extra_service()->sync($data['extra_service']);
+        $flat->promo_service()->sync($data['promo_service']);
+
+        return redirect()->route('show.flat', $flat->slug);
+
     }
 
     /**

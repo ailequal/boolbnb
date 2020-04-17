@@ -18,7 +18,7 @@
               <img src="{{asset('storage/' . $flat->cover)}}" alt="">
             </div>
             <div class="box-info">
-              <a href="{{route('account.flats.show', $flat->slug)}}">
+              <a href="{{route('show.flat', $flat->slug)}}">
                 <p>{{$flat->title}}</p>
               </a>
               <p>{{$flat->description}}</p>
