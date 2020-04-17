@@ -59,7 +59,7 @@ class FlatController extends Controller
         $extra_services = Extra_service::all();
         $promo_services = Promo_service::all();
         
-        return view('user.create34', compact('extra_services', 'promo_services'));
+        return view('user.create', compact('extra_services', 'promo_services'));
     }
 
     /**

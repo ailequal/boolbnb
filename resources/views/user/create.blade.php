@@ -42,16 +42,6 @@
     </div>
 
     <div class="form-group">
-        <label for="path_image">Immagine appartamento</label>
-        <input type="file" name='path_image' accept='image/*'>
-    </div>
-
-    <div class="form-group">
-        <label for="path_image">Immagine appartamento</label>
-        <input type="file" name='path_image' accept='image/*'>
-    </div>
-
-    <div class="form-group">
         <label for="guest">Numero ospiti</label>
         <input type="number" name="guest" placeholder="Numero ospiti">
     </div>
@@ -63,7 +53,7 @@
 
     <div class="form-group">
         <label for="price_day">Prezzo giornaliero</label>
-        <input type="number" name="price_day" placeholder="Prezzo giornaliero">
+        <input type="text" name="price_day" placeholder="Prezzo giornaliero">
     </div>
 
     <div class="form-group">
@@ -71,48 +61,52 @@
         <input type="number" name="bathrooms" placeholder="Numero bagni">
     </div>
 
+    <div class="form-group">
+        <label for="beds">Numero di Letti</label>
+        <input type="number" name="beds" placeholder="Numero letti">
+    </div>
+    
+
     {{-- Lat e Long mancano --}}
 
     <div class="form-group">
-        <label for="hidden">Mostra appartamento</label>
-        <input type="checkbox" name="hidden">
-    </div>
-
-    {{-- <div class="form-group">
         <label for="hidden">Nascosto</label>
-
-        <div>
+        
+          <div>
             <span>Yes</span>
-            <input type="radio" name="hidden" value="1">
-        </div>
-        <div>
+            <input type="radio" name="hidden"value="1">
+          </div>
+          <div>
             <span>No</span>
-            <input type="radio" name="hidden" value="0">
-        </div>
-    </div> --}}
-
-    <div class="form-group">
-        <label for="beds">Numero letti</label>
-        <input type="number" name="beds" placeholder="Numero letti">
-    </div>
+            <input type="radio" name="hidden"value="0" >
+          </div>
+      </div>
 
     <h3>Servizi extra</h3>
 
     <div class="form-group">
-        <label for="wifi">Wi Fi</label>
-        <input type="checkbox" name='wifi' value="wifi">
-    </div>
+        <label for="extra_service">Servizi Aggiuntivi</label>
+        @foreach ($extra_services as $extra_service)
+          <div>
+            <span>{{$extra_service->name}}</span>
+            <input type="checkbox" name="extra_service[]"value="{{$extra_service->id}}">
+          </div>
+        @endforeach
 
-    <div class="form-group">
-        <label for="smoking">Smoking</label>
-        <input type="checkbox" name='smoking' value="smoking">
-    </div>
+      </div>
 
-    <div class="form-group">
-        <label for="parking">Parking</label>
-        <input type="checkbox" name='parking' value="parking">
-    </div>
+      <h3>Promo attivabili</h3>
 
+      <div class="form-group">
+        <label for="promo_service">Promozioni Aggiuntivi</label>
+        @foreach ($promo_services as $promo_service)
+          <div>
+            <span>{{$promo_service->description}}</span>
+            <input type="radio" name="promo_service[]"value="{{$promo_service->id}}">
+          </div>
+        @endforeach
+
+      </div>
     {{-- <span>{{$tag->name}}</span>
     <input type="checkbox" name="tags[]" value="{{$tag->id}}" @if(is_array(old('tags')) && in_array($tag->id,
     old('tags'))) checked @endif> --}}
