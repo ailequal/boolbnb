@@ -24,7 +24,7 @@
               <p>{{$flat->description}}</p>
             </div>
             <div class="box-button">
-              <a href="{{route('account.flats.edit', $flat->id)}}"><button class="btn btn-warning mb-2" type="button" name="button">Modifica</button></a>
+              <a href="{{route('account.flats.edit', $flat->slug)}}"><button class="btn btn-warning mb-2" type="button" name="button">Modifica</button></a>
               <form action="{{route('account.flats.destroy', $flat->id)}}" method="POST">
                 @csrf
                 @method('DELETE')

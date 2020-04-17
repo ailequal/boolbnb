@@ -11,7 +11,7 @@
     </div>
     @endif
 </div>
-<form action="{{route('account.flats.update', $flat->id)}}" method="POST" enctype='multipart/form-data'>
+<form action="{{route('account.flats.update', $flat->slug)}}" method="POST" enctype='multipart/form-data'>
     {{-- token generator --}}
     @csrf
     @method('PATCH')
@@ -89,7 +89,7 @@
         @foreach ($extra_services as $extra_service)
           <div>
             <span>{{$extra_service->name}}</span>
-            <input type="checkbox" name="extra_service[]"value="{{$extra_service->id}}" {{$flat->extra_services->contains($extra_service->id) ? 'checked' : ''}}>
+            <input type="checkbox" name="extra_service[]"value="{{$extra_service->id}}" {{($flat->extra_service->contains($extra_service->id)) ? 'checked' : ''}}>
           </div>
         @endforeach
 

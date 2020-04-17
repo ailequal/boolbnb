@@ -130,9 +130,9 @@ class FlatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        $flat = Flat::where('id', $id)->first();
+        $flat = Flat::where('slug', $slug)->first();
         $extra_services = Extra_service::all();
         $promo_services = Promo_service::all();
         $data = [
@@ -141,18 +141,6 @@ class FlatController extends Controller
             'promo_services'=> $promo_services
         ];
         return view('user.edit', $data);
-
-        // $post = Post::where('slug', $slug)->first();
-        // $tags = Tag::all();
-        // $images = Image::all();
-
-        // $data = [
-        //     'tags' => $tags,
-        //     'post' => $post,
-        //     'images' => $images
-        // ];
-
-        // return view('admin.posts.edit', $data);
     }
 
     /**
