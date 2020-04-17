@@ -2,7 +2,7 @@
  @section('main')
    <div class="welcome">
      <h1>Benvenuto {{Auth::User()->name}}</h1>
-     <a href="{{route('registereduser.flats.create')}}">
+     <a href="{{route('account.flats.create')}}">
        <button class="btn btn-primary mb-3" type="button" name="button">
          Crea un nuovo appartamento
       </button>

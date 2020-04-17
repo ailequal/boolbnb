@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\RegisteredUser;
+namespace App\Http\Controllers\Account;
 
 use App\User;
 use App\Flat;
@@ -109,7 +109,7 @@ class FlatController extends Controller
         } 
 
 
-        return redirect()->route('show-flat', $newFlat->slug);
+        return redirect()->route('show.flat', $newFlat->slug);
     }
 
     /**
@@ -160,6 +160,6 @@ class FlatController extends Controller
         $flat->extra_service()->detach();
         $flat->delete();
 
-        return redirect()->route('registereduser.flats.index');
+        return redirect()->route('account.flats.index');
     }
 }

@@ -19,9 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/flats', 'FlatController@index')->name('flats');
-Route::get('/flats/{slug}', 'FlatController@show')->name('show-flat');
+Route::get('/flats/{slug}', 'FlatController@show')->name('show.flat');
 
-Route::name('registereduser.')->namespace('RegisteredUser')->middleware('auth')->prefix('registereduser')->group(function () {
+Route::name('account.')->namespace('Account')->middleware('auth')->prefix('account')->group(function () {
     Route::resource('flats','FlatController');
-    Route::get('/user', 'FlatController@index')->name('user_home');
+    Route::get('/', 'FlatController@index')->name('index');
 });

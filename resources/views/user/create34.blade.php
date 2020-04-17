@@ -18,7 +18,7 @@
         </div>
       @endif
     </div>
-    <form action="{{route('registereduser.flats.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('account.flats.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('POST')
         <div class="form-group">

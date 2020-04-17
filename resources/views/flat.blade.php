@@ -3,6 +3,6 @@
    @foreach ($flats as $flat)
     <p>{{$flat['guest']}}</p>
     <p>{{$flat['address']}}</p>
-    <a href="{{route('show-flat', $flat['slug'])}}">Mostra</a>
+    <a href="{{route('show.flat', $flat['slug'])}}">Mostra</a>
    @endforeach
  @endsection
