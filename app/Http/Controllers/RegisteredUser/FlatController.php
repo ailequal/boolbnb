@@ -46,7 +46,7 @@ class FlatController extends Controller
     public function index()
     {
         $flats = Flat::where('user_id', Auth::id())->get();
-        return view('user.show_flat', compact('flats'));
+        return view('user.list', compact('flats'));
     }
 
     /**
@@ -108,9 +108,6 @@ class FlatController extends Controller
             $newFlat->promo_service()->attach($promo);
         } 
 
-        // $park = App\Park::find(1);
-        // $weather = App\Weather::find($id);
-        // $user->parks()->attach($park->id, ['weather' => $weather->id]); 
 
         return redirect()->route('show-flat', $newFlat->slug);
     }

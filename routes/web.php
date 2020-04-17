@@ -23,4 +23,5 @@ Route::get('/flats/{slug}', 'FlatController@show')->name('show-flat');
 
 Route::name('registereduser.')->namespace('RegisteredUser')->middleware('auth')->prefix('registereduser')->group(function () {
     Route::resource('flats','FlatController');
+    Route::get('/user', 'FlatController@index')->name('user_home');
 });
