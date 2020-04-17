@@ -4,28 +4,29 @@
    <div class="box-cover container"></div>
    <div class="box-desc container">
      <div class="box-info">
-       <h1>Bedrooms Sun Rise @ Three Sisters</h1>
-       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+       <h1>{{$flats->title}}</h1>
+       <p>{{$flats->description}}</p>
      </div>
+    
      <div class="box-services">
        <ul>
          <li>
-           Indirizzo
+           {{$flats->address}}
          </li>
          <li>
-           Numero stanze
+           {{$flats->rooms}}
          </li>
          <li>
-           Metri quadri
+           {{$flats->mq}}
          </li>
          <li>
-           Numero letti
+           {{$flats->beds}}
          </li>
          <li>
-           Prezzo giornaliero
+           {{$flats->price_day}}
          </li>
          <li>
-           Numero bagni
+           {{$flats->bathrooms}}
          </li>
        </ul>
      </div>
@@ -33,7 +34,7 @@
 
    <div class="box-images container">
      <div class="image">
-       <img src="{{asset('images/4bb984fa_original.jpg')}}" alt="">
+       <img src="{{asset('storage/' . $flats->cover)}}" alt="">
      </div>
      <div class="image">
        <img src="{{asset('images/39f74208_original.jpg')}}" alt="">

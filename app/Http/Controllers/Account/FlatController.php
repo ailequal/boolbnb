@@ -109,7 +109,7 @@ class FlatController extends Controller
         } 
 
 
-        return redirect()->route('show.flat', $newFlat->slug);
+        return redirect()->route('account.flats.show', $newFlat->slug);
     }
 
     /**
@@ -118,9 +118,10 @@ class FlatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $flats = Flat::where('slug', $slug)->first();
+        return view('show', compact('flats'));
     }
 
     /**
@@ -157,7 +158,12 @@ class FlatController extends Controller
         if(empty($flat)) {
             abort(404);
         }
+        if (Auth::id() !== $flat->user_id) {
+            abort(500);
+        }
         $flat->extra_service()->detach();
+        $flat->promo_service()->detach();
+        Storage::disk('public')->delete($flat->cover);
         $flat->delete();
 
         return redirect()->route('account.flats.index');

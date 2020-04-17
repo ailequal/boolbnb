@@ -18,12 +18,18 @@
               <img src="{{asset('storage/' . $flat->cover)}}" alt="">
             </div>
             <div class="box-info">
-              <h3>{{$flat->title}}</h3>
+              <a href="{{route('account.flats.show', $flat->slug)}}">
+                <p>{{$flat->title}}</p>
+              </a>
               <p>{{$flat->description}}</p>
             </div>
             <div class="box-button">
               <button class="btn btn-warning mb-2" type="button" name="button">Modifica</button>
-              <button class="btn btn-danger mb-2" type="button" name="button">Cancella</button>
+              <form action="{{route('account.flats.destroy', $flat->id)}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger mb-2" name="button">DELETE</button>
+              </form>
               <button class="btn btn-secondary mb-2" type="button" name="button">Statistiche</button>
             </div>
           </div>

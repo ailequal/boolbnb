@@ -25,10 +25,7 @@ class FlatController extends Controller
         abort(404);
       }
 
-      if ($flats['user_id'] == Auth::id()) {
-          return view('user.show_flat', compact('flats'));
-      }
-      return view('show.flat', compact('flats'));
+      return view('show', compact('flats'));
     }
 }
 
