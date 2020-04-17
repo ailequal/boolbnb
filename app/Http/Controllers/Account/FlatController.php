@@ -132,7 +132,27 @@ class FlatController extends Controller
      */
     public function edit($id)
     {
-        //
+        $flat = Flat::where('id', $id)->first();
+        $extra_services = Extra_service::all();
+        $promo_services = Promo_service::all();
+        $data = [
+            'flat'=> $flat,
+            'extra_services'=> $extra_services,
+            'promo_services'=> $promo_services
+        ];
+        return view('user.edit', $data);
+
+        // $post = Post::where('slug', $slug)->first();
+        // $tags = Tag::all();
+        // $images = Image::all();
+
+        // $data = [
+        //     'tags' => $tags,
+        //     'post' => $post,
+        //     'images' => $images
+        // ];
+
+        // return view('admin.posts.edit', $data);
     }
 
     /**
