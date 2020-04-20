@@ -8,7 +8,6 @@ class Flat extends Model
 {
     protected $fillable = [
         'user_id',
-        'address',
         'title',
         'rooms',
         'slug',
@@ -46,5 +45,10 @@ class Flat extends Model
 
     public function promo_service(){
         return $this->belongsToMany('App\Promo_service');
+    }
+
+    public function flat_address()
+    {
+        return $this->hasOne('App\Flat_address');
     }
 }

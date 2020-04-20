@@ -28,8 +28,8 @@ class FlatsTableSeeder extends Seeder
             $newFlat->price_day = rand(1, 1000);
             $newFlat->beds = rand(1, 6);
             $newFlat->bathrooms = rand(1, 3);
-            $newFlat->lat = $faker->latitude($min = -90, $max = 90);
-            $newFlat->long = $faker->longitude($min = -180, $max = 180);
+            $newFlat->lat = 37.36729;
+            $newFlat->long = -121.91595;
             $newFlat->hidden = $faker->boolean();
             $newFlat->slug = Str::finish(Str::slug($newFlat->title), rand(1, 1000));
             $newFlat->save();
