@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MessagesTableSeeder::class);
         $this->call(ExtraServicesTableSeeder::class);
         $this->call(PromoServicesTableSeeder::class);
+        $this->call(FlatAddressesTableSeeder::class);
     }
 }

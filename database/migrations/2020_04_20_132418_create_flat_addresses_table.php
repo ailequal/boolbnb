@@ -13,7 +13,7 @@ class CreateFlatAddressesTable extends Migration
      */
     public function up()
     {
-        Schema::create('flat_address', function (Blueprint $table) {
+        Schema::create('flat_addresses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('flat_id');
             $table->foreign('flat_id')->references('id')->on('flats')->onDelete('cascade');

@@ -18,7 +18,6 @@ class FlatsTableSeeder extends Seeder
         for ($i=0; $i < 20; $i++) { 
             $newFlat = new Flat;
             $newFlat->user_id = rand(1, 10);
-            $newFlat->address = $faker->address();
             $newFlat->title = $faker->word();
             $newFlat->rooms = rand(1, 20);
             $newFlat->mq = rand(1, 100);
