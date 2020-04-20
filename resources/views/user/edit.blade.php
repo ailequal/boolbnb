@@ -22,11 +22,6 @@
     </div>
 
     <div class="form-group">
-        <label for="address">Indirizzo</label>
-        <input type="text" name="address" placeholder="Indirizzo" value="{{$flat->address}}">
-    </div>
-
-    <div class="form-group">
         <label for="rooms">Numero stanza</label>
         <input type="number" name="rooms" placeholder="Numero stanza" value="{{$flat->rooms}}">
     </div>
@@ -37,13 +32,30 @@
     </div>
 
     <div class="form-group">
+        <label for="street">Via</label>
+        <input type="text" name="street" placeholder="Via" value="{{$flat->flat_address->street}}">
+    </div>
+    <div class="form-group">
+        <label for="street_number">Civico</label>
+        <input type="text" name="street_number" placeholder="Civico" value="{{$flat->flat_address->street_number}}">
+    </div>
+    <div class="form-group">
+        <label for="city">Città</label>
+        <input type="text" name="city" placeholder="Città" value="{{$flat->flat_address->city}}">
+    </div>
+    <div class="form-group">
+        <label for="zip_code">Cap</label>
+        <input type="text" name="zip_code" placeholder="Cap" value="{{$flat->flat_address->zip_code}}"> 
+    </div>
+
+    <div class="form-group">
         <label for="cover">Modifica immagine copertina</label>
         <input type="file" name='cover' accept='image/*' value="{{$flat->cover}}">
     </div>
 
     <div class="form-group">
         <label for="guest">Numero ospiti</label>
-        <input type="number" name="guest" placeholder="Numero ospiti" value="{{$flat->guest}}">
+        <input type="text" name="guest" placeholder="Numero ospiti" value="{{$flat->guest}}">
     </div>
 
     <div class="form-group">

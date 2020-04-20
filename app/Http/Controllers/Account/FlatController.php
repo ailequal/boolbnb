@@ -110,21 +110,22 @@ class FlatController extends Controller
         $newAddress->street_number = $data['street_number'];
         $newAddress->zip_code = $data['zip_code'];
         $newAddress->city = $data['city'];
-        $newFlat->flat_address()->save($newAddress);
+        $savedAddress = $newFlat->flat_address()->save($newAddress);
 
         
         if(!$saved) {
             return redirect()->back()->withInput();
         } 
-        
-        $extra = $data['extra_service'];
-        if(!empty($extra)) {
-            $newFlat->extra_service()->attach($extra);
+        if(!$savedAddress) {
+            return redirect()->back()->withInput();
         } 
         
-        $promo = $data['promo_service'];
-        if(!empty($promo)) {
-            $newFlat->promo_service()->attach($promo);
+        if(isset($data['extra_service'])) {
+            $newFlat->extra_service()->attach($data['extra_service']);
+        } 
+        
+        if(isset($data['promo_service'])) {
+            $newFlat->promo_service()->attach($data['promo_service']);
         } 
 
 
@@ -196,10 +197,6 @@ class FlatController extends Controller
         $flat->slug = Str::finish(Str::slug($flat->title), rand(1, 1000));
         $flat->lat = 237;
         $flat->long = 743;
-        $flat->flat_addresses->street = $data['street'];
-        $flat->flat_addresses->street_name = $data['street_name'];
-        $flat->flat_addresses->zip_code = $data['zip_code'];
-        $flat->flat_addresses->city = $data['city'];
         // if a new image was submitted
         if (isset($data['cover'])) {
             // delete old image stored
@@ -207,14 +204,27 @@ class FlatController extends Controller
             // save the image received
             $flat->cover = Storage::disk('public')->put('images', $data['cover']);
         }
+        $flat->flat_address->street = $data['street'];
         $updated = $flat->update();
+        $updatedAddress = $flat->flat_address->update();
 
         if (!$updated) {
             return redirect()->back()->withInput();
         }
 
-        $flat->extra_service()->sync($data['extra_service']);
-        $flat->promo_service()->sync($data['promo_service']);
+
+        
+        if(isset($data['extra_service'])) {
+            $flat->extra_service()->sync($data['extra_service']);
+        } 
+        
+        if(isset($data['promo_service'])) {
+            $flat->promo_service()->sync($data['promo_service']);
+        } 
+
+
+        // $flat->extra_service()->sync($data['extra_service']);
+        // $flat->promo_service()->sync($data['promo_service']);
 
         return redirect()->route('show.flat', $flat->slug);
 
