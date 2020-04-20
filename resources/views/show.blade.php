@@ -1,4 +1,8 @@
 @extends('layouts.boolbnb')
+@section('head')
+<link rel='stylesheet' type='text/css'
+    href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.52.0/maps/maps.css' />
+@endsection
  @section('main')
    <div class="box-cover container"></div>
    <div class="box-desc container">

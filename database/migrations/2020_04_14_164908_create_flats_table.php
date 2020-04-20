@@ -26,8 +26,8 @@ class CreateFlatsTable extends Migration
             $table->integer('price_day');
             $table->integer('beds');
             $table->integer('bathrooms');
-            $table->integer('lat');
-            $table->integer('long');
+            $table->double('lat', 7, 5);
+            $table->double('long', 8, 5);
             $table->string('slug');
             $table->boolean('hidden');
             $table->timestamps();
