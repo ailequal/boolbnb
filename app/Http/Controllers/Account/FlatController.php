@@ -195,8 +195,8 @@ class FlatController extends Controller
         $flat->price_day = $data['price_day'];
         $flat->bathrooms = $data['bathrooms'];
         $flat->slug = Str::finish(Str::slug($flat->title), rand(1, 1000));
-        $flat->lat = 237;
-        $flat->long = 743;
+        $flat->lat = 37.36729;
+        $flat->long = 121.91595;
         // if a new image was submitted
         if (isset($data['cover'])) {
             // delete old image stored

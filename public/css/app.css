@@ -11179,6 +11179,11 @@ footer .footer-right ul li {
   background-color: lightgreen;
 }
 
+.box-bottom .box-map #map {
+  width: 100%;
+  height: 100%;
+}
+
 .box-bottom .box-message {
   width: calc(100% / 2 - 20px);
   margin: 10px;
