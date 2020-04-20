@@ -10,7 +10,16 @@
      <div class="box-services">
        <ul>
          <li>
-           {{$flats->address}}
+           {{$flats->flat_address->street}}
+         </li>
+         <li>
+           {{$flats->flat_address->street_number}}
+         </li>
+         <li>
+           {{$flats->flat_address->zip_code}}
+         </li>
+         <li>
+           {{$flats->flat_address->city}}
          </li>
          <li>
            {{$flats->rooms}}

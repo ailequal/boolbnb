@@ -22,8 +22,20 @@
     </div>
 
     <div class="form-group">
-        <label for="address">Indirizzo</label>
-        <input type="text" name="address" placeholder="Indirizzo">
+        <label for="street">Via</label>
+        <input type="text" name="street" placeholder="Via">
+    </div>
+    <div class="form-group">
+        <label for="street_number">Civico</label>
+        <input type="text" name="street_number" placeholder="Civico">
+    </div>
+    <div class="form-group">
+        <label for="city">Città</label>
+        <input type="text" name="city" placeholder="Città">
+    </div>
+    <div class="form-group">
+        <label for="zip_code">Cap</label>
+        <input type="text" name="zip_code" placeholder="Cap">
     </div>
 
     <div class="form-group">
@@ -65,6 +77,7 @@
         <label for="beds">Numero di Letti</label>
         <input type="number" name="beds" placeholder="Numero letti">
     </div>
+
     
 
     {{-- Lat e Long mancano --}}

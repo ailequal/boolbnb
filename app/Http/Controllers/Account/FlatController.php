@@ -8,6 +8,7 @@ use App\Image;
 use App\Message;
 use App\Extra_service;
 use App\Promo_service;
+use App\Flat_address;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -28,8 +29,11 @@ class FlatController extends Controller
 
         $this->validateRules =[
         'title'=> 'required|string|max:255',
-        'address'=> 'required|string|max:255',
         'rooms'=> 'required|numeric|integer',
+        'street'=> 'required|string|max:255',
+        'street_number'=> 'required|integer|numeric',
+        'zip_code'=> 'required|numeric|digits_between:5,5',
+        'city'=>'required|string|max:255',
         'mq'=> 'required|numeric|integer|min:15',
         'guest'=> 'nullable|string|max:150',
         'description'=> 'required|string|max:501',
@@ -54,6 +58,7 @@ class FlatController extends Controller
     {
         $flats = Flat::where('user_id', Auth::id())->get();
         return view('user.list', compact('flats'));
+        
     }
 
     /**
@@ -64,8 +69,8 @@ class FlatController extends Controller
     public function create()
     {
         $extra_services = Extra_service::all();
-        $promo_services = Promo_service::all();
-        
+        $promo_services = Promo_service::all(); 
+
         return view('user.create', compact('extra_services', 'promo_services'));
     }
 
@@ -82,11 +87,9 @@ class FlatController extends Controller
         $request->validate($this->validateImage);
         $data = $request->all();
         $path = Storage::disk('public')->put('images', $data['cover']);
-        
         $newFlat = new Flat;
         $newFlat->user_id = $idUser;
         $newFlat->title = $data['title'];
-        $newFlat->address = $data['address'];
         $newFlat->rooms = $data['rooms'];
         $newFlat->guest = $data['guest'];
         $newFlat->mq = $data['mq'];
@@ -97,10 +100,18 @@ class FlatController extends Controller
         $newFlat->bathrooms = $data['bathrooms'];
         $newFlat->slug = Str::finish(Str::slug($newFlat->title), rand(1, 1000));
         $newFlat->cover = $path;
-        $newFlat->lat = 237;
-        $newFlat->long = 743;
+        $newFlat->lat = 37.36729;
+        $newFlat->long = -121.91595;
 
         $saved = $newFlat->save();
+
+        $newAddress = new Flat_address;
+        $newAddress->street = $data['street'];
+        $newAddress->street_number = $data['street_number'];
+        $newAddress->zip_code = $data['zip_code'];
+        $newAddress->city = $data['city'];
+        $newFlat->flat_address()->save($newAddress);
+
         
         if(!$saved) {
             return redirect()->back()->withInput();
@@ -174,7 +185,6 @@ class FlatController extends Controller
         $request->validate($this->validateImageEdit);
         $data = $request->all();
         $flat->title = $data['title'];
-        $flat->address = $data['address'];
         $flat->rooms = $data['rooms'];
         $flat->guest = $data['guest'];
         $flat->mq = $data['mq'];
@@ -186,6 +196,10 @@ class FlatController extends Controller
         $flat->slug = Str::finish(Str::slug($flat->title), rand(1, 1000));
         $flat->lat = 237;
         $flat->long = 743;
+        $flat->flat_addresses->street = $data['street'];
+        $flat->flat_addresses->street_name = $data['street_name'];
+        $flat->flat_addresses->zip_code = $data['zip_code'];
+        $flat->flat_addresses->city = $data['city'];
         // if a new image was submitted
         if (isset($data['cover'])) {
             // delete old image stored
