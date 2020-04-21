@@ -83,6 +83,7 @@
   <input id="flatId" type="hidden" value="{{$flats->id}}">
    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.52.0/maps/maps-web.min.js"></script>
  @endsection
+ 
  @section('script')
   <script src="{{asset('js/show.js')}}"></script>
  @endsection

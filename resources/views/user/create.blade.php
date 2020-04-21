@@ -25,19 +25,23 @@
 
     <div class="form-group">
         <label for="street">Via</label>
-         <input type="text" name="street" placeholder="Via" value="{{old('street')}}">
+         <input class="street_control" type="text" name="street" placeholder="Via" value="{{old('street')}}">
+         <span class="error"></span>
     </div>
     <div class="form-group">
         <label for="street_number">Civico</label>
-        <input type="text" name="street_number" placeholder="Civico" value="{{old('street_number')}}">
+        <input class="number_control" type="text" name="street_number" placeholder="Civico" value="{{old('street_number')}}">
+        <span class="error"></span>
     </div>
     <div class="form-group">
         <label for="city">Città</label>
-        <input type="text" name="city" placeholder="Città" value="{{old('city')}}">
+        <input class="city_control" type="text" name="city" placeholder="Città" value="{{old('city')}}">
+        <span class="error"></span>
     </div>
     <div class="form-group">
         <label for="zip_code">Cap</label>
-        <input type="text" name="zip_code" placeholder="Cap" value="{{old('zip_code')}}">
+        <input class="zip_control" type="text" name="zip_code" placeholder="Cap" value="{{old('zip_code')}}">
+        <span class="error"></span>
     </div>
 
     <div class="form-group">

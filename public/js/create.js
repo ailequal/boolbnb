@@ -10980,21 +10980,41 @@ return jQuery;
 var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 $(document).ready(function () {
-  $(document).on('click', '#submit', function () {
-    console.log('ciao'); // $.ajax({
-    // 	url: "https://flynn.boolean.careers/exercises/api/holidays",
-    // 	method: "GET",
-    // 	data: {
-    // 			year: 2018,
-    // 			month: 0
-    // 		},
-    // 	success: function(data, state) {
-    // 		console.log(data);
-    // 	},
-    // 	error: function(request, state, error) {
-    // 		console.log(error);
-    // 	}
-    // });
+  $('.street_control').keyup(function () {
+    var val = $('.street_control').val();
+
+    if (val.length <= 2) {
+      $(this).next($('.error')).text('indirizzo non valido');
+    } else {
+      $(this).next($('.error')).text('');
+    }
+  });
+  $('.number_control').keyup(function () {
+    var val = $('.number_control').val(); // console.log('ciao');
+
+    if (val.length > 0 && !isNaN(val) == false) {
+      $(this).next($('.error')).text('civico non valido');
+    } else {
+      $(this).next($('.error')).text('');
+    }
+  });
+  $('.city_control').keyup(function () {
+    var val = $('.city_control').val(); // console.log('ciao');
+
+    if (val.length <= 0 && isNaN(val) == false) {
+      $(this).next($('.error')).text('città non valida');
+    } else {
+      $(this).next($('.error')).text('');
+    }
+  });
+  $('.zip_control').keyup(function () {
+    var val = $('.zip_control').val(); // console.log('ciao');
+
+    if (val.length < 5 || !isNaN(val) == false) {
+      $(this).next($('.error')).text('zip non valido');
+    } else {
+      $(this).next($('.error')).text('');
+    }
   });
 });
 
@@ -11007,7 +11027,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/pacpera/repos/boolbnb/resources/js/create.js */"./resources/js/create.js");
+module.exports = __webpack_require__(/*! C:\Users\Fede\desktop\MAMP.public\boolbnb\resources\js\create.js */"./resources/js/create.js");
 
 
 /***/ })
