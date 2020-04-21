@@ -14,6 +14,7 @@ class MapController extends Controller
 
         $lat = $flat->lat;
         $long = $flat->long;
+        $fullAddress = $flat->street + $flat->street_number + $flat->city + $flat->cap;
         $result = [
             'lat' => $lat,
             'long' => $long

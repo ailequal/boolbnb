@@ -31,7 +31,10 @@ $(document).ready(function () {
         left: [25, -35],
         right: [-25, -35]
       }
-      var popup = new tt.Popup({offset: popupOffsets}).setHTML("<b>Speedy's pizza</b><br/>100 Century Center Ct 210, San Jose, CA 95112, USA");
+
+		  // var addressFull = data.results[0].address.freeformAddress;
+
+      var popup = new tt.Popup({offset: popupOffsets}).setHTML("<b>" + "La Tua Posizione" + "</b>");
       marker.setPopup(popup).togglePopup();
 
 		},

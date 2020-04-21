@@ -11058,12 +11058,7 @@ $(document).ready(function () {
           left: [25, -35],
           right: [-25, -35]
         };
-        var addressFull = data.results[0].address.freeformAddress; // var streetName = data.results[0].address.streetName;
-        // var municipality = data.results[0].address.municipality;
-        // var postalCode = data.results[0].address.postalCode;
-        // var streetName = data.results[0].address.streetName;
-        // console.log(streetName);
-
+        var addressFull = data.results[0].address.freeformAddress;
         var popup = new tt.Popup({
           offset: popupOffsets
         }).setHTML("<b>" + addressFull + "</b>");
