@@ -1,3 +1,8 @@
+@section('head')
+<link rel='stylesheet' type='text/css'
+    href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.52.0/maps/maps.css' />
+@endsection
+
 @extends('layouts.boolbnb')
 @section('main')
 
@@ -25,24 +30,28 @@
 
     <div class="form-group">
         <label for="street">Via</label>
-         <input class="street_control" type="text" name="street" placeholder="Via" value="{{old('street')}}">
-         <span class="error"></span>
+         <input class="street" type="text" name="street" placeholder="Via" value="{{old('street')}}">
+    
     </div>
     <div class="form-group">
         <label for="street_number">Civico</label>
-        <input class="number_control" type="text" name="street_number" placeholder="Civico" value="{{old('street_number')}}">
-        <span class="error"></span>
+        <input class="street-number" type="text" name="street_number" placeholder="Civico" value="{{old('street_number')}}">
+
     </div>
     <div class="form-group">
         <label for="city">Città</label>
-        <input class="city_control" type="text" name="city" placeholder="Città" value="{{old('city')}}">
-        <span class="error"></span>
+        <input class="city" type="text" name="city" placeholder="Città" value="{{old('city')}}">
+
     </div>
     <div class="form-group">
         <label for="zip_code">Cap</label>
-        <input class="zip_control" type="text" name="zip_code" placeholder="Cap" value="{{old('zip_code')}}">
-        <span class="error"></span>
+        <input class="cap" type="text" name="zip_code" placeholder="Cap" value="{{old('zip_code')}}">
+
     </div>
+
+    <div id='map' class='map' style="height: 500px; width: 500px;"></div>
+
+    <input type="button" class="btn btn-primary" value="Controlla indirizzo">
 
     <div class="form-group">
         <label for="rooms">Numero stanza</label>
@@ -84,9 +93,16 @@
         <input type="number" name="beds" placeholder="Numero letti" value="{{old('beds')}}">
     </div>
 
-    
+    <div class="form-group">
+        <label for="lat"></label>
+        <input class="lat" name="lat" type="hidden" value="">
+    </div>
 
-    {{-- Lat e Long mancano --}}
+    <div class="form-group">
+        <label for="long"></label>
+        <input class="long" name="long" type="hidden" value="">
+    </div>
+     
 
     <div class="form-group">
         <label for="hidden">Nascosto</label>
@@ -128,6 +144,7 @@
       </div>
     <input id="submit" type="submit" value="Submit">
 </form>
+<script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.52.0/maps/maps-web.min.js"></script>
 @endsection
 
 @section('script')

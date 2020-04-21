@@ -40,7 +40,9 @@ class FlatController extends Controller
         'price_day'=> 'required|numeric|integer',
         'beds'=> 'required|numeric|integer',
         'bathrooms'=> 'required|numeric|integer',
-        'hidden'=> 'required|boolean'
+        'hidden'=> 'required|boolean',
+        'lat' => 'required',
+        'long' => 'required'
       ];
       $this->validateImage = [
           'cover'=> 'required|image'
@@ -100,8 +102,8 @@ class FlatController extends Controller
         $newFlat->bathrooms = $data['bathrooms'];
         $newFlat->slug = Str::finish(Str::slug($newFlat->title), rand(1, 1000));
         $newFlat->cover = $path;
-        $newFlat->lat = 37.36729;
-        $newFlat->long = -121.91595;
+        $newFlat->lat = $data['lat'];
+        $newFlat->long = $data['long'];
 
         $saved = $newFlat->save();
 
