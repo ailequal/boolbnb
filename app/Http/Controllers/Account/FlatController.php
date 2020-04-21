@@ -197,6 +197,7 @@ class FlatController extends Controller
         $flat->slug = Str::finish(Str::slug($flat->title), rand(1, 1000));
         $flat->lat = 37.36729;
         $flat->long = 121.91595;
+
         // if a new image was submitted
         if (isset($data['cover'])) {
             // delete old image stored
@@ -204,7 +205,11 @@ class FlatController extends Controller
             // save the image received
             $flat->cover = Storage::disk('public')->put('images', $data['cover']);
         }
+
         $flat->flat_address->street = $data['street'];
+        $flat->flat_address->street_number = $data['street_number'];
+        $flat->flat_address->city = $data['city'];
+        $flat->flat_address->zip_code = $data['zip_code'];
         $updated = $flat->update();
         $updatedAddress = $flat->flat_address->update();
 
@@ -212,8 +217,6 @@ class FlatController extends Controller
             return redirect()->back()->withInput();
         }
 
-
-        
         if(isset($data['extra_service'])) {
             $flat->extra_service()->sync($data['extra_service']);
         } 
@@ -221,10 +224,6 @@ class FlatController extends Controller
         if(isset($data['promo_service'])) {
             $flat->promo_service()->sync($data['promo_service']);
         } 
-
-
-        // $flat->extra_service()->sync($data['extra_service']);
-        // $flat->promo_service()->sync($data['promo_service']);
 
         return redirect()->route('show.flat', $flat->slug);
 
