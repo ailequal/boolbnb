@@ -25,8 +25,4 @@ Route::name('account.')->namespace('Account')->middleware('auth')->prefix('accou
     Route::resource('flats','FlatController');
     Route::get('/', 'FlatController@index')->name('index');
 });
-
-Route::name('api.')->namespace('Api')->prefix('api')->group(function () {
-    Route::get('map', 'MapController@index')->name('map.index');
- });
  

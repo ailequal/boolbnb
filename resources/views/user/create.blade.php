@@ -120,17 +120,10 @@
         @endforeach
 
       </div>
-    {{-- <span>{{$tag->name}}</span>
-    <input type="checkbox" name="tags[]" value="{{$tag->id}}" @if(is_array(old('tags')) && in_array($tag->id,
-    old('tags'))) checked @endif> --}}
-
-    {{-- 'wifi',
-     'smoking',
-     'parking',
-     'swimming pool',
-     'breakfast',
-     'view' --}}
-
-    <input type="submit" value="Submit">
+    <input id="submit" type="submit" value="Submit">
 </form>
+@endsection
+
+@section('script')
+<script src="{{asset('js/create.js')}}"></script>
 @endsection
