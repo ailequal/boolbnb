@@ -125,7 +125,11 @@ class FlatController extends Controller
         
         if(isset($data['promo_service'])) {
             $newFlat->promo_service()->attach($data['promo_service']);
-        } 
+        }
+
+        // if ($request->validate($this->validateRules)->fails()) {
+        //     return redirect()->back()->withInput();
+        // }
 
 
         return redirect()->route('show.flat', $newFlat->slug);

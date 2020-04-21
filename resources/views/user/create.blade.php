@@ -1,51 +1,53 @@
 @extends('layouts.boolbnb')
 @section('main')
-<div>
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-</div>
+
 <form action="{{route('account.flats.store')}}" method="POST" enctype='multipart/form-data'>
     {{-- token generator --}}
     @csrf
     @method('POST')
 
+   <div>
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+    </div>
+
     <div class="form-group">
         <label for="title">Titolo</label>
-        <input type="text" name="title" placeholder="Titolo">
+    <input type="text" name="title" placeholder="Titolo" value="{{old('title')}}">
     </div>
 
     <div class="form-group">
         <label for="street">Via</label>
-        <input type="text" name="street" placeholder="Via">
+         <input type="text" name="street" placeholder="Via" value="{{old('street')}}">
     </div>
     <div class="form-group">
         <label for="street_number">Civico</label>
-        <input type="text" name="street_number" placeholder="Civico">
+        <input type="text" name="street_number" placeholder="Civico" value="{{old('street_number')}}">
     </div>
     <div class="form-group">
         <label for="city">Città</label>
-        <input type="text" name="city" placeholder="Città">
+        <input type="text" name="city" placeholder="Città" value="{{old('city')}}">
     </div>
     <div class="form-group">
         <label for="zip_code">Cap</label>
-        <input type="text" name="zip_code" placeholder="Cap">
+        <input type="text" name="zip_code" placeholder="Cap" value="{{old('zip_code')}}">
     </div>
 
     <div class="form-group">
         <label for="rooms">Numero stanza</label>
-        <input type="number" name="rooms" placeholder="Numero stanza">
+        <input type="number" name="rooms" placeholder="Numero stanza" value="{{old('rooms')}}">
     </div>
 
     <div class="form-group">
         <label for="mq">Metri quadri</label>
-        <input type="text" name="mq" placeholder="Metri quadri">
+        <input type="text" name="mq" placeholder="Metri quadri" value="{{old('mq')}}">
     </div>
 
     <div class="form-group">
@@ -55,27 +57,27 @@
 
     <div class="form-group">
         <label for="guest">Numero ospiti</label>
-        <input type="number" name="guest" placeholder="Numero ospiti">
+        <input type="number" name="guest" placeholder="Numero ospiti" value="{{old('guest')}}">
     </div>
 
     <div class="form-group">
         <label for="description">Descrizione</label>
-        <input type="text" name="description" placeholder="Descrizione">
+        <input type="text" name="description" placeholder="Descrizione" value="{{old('description')}}">
     </div>
 
     <div class="form-group">
         <label for="price_day">Prezzo giornaliero</label>
-        <input type="text" name="price_day" placeholder="Prezzo giornaliero">
+        <input type="text" name="price_day" placeholder="Prezzo giornaliero" value="{{old('price_day')}}">
     </div>
 
     <div class="form-group">
         <label for="bathrooms">Numero bagni</label>
-        <input type="number" name="bathrooms" placeholder="Numero bagni">
+        <input type="number" name="bathrooms" placeholder="Numero bagni" value="{{old('bathrooms')}}">
     </div>
 
     <div class="form-group">
         <label for="beds">Numero di Letti</label>
-        <input type="number" name="beds" placeholder="Numero letti">
+        <input type="number" name="beds" placeholder="Numero letti" value="{{old('beds')}}">
     </div>
 
     
