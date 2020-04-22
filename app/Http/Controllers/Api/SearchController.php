@@ -28,7 +28,10 @@ class SearchController extends Controller
         ->where('flat_addresses.city', '=', $city)
         ->get();
         
-        dd($flats);
+        $result = [
+            'flats' => $flats
+        ];
+        return response()->json($result, 200);
 
     }
 

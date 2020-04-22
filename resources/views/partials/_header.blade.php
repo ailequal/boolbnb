@@ -20,8 +20,8 @@
       <div class="nav-right">
         <ul>
           <li>
-            <input class="search-bar" type="text" name="" value="">
-            <button class="search" type="button" name="button">
+            <input id="search-bar" class="search-bar" type="text" name="" value="">
+            <button id="search" class="search" type="button" name="button">
               <i class="fas fa-search"></i>
               Cerca
             </button>

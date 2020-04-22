@@ -10980,7 +10980,22 @@ return jQuery;
 var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 $(document).ready(function () {
-  console.log('search');
+  $(document).on('click', '#search', function () {
+    var city = $('#search-bar').val();
+    $.ajax({
+      url: window.location.protocol + '//' + window.location.host + '/api/search',
+      method: "GET",
+      data: {
+        city: city
+      },
+      success: function success(data, state) {
+        console.log(data);
+      },
+      error: function error(request, state, _error) {
+        console.log(_error);
+      }
+    });
+  });
 });
 
 /***/ }),
