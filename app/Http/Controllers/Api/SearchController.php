@@ -22,11 +22,31 @@ class SearchController extends Controller
         // dati inseriti nella ricerca
         $data = $request->all();
         $city = $data['city'];
+        $beds = $data['beds'];
+        $rooms = $data['rooms'];
         
+        // $services = DB::table('flats')
+        // ->join('extra_services', 'flats.id', '=', 'extra_services.flat_id')
+        // ->get();
+        
+        // dd($services);
+        $db = DB::table('flats')->get();
         $flats = DB::table('flats')
         ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
         ->where('flat_addresses.city', '=', $city)
+        ->where(function ($db) use($beds){
+            if($beds != null){
+                $db->where('flats.beds', '=', $beds);
+            }
+        })
+        ->where(function ($db) use($rooms){
+            if($rooms != null){
+                $db->where('flats.beds', '=', $rooms);
+            }
+        })
         ->get();
+
+        
         
         $result = [
             'flats' => $flats
