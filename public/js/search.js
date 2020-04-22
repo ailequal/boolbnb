@@ -16092,53 +16092,56 @@ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"
 var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebars/dist/cjs/handlebars.js");
 
 $(document).ready(function () {
+  $('#search-bar').keypress(function (event) {
+    if (event.which == 13) {
+      search();
+    }
+  });
   $(document).on('click', '#search', function () {
-    var city = $('#search-bar').val();
-    $.ajax({
-      url: window.location.protocol + '//' + window.location.host + '/api/search',
-      method: "GET",
-      data: {
-        city: city
-      },
-      success: function success(data, state) {
-        $('main').html('');
-        var source = $('#entry-template').html();
-        var template = Handlebars.compile(source);
+    search();
+  });
+}); // function
 
-        if (data.flats <= 0) {
-          alert('Spiacenti, non ci sono appartamenti disponiili');
-        } else {
-          for (var i = 0; i < data.flats.length; i++) {
-            var flat = data.flats[i]; // console.log(flat.title);
+function search() {
+  var city = $('#search-bar').val();
+  $.ajax({
+    url: window.location.protocol + '//' + window.location.host + '/api/search',
+    method: "GET",
+    data: {
+      city: city
+    },
+    success: function success(data, state) {
+      $('main').html('');
+      var source = $('#entry-template').html();
+      var template = Handlebars.compile(source);
 
-            var context = {
-              title: flat.title,
-              city: flat.city,
-              rooms: flat.rooms //   poster: results[i].poster,
+      if (data.flats <= 0) {
+        alert('Spiacenti, non ci sono appartamenti disponiili');
+      } else {
+        for (var i = 0; i < data.flats.length; i++) {
+          var flat = data.flats[i]; // console.log(flat.title);
 
-            };
-            var html = template(context);
-            $('main').append(html);
-          }
+          var context = {
+            title: flat.title,
+            city: flat.city,
+            rooms: flat.rooms //   poster: results[i].poster,
 
-          ;
+          };
+          var html = template(context);
+          $('main').append(html);
         }
 
-        ; // var context = {
-        //     //  title: flats.title,
-        //     //  author: album.author,
-        //     //  year: album.year,
-        //     // path: album.poster,
-        // };
-        // var html = template(context);
-        // $('main').append(html);
-      },
-      error: function error(request, state, _error) {
-        console.log(_error);
+        ;
       }
-    });
+
+      ;
+      $('#search-bar').val('');
+    },
+    error: function error(request, state, _error) {
+      console.log(_error);
+    }
   });
-});
+}
 
 /***/ }),
 
