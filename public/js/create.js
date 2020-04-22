@@ -11021,6 +11021,7 @@ $(document).ready(function () {
   // 		alert('controlla tutti i campi indirizzo');
   // 	}
   // });
+  document.getElementById('submit').disabled = true;
   $(document).on('click', '.btn', function () {
     var street = $('.street').val();
     var streetNumber = $('.street-number').val();
@@ -11035,34 +11036,39 @@ $(document).ready(function () {
         key: 'em63COYYAtRKh4NxqgeBdkGNHC8p1is8'
       },
       success: function success(data) {
-        var lat = data.results[0].position.lat;
-        var _long = data.results[0].position.lon;
-        $('.lat').val(lat);
-        $('.long').val(_long); // mappa
+        if (data.results == 0) {
+          alert('controlla i campi dell\'indirizzo, non sono corretti');
+        } else {
+          document.getElementById('submit').disabled = false;
+          var lat = data.results[0].position.lat;
+          var _long = data.results[0].position.lon;
+          $('.lat').val(lat);
+          $('.long').val(_long); // mappa
 
-        var address = [_long, lat];
-        tt.setProductInfo('<test>', '<beta>');
-        var map = tt.map({
-          key: 'RtqGWkFeMT3SHtv3t8oHCVrLAsAtxPLP',
-          container: 'map',
-          style: 'tomtom://vector/1/basic-main',
-          center: address,
-          zoom: 15
-        });
-        var marker = new tt.Marker().setLngLat(address).addTo(map);
-        var popupOffsets = {
-          top: [0, 0],
-          bottom: [0, -70],
-          'bottom-right': [0, -70],
-          'bottom-left': [0, -70],
-          left: [25, -35],
-          right: [-25, -35]
-        };
-        var addressFull = data.results[0].address.freeformAddress;
-        var popup = new tt.Popup({
-          offset: popupOffsets
-        }).setHTML("<b>" + addressFull + "</b>");
-        marker.setPopup(popup).togglePopup();
+          var address = [_long, lat];
+          tt.setProductInfo('<test>', '<beta>');
+          var map = tt.map({
+            key: 'RtqGWkFeMT3SHtv3t8oHCVrLAsAtxPLP',
+            container: 'map',
+            style: 'tomtom://vector/1/basic-main',
+            center: address,
+            zoom: 15
+          });
+          var marker = new tt.Marker().setLngLat(address).addTo(map);
+          var popupOffsets = {
+            top: [0, 0],
+            bottom: [0, -70],
+            'bottom-right': [0, -70],
+            'bottom-left': [0, -70],
+            left: [25, -35],
+            right: [-25, -35]
+          };
+          var addressFull = data.results[0].address.freeformAddress;
+          var popup = new tt.Popup({
+            offset: popupOffsets
+          }).setHTML("<b>" + addressFull + "</b>");
+          marker.setPopup(popup).togglePopup();
+        }
       },
       error: function error(request, state, _error) {
         console.log(_error);
