@@ -41,8 +41,28 @@ class SearchController extends Controller
             + sin(radians(" .$lat. ")) 
             * sin(radians(flats.lat))) AS distance"))
             ->groupBy("flats.id")
+            ->having("distance", "<=", 20)
             ->get();
+
+        // $radius = DB::table("flats")
+        // ->select("flats.id"
+        //     ,DB::raw("6371 * acos(cos(radians(" . $lat . ")) 
+        //     * cos(radians(flats.lat)) 
+        //     * cos(radians(flats.long) - radians(" . $lng . ")) 
+        //     + sin(radians(" .$lat. ")) 
+        //     * sin(radians(flats.lat))) AS distance"))
+        //     ->where($raggio)
+        //     ->groupBy("flats.id")
+        //     ->get();
+
+
+
+
+
+            
+            // dd($raggio[0]->distance);
             dd($raggio);
+
         $db = DB::table('flats')->get();
         $flats = DB::table('flats')
         ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
