@@ -36,7 +36,7 @@ class SearchController extends Controller
         $db = DB::table('flats')->get();
     
             $flats = DB::table("flats")
-            ->select("flats.title", "flats.bathrooms", "flats.description"
+            ->select("*"
             ,DB::raw("6371 * acos(cos(radians(" . $lat . ")) 
             * cos(radians(flats.lat)) 
             * cos(radians(flats.long) - radians(" . $lng . ")) 
