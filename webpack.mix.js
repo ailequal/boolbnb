@@ -17,3 +17,5 @@ mix.js('resources/js/app.js', 'public/js')
 mix.js('resources/js/show.js', 'public/js')
 
 mix.js('resources/js/create.js', 'public/js')
+
+mix.js('resources/js/search.js', 'public/js')

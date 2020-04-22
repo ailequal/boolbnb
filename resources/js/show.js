@@ -13,7 +13,6 @@ $(document).ready(function () {
 		success: function(data, state) {
 
       var address = [data.long, data.lat];
-      console.log(data);
 
       tt.setProductInfo('<test>', '<beta>');
       var map= tt.map({

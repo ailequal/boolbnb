@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -10970,64 +10970,29 @@ return jQuery;
 
 /***/ }),
 
-/***/ "./resources/js/show.js":
-/*!******************************!*\
-  !*** ./resources/js/show.js ***!
-  \******************************/
+/***/ "./resources/js/search.js":
+/*!********************************!*\
+  !*** ./resources/js/search.js ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 $(document).ready(function () {
-  var flatId = $('#flatId').val();
-  $.ajax({
-    url: window.location.protocol + '//' + window.location.host + '/api/map',
-    method: "GET",
-    data: {
-      id: flatId
-    },
-    success: function success(data, state) {
-      var address = [data["long"], data.lat];
-      tt.setProductInfo('<test>', '<beta>');
-      var map = tt.map({
-        key: 'RtqGWkFeMT3SHtv3t8oHCVrLAsAtxPLP',
-        container: 'map',
-        style: 'tomtom://vector/1/basic-main',
-        center: address,
-        zoom: 15
-      });
-      var marker = new tt.Marker().setLngLat(address).addTo(map);
-      var popupOffsets = {
-        top: [0, 0],
-        bottom: [0, -70],
-        'bottom-right': [0, -70],
-        'bottom-left': [0, -70],
-        left: [25, -35],
-        right: [-25, -35]
-      }; // var addressFull = data.results[0].address.freeformAddress;
-
-      var popup = new tt.Popup({
-        offset: popupOffsets
-      }).setHTML("<b>" + data.fullAddress + "</b>");
-      marker.setPopup(popup).togglePopup();
-    },
-    error: function error(request, state, _error) {
-      console.log(_error);
-    }
-  });
+  console.log('search');
 });
 
 /***/ }),
 
-/***/ 1:
-/*!************************************!*\
-  !*** multi ./resources/js/show.js ***!
-  \************************************/
+/***/ 3:
+/*!**************************************!*\
+  !*** multi ./resources/js/search.js ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/stefanoriccio/Desktop/Boolean esercizi/boolbnb/resources/js/show.js */"./resources/js/show.js");
+module.exports = __webpack_require__(/*! /Users/stefanoriccio/Desktop/Boolean esercizi/boolbnb/resources/js/search.js */"./resources/js/search.js");
 
 
 /***/ })
