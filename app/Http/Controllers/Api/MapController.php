@@ -11,13 +11,13 @@ class MapController extends Controller
     public function index(Request $request) {
         $data = $request->all();
         $flat = Flat::where('id', $data['id'])->first();
-
         $lat = $flat->lat;
         $long = $flat->long;
-        $fullAddress = $flat->street + $flat->street_number + $flat->city + $flat->cap;
+        $fullAddress = $flat->flat_address->street . ' ' . $flat->flat_address->street_number . ' ' . $flat->flat_address->city . ' ' . $flat->flat_address->zip_code;
         $result = [
             'lat' => $lat,
-            'long' => $long
+            'long' => $long,
+            'fullAddress' => $fullAddress
         ];
         return response()->json($result, 200);
       }

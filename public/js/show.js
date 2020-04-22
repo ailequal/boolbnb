@@ -10989,6 +10989,7 @@ $(document).ready(function () {
     },
     success: function success(data, state) {
       var address = [data["long"], data.lat];
+      console.log(data);
       tt.setProductInfo('<test>', '<beta>');
       var map = tt.map({
         key: 'RtqGWkFeMT3SHtv3t8oHCVrLAsAtxPLP',
@@ -11009,7 +11010,7 @@ $(document).ready(function () {
 
       var popup = new tt.Popup({
         offset: popupOffsets
-      }).setHTML("<b>" + "La Tua Posizione" + "</b>");
+      }).setHTML("<b>" + data.fullAddress + "</b>");
       marker.setPopup(popup).togglePopup();
     },
     error: function error(request, state, _error) {
@@ -11027,7 +11028,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Fede\desktop\MAMP.public\boolbnb\resources\js\show.js */"./resources/js/show.js");
+module.exports = __webpack_require__(/*! /Users/stefanoriccio/Desktop/Boolean esercizi/boolbnb/resources/js/show.js */"./resources/js/show.js");
 
 
 /***/ })

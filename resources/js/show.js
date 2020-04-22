@@ -13,6 +13,7 @@ $(document).ready(function () {
 		success: function(data, state) {
 
       var address = [data.long, data.lat];
+      console.log(data);
 
       tt.setProductInfo('<test>', '<beta>');
       var map= tt.map({
@@ -34,7 +35,7 @@ $(document).ready(function () {
 
 		  // var addressFull = data.results[0].address.freeformAddress;
 
-      var popup = new tt.Popup({offset: popupOffsets}).setHTML("<b>" + "La Tua Posizione" + "</b>");
+      var popup = new tt.Popup({offset: popupOffsets}).setHTML("<b>" + data.fullAddress + "</b>");
       marker.setPopup(popup).togglePopup();
 
 		},
