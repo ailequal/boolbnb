@@ -1,4 +1,5 @@
 const $ = require('jquery');
+const Handlebars = require('handlebars');
 
 $(document).ready(function () {
     $(document).on('click', '#search', function (){
