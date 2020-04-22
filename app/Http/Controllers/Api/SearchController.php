@@ -24,12 +24,25 @@ class SearchController extends Controller
         $city = $data['city'];
         $beds = $data['beds'];
         $rooms = $data['rooms'];
+        $lat = $data['lat'];
+        $lng = $data['long'];
         
         // $services = DB::table('flats')
         // ->join('extra_services', 'flats.id', '=', 'extra_services.flat_id')
         // ->get();
         
         // dd($services);
+        
+        $raggio = DB::table("flats")
+        ->select("flats.id"
+            ,DB::raw("6371 * acos(cos(radians(" . $lat . ")) 
+            * cos(radians(flats.lat)) 
+            * cos(radians(flats.long) - radians(" . $lng . ")) 
+            + sin(radians(" .$lat. ")) 
+            * sin(radians(flats.lat))) AS distance"))
+            ->groupBy("flats.id")
+            ->get();
+            dd($raggio);
         $db = DB::table('flats')->get();
         $flats = DB::table('flats')
         ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
@@ -45,6 +58,10 @@ class SearchController extends Controller
             }
         })
         ->get();
+
+
+
+
 
         
         
