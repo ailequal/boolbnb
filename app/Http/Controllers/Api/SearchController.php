@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Flat;
+use App\Flat_address;
+use App\Extra_service;
+use App\Promo_service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class SearchController extends Controller
@@ -12,9 +17,19 @@ class SearchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        // dati inseriti nella ricerca
+        $data = $request->all();
+        $city = $data['city'];
+        
+        $flats = DB::table('flats')
+        ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
+        ->where('flat_addresses.city', '=', $city)
+        ->get();
+        
+        dd($flats);
+
     }
 
     /**
