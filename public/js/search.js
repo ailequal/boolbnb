@@ -16101,7 +16101,16 @@ $(document).ready(function () {
         city: city
       },
       success: function success(data, state) {
-        console.log(data);
+        $('main').html('');
+        var source = document.getElementById("entry-template").innerHTML;
+        var template = Handlebars.compile(source);
+        var context = {// title: album.title,
+          // author: album.author,
+          // year: album.year,
+          // path: album.poster,
+        };
+        var html = template(context);
+        $('main').append(html);
       },
       error: function error(request, state, _error) {
         console.log(_error);

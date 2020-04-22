@@ -34,6 +34,15 @@
   </div>
 
 </footer>
+{{-- handlebars --}}
+<script id="entry-template" type="text/x-handlebars-template">
+  <div class="entry">
+    <h1>ciao</h1>
+    <div class="body">
+      ciao
+    </div>
+  </div>
+</script>
   @yield('script')
   <script src="{{asset('js/search.js')}}"></script>
   </body>
