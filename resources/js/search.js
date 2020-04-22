@@ -20,7 +20,11 @@ function search() {
         url: window.location.protocol + '//' + window.location.host + '/api/search',
         method: "GET",
         data: {
-                city: city
+                city: city,
+                beds: '',
+                rooms: '',
+                lat: '45.07396',
+                long: '7.63005'
             },
         success: function(data, state) {
             $('main').html('');

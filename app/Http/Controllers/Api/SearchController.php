@@ -33,55 +33,49 @@ class SearchController extends Controller
         
         // dd($services);
         
-        $raggio = DB::table("flats")
-        ->select("flats.id"
+        $db = DB::table('flats')->get();
+    
+            $flats = DB::table("flats")
+            ->select("flats.title", "flats.bathrooms", "flats.description"
             ,DB::raw("6371 * acos(cos(radians(" . $lat . ")) 
             * cos(radians(flats.lat)) 
             * cos(radians(flats.long) - radians(" . $lng . ")) 
             + sin(radians(" .$lat. ")) 
             * sin(radians(flats.lat))) AS distance"))
-            ->groupBy("flats.id")
+            // ->groupBy("flats.id")
             ->having("distance", "<=", 20)
+            ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
+            ->where('flat_addresses.city', '=', $city)
+            ->where(function ($db) use($beds){
+                if($beds != null){
+                    $db->where('flats.beds', '=', $beds);
+                }
+            })
+            ->where(function ($db) use($rooms){
+                if($rooms != null){
+                    $db->where('flats.beds', '=', $rooms);
+                }
+            })
             ->get();
 
-        // $radius = DB::table("flats")
-        // ->select("flats.id"
-        //     ,DB::raw("6371 * acos(cos(radians(" . $lat . ")) 
-        //     * cos(radians(flats.lat)) 
-        //     * cos(radians(flats.long) - radians(" . $lng . ")) 
-        //     + sin(radians(" .$lat. ")) 
-        //     * sin(radians(flats.lat))) AS distance"))
-        //     ->where($raggio)
-        //     ->groupBy("flats.id")
-        //     ->get();
+            // FUNZIONANTE
+        // $flats = DB::table('flats')
+        // ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
+        // ->where('flat_addresses.city', '=', $city)
+        // ->where(function ($db) use($beds){
+        //     if($beds != null){
+        //         $db->where('flats.beds', '=', $beds);
+        //     }
+        // })
+        // ->where(function ($db) use($rooms){
+        //     if($rooms != null){
+        //         $db->where('flats.beds', '=', $rooms);
+        //     }
+        // })
+        // ->get();
 
 
-
-
-
-            
-            // dd($raggio[0]->distance);
-            dd($raggio);
-
-        $db = DB::table('flats')->get();
-        $flats = DB::table('flats')
-        ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
-        ->where('flat_addresses.city', '=', $city)
-        ->where(function ($db) use($beds){
-            if($beds != null){
-                $db->where('flats.beds', '=', $beds);
-            }
-        })
-        ->where(function ($db) use($rooms){
-            if($rooms != null){
-                $db->where('flats.beds', '=', $rooms);
-            }
-        })
-        ->get();
-
-
-
-
+           
 
         
         
