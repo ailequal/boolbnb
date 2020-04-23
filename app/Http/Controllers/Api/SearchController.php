@@ -25,20 +25,21 @@ class SearchController extends Controller
         $lat = $data['lat'];
         $lng = $data['long'];
         
+        // chiamata al db con calcolo radius di 20 km
         $db = DB::table('flats')->get();
-    
         $flats = DB::table("flats")
-        ->select("*"
-        ,DB::raw("6371 * acos(cos(radians(" . $lat . ")) 
-        * cos(radians(flats.lat)) 
-        * cos(radians(flats.long) - radians(" . $lng . ")) 
-        + sin(radians(" .$lat. ")) 
-        * sin(radians(flats.lat))) AS distance"))
-        ->having("distance", "<=", 20)
-        ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
-        ->where('flat_addresses.city', '=', $city)
-        ->get();
+            ->select("*"
+            ,DB::raw("6371 * acos(cos(radians(" . $lat . ")) 
+            * cos(radians(flats.lat)) 
+            * cos(radians(flats.long) - radians(" . $lng . ")) 
+            + sin(radians(" .$lat. ")) 
+            * sin(radians(flats.lat))) AS distance"))
+            ->having("distance", "<=", 20)
+            ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
+            ->where('flat_addresses.city', '=', $city)
+            ->get();
 
+        // invio json come risultato di risposta
         $result = [
             'flats' => $flats
         ];
@@ -46,7 +47,8 @@ class SearchController extends Controller
     }
 
 
-    public function advanced(Request $request) {
+    public function advanced(Request $request)
+    {
         // dati inseriti nella ricerca
         $data = $request->all();
         $city = $data['city'];
@@ -62,105 +64,114 @@ class SearchController extends Controller
         $breakfast = $data['breakfast'];
         $view = $data['view'];
 
+        // chiamata al db con calcolo radius definito da utente e altri parametri
         $db = DB::table('flats')->get();
-    
         $flats = DB::table("flats")
-        ->select("*"
-        ,DB::raw("6371 * acos(cos(radians(" . $lat . ")) 
-        * cos(radians(flats.lat)) 
-        * cos(radians(flats.long) - radians(" . $lng . ")) 
-        + sin(radians(" .$lat. ")) 
-        * sin(radians(flats.lat))) AS distance"))
-        ->join('extra_service_flat', 'flats.id', '=', 'extra_service_flat.flat_id')
-        ->join('extra_services', 'extra_service_flat.extra_service_id', '=', 'extra_services.id')
-        ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
-        ->having("distance", "<=", $radius)
-        ->where('flat_addresses.city', '=', $city)
-        ->where(function ($db) use($beds){
-            if($beds != null){
-                $db->where('flats.beds', '=', $beds);
-            }
-        })
-        ->where(function ($db) use($rooms){
-            if($rooms != null){
-                $db->where('flats.rooms', '=', $rooms);
-            }
-        })
-        ->where(function ($db) use($wifi){
-            if($wifi == 'true'){
-                $db->where('extra_service_flat.extra_service_id', '=', '1');
-            }
-        })
-        ->where(function ($db) use($smoking){
-            if($smoking == 'true'){
-                $db->where('extra_service_flat.extra_service_id', '=', '2');
-            }
-        })
-        ->get();
+            ->select("*"
+            ,DB::raw("6371 * acos(cos(radians(" . $lat . ")) 
+            * cos(radians(flats.lat)) 
+            * cos(radians(flats.long) - radians(" . $lng . ")) 
+            + sin(radians(" .$lat. ")) 
+            * sin(radians(flats.lat))) AS distance"))
+            ->having("distance", "<=", $radius)
+            ->join('extra_service_flat', 'flats.id', '=', 'extra_service_flat.flat_id')
+            ->join('extra_services', 'extra_service_flat.extra_service_id', '=', 'extra_services.id')
+            ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
+            ->where('flat_addresses.city', '=', $city)
+            ->where(function ($db) use($beds){
+                if($beds != null){
+                    $db->where('flats.beds', '=', $beds);
+                }
+            })
+            ->where(function ($db) use($rooms){
+                if($rooms != null){
+                    $db->where('flats.rooms', '=', $rooms);
+                }
+            })
+            ->get();
 
-        // dd($flats);
-        
-
+        // filtrare i flats sistemando i servizi extra
+        // nuovo array per i flats con extra aggiornati
         $newFlats = [];
         // ciclare tutti i flats
-        for ($i=0; $i < count($flats); $i++) { 
-            // controllare i flat che hanno lo stesso id
+        for ($i=0; $i < count($flats); $i++) {
+            // controllare che ci sia un altro flat dopo nel array
             if (isset($flats[$i + 1])) {
+                // controllare i flat che hanno lo stesso id
                 if ($flats[$i]->id == $flats[$i+1]->id) {
-                    var_dump($i);
-                    // var_dump('sono uguali');
-                    // salviamo nel primo dei due array il nuovo servizio
-                    //$servizi = $flats[$i + 1]->name . ' ' . $flats[$i]->name;
-
-
+                    // salva tutti i servizi extra di quello attuale aggiungendo quello del flat dopo
                     $servizi = $flats[$i]->name . ' ' . $flats[$i + 1]->name;
-
+                    // aggiorna i servizi del flat dopo con la nuova stringa di extra
                     $flats[$i + 1]->name = $servizi;
-                    // cancella array usato ormai inutile
-                    // unset($flats[$i]);
-                    // $flats[$i]->delete();
-                    // $pippo . $flats[$i + 1]->name;
-                    // var_dump($servizi);
                 } else{
+                    // salva il flat col nuovo extra nel nostro nuovo array
                     $newFlats[] = $flats[$i];
-                    // dd($flats[$i]);
                 }
+            }
+            // se e' l'ultimo flat aggiungi comunque al array
+            if (($i + 1) == count($flats)) {
+                $newFlats[] = $flats[$i];
             }
         }
 
-        dd($newFlats);
-        die();
+        // controllo che hanno i servizi che l'utente richiede
+        // ciclare i nuovi flats con extra aggiornati
+        foreach ($newFlats as $key => $newFlat) {
+            // variabile di controllo generica
+            $check = true;
+            // divide la stringa dei nomi in singole parti dentro un array
+            $extraFlat = (explode(' ', $newFlat->name));
+            // controllo se il wifi e' stato richiesto da utente
+            if ($wifi != null) {
+                // ricerca del extra wifi nel flat
+                if (!is_int(array_search('wifi', $extraFlat))) {
+                    $check = false;
+                }
+            }
+            // controllo se lo smoking e' stato richiesto da utente
+            if ($smoking != null) {
+                // ricerca del extra smoking nel flat
+                if (!is_int(array_search('smoking', $extraFlat))) {
+                    $check = false;
+                }
+            }
+            // controllo se lo parking e' stato richiesto da utente
+            if ($parking != null) {
+                // ricerca del extra parking nel flat
+                if (!is_int(array_search('parking', $extraFlat))) {
+                    $check = false;
+                }
+            }
+            // controllo se lo swimmingPool e' stato richiesto da utente
+            if ($swimmingPool != null) {
+                // ricerca del extra swimmingPool nel flat
+                if (!is_int(array_search('swimming_pool', $extraFlat))) {
+                    $check = false;
+                }
+            }
+            // controllo se lo breakfast e' stato richiesto da utente
+            if ($breakfast != null) {
+                // ricerca del extra breakfast nel flat
+                if (!is_int(array_search('breakfast', $extraFlat))) {
+                    $check = false;
+                }
+            }
+            // controllo se lo view e' stato richiesto da utente
+            if ($view != null) {
+                // ricerca del extra view nel flat
+                if (!is_int(array_search('view', $extraFlat))) {
+                    $check = false;
+                }
+            }
+            // se il check e' negativo, elimina il flat perche' non ha i requisiti extra richiesti
+            if (!$check) {
+                unset($newFlats[$key]);
+            }
+        }
 
-        // lista cognomi:
-
-        // var listaCognomi = ['Pippo', 'Pluto', 'Paperino', 'Topolino'];
-
-        //         var invitato = false;
-
-        //     for (var i = 0; i < listaCognomi.length; i++){
-        //     if (cognomeUtente == listaCognomi [i]){
-        //         invitato = true;
-        //         }
-        //     }
-        //     console.log(invitato);
-
-        //     if (invitato ==true){
-        //     alert ('Benvenuto');
-        //     }
-        //     else{
-        //     alert ('mi spiace, non sei stato invitato');
-        //     }
-
-
-        // for ($i=0; $i < count($flats); $i++) {
-            // $flatDb = Flat::where('id', $flats[1]->id)->first();
-            // dd($flatDb->extra_service);
-            // $flight = App\Flight::where('number', 'FR 900')->first();
-            // dd($flatDb);
-        // }
-
+        // invio json come risultato di risposta
         $result = [
-            'flats' => $flats
+            'flats' => $newFlats
         ];
         return response()->json($result, 200);
     }

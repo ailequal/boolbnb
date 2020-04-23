@@ -14,32 +14,32 @@ $(document).ready(function () {
 
         var wifi = false
         if ($('#wifi').is(":checked")) {
-            wifi = true;
+            wifi = 'wifi';
         }
 
         var smoking = false
         if ($('#smoking').is(":checked")) {
-            smoking = true;
+            smoking = 'smoking';
         }
 
         var parking = false
         if ($('#parking').is(":checked")) {
-            parking = true;
+            parking = 'parking';
         }
 
         var swimmingPool = false
         if ($('#swimming-pool').is(":checked")) {
-            swimmingPool = true;
+            swimmingPool = 'swimming_pool';
         }
 
         var breakfast = false
         if ($('#breakfast').is(":checked")) {
-            breakfast = true;
+            breakfast = 'breakfast';
         }
 
         var view = false
         if ($('#view').is(":checked")) {
-            view = true;
+            view = 'view';
         }
 
         $.ajax({
