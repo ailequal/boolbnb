@@ -20,11 +20,12 @@
       <div class="nav-right">
         <ul>
           <li>
-            <input id="search-bar" class="search-bar" type="text" name="" value="">
-            <button id="search" class="search" type="button" name="button">
-              <i class="fas fa-search"></i>
-              Cerca
-            </button>
+          <form action="{{route('search')}}" method="POST">
+              @csrf
+              @method('POST')
+              <input id="search-bar" class="search-bar" type="text" name="city" value="">
+              <input type="submit" class="btn btn-primary" value="Cerca">
+            </form>
           </li>
           @if (Route::has('login'))
           @auth

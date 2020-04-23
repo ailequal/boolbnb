@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/search', 'SearchController@index')->name('search');
 Route::get('/flats', 'FlatController@index')->name('flats');
 Route::get('/flats/{slug}', 'FlatController@show')->name('show.flat');
 

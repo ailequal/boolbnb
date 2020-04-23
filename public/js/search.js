@@ -16092,33 +16092,48 @@ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"
 var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebars/dist/cjs/handlebars.js");
 
 $(document).ready(function () {
-  $('#search-bar').keypress(function (event) {
-    if (event.which == 13) {
-      searchInterface();
-      filter();
-    }
-  });
-  $(document).on('click', '#search', function () {
-    searchInterface();
-    filter();
-  });
+  var hiddenCity = $('#city').val();
+  filter(hiddenCity); // $('#search-bar').keypress(function(event) {
+  //     if(event.which == 13) {
+  //         // searchInterface();
+  //         filter();
+  //     }
+  //   });
+  // $(document).on('click', '#search', function (){
+  //     // searchInterface();
+  //     filter();
+  // });
+  // $(document).on('click', '#test', function (){
+  //     $.ajax({
+  //         url: window.location.protocol + '//' + window.location.host + '/api/search/create',
+  //         method: "GET",
+  //         data: {
+  //             // month: 0
+  //           },
+  //         success: function(data, state) {
+  //         //   console.log(data);
+  //         },
+  //         error: function(request, state, error) {
+  //           console.log(error);
+  //         }
+  //       });
+  // });
 }); // function
 // aggiungere interfaccia ricerca
+// function searchInterface() {
+//     $('main').html('');
+//     var source = $('#menu-template').html();
+//     var template = Handlebars.compile(source);	
+//     var context={
+//         hello: 'hello'
+//         };
+//         var html = template(context);
+//         $('.search-inteface').append(html);
+// }
+// prendi citta lat e long
 
-function searchInterface() {
-  $('main').html('');
-  var source = $('#menu-template').html();
-  var template = Handlebars.compile(source);
-  var context = {
-    hello: 'hello'
-  };
-  var html = template(context);
-  $('main').append(html);
-} // prendi citta lat e long
-
-
-function filter() {
-  var city = $('#search-bar').val();
+function filter(city) {
+  // var city = $('#search-bar').val();
   $.ajax({
     url: "https://api.tomtom.com/search/2/search/" + city + ".json?",
     method: "GET",
@@ -16171,7 +16186,7 @@ function search(city, lat, _long2) {
 
           };
           var html = template(context);
-          $('main').append(html);
+          $('.flats').append(html);
         }
 
         ;
