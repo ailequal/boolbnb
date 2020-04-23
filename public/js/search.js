@@ -16093,47 +16093,37 @@ var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebar
 
 $(document).ready(function () {
   var hiddenCity = $('#city').val();
-  filter(hiddenCity); // $('#search-bar').keypress(function(event) {
-  //     if(event.which == 13) {
-  //         // searchInterface();
-  //         filter();
-  //     }
-  //   });
-  // $(document).on('click', '#search', function (){
-  //     // searchInterface();
-  //     filter();
-  // });
-  // $(document).on('click', '#test', function (){
-  //     $.ajax({
-  //         url: window.location.protocol + '//' + window.location.host + '/api/search/create',
-  //         method: "GET",
-  //         data: {
-  //             // month: 0
-  //           },
-  //         success: function(data, state) {
-  //         //   console.log(data);
-  //         },
-  //         error: function(request, state, error) {
-  //           console.log(error);
-  //         }
-  //       });
-  // });
-}); // function
-// aggiungere interfaccia ricerca
-// function searchInterface() {
-//     $('main').html('');
-//     var source = $('#menu-template').html();
-//     var template = Handlebars.compile(source);	
-//     var context={
-//         hello: 'hello'
-//         };
-//         var html = template(context);
-//         $('.search-inteface').append(html);
-// }
-// prendi citta lat e long
+  filter(hiddenCity);
+  $(document).on('click', '.filter', function () {
+    $('.flats').html('');
+    var rooms = $('#rooms').val();
+    var beds = $('#beds').val();
+    var radius = $('#radius').val();
+    $.ajax({
+      url: "https://api.tomtom.com/search/2/search/" + hiddenCity + ".json?",
+      method: "GET",
+      data: {
+        limit: 1,
+        key: 'em63COYYAtRKh4NxqgeBdkGNHC8p1is8'
+      },
+      success: function success(data) {
+        if (data.results == 0) {
+          alert('Citta\' non trovata');
+        } else {
+          var lat = data.results[0].position.lat;
+          var _long = data.results[0].position.lon;
+          advanced(hiddenCity, lat, _long, beds, rooms, radius);
+        }
+      },
+      error: function error(request, state, _error) {
+        console.log(_error);
+      }
+    });
+  });
+}); // prendi citta lat e long
 
 function filter(city) {
-  // var city = $('#search-bar').val();
+  // ricerca solo per citta' con 20 radius
   $.ajax({
     url: "https://api.tomtom.com/search/2/search/" + city + ".json?",
     method: "GET",
@@ -16146,27 +16136,25 @@ function filter(city) {
         alert('Citta\' non trovata');
       } else {
         var lat = data.results[0].position.lat;
-        var _long = data.results[0].position.lon;
-        search(city, lat, _long);
+        var _long2 = data.results[0].position.lon;
+        search(city, lat, _long2);
       }
     },
-    error: function error(request, state, _error) {
-      console.log(_error);
+    error: function error(request, state, _error2) {
+      console.log(_error2);
     }
   });
 } // fai la ricerca nel db
 
 
-function search(city, lat, _long2) {
+function search(city, lat, _long3) {
   $.ajax({
     url: window.location.protocol + '//' + window.location.host + '/api/search',
     method: "GET",
     data: {
       city: city,
-      beds: '',
-      rooms: '',
       lat: lat,
-      "long": _long2
+      "long": _long3
     },
     success: function success(data, state) {
       // aggiungi i flat con info
@@ -16177,13 +16165,11 @@ function search(city, lat, _long2) {
         alert('Spiacenti, non ci sono appartamenti disponiili');
       } else {
         for (var i = 0; i < data.flats.length; i++) {
-          var flat = data.flats[i]; // console.log(flat.title);
-
+          var flat = data.flats[i];
           var context = {
             title: flat.title,
             city: flat.city,
-            rooms: flat.rooms //   poster: results[i].poster,
-
+            rooms: flat.rooms
           };
           var html = template(context);
           $('.flats').append(html);
@@ -16195,8 +16181,52 @@ function search(city, lat, _long2) {
       ;
       $('#search-bar').val('');
     },
-    error: function error(request, state, _error2) {
-      console.log(_error2);
+    error: function error(request, state, _error3) {
+      console.log(_error3);
+    }
+  });
+} // ricerca avanzata
+
+
+function advanced(city, lat, _long4, beds, rooms, radius) {
+  $.ajax({
+    url: window.location.protocol + '//' + window.location.host + '/api/search/advanced',
+    method: "GET",
+    data: {
+      city: city,
+      lat: lat,
+      "long": _long4,
+      beds: beds,
+      rooms: rooms,
+      radius: radius
+    },
+    success: function success(data, state) {
+      // aggiungi i flat con info
+      var source = $('#flat-template').html();
+      var template = Handlebars.compile(source);
+
+      if (data.flats <= 0) {
+        alert('Spiacenti, non ci sono appartamenti disponiili');
+      } else {
+        for (var i = 0; i < data.flats.length; i++) {
+          var flat = data.flats[i];
+          var context = {
+            title: flat.title,
+            city: flat.city,
+            rooms: flat.rooms
+          };
+          var html = template(context);
+          $('.flats').append(html);
+        }
+
+        ;
+      }
+
+      ;
+      $('#search-bar').val('');
+    },
+    error: function error(request, state, _error4) {
+      console.log(_error4);
     }
   });
 }

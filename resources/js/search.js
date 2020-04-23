@@ -6,75 +6,54 @@ $(document).ready(function () {
     var hiddenCity = $('#city').val();
     filter(hiddenCity);
 
+    $(document).on('click', '.filter', function () {
+        $('.flats').html('');
+        var rooms = $('#rooms').val();
+        var beds = $('#beds').val();
+        var radius = $('#radius').val();
+        $.ajax({
+            url: "https://api.tomtom.com/search/2/search/" + hiddenCity + ".json?",
+            method: "GET",
+            data: {
+                limit: 1,
+                key: 'em63COYYAtRKh4NxqgeBdkGNHC8p1is8'
+            },
+            success: function (data) {
+                if (data.results == 0) {
+                    alert('Citta\' non trovata');
+                } else {
+                    var lat = data.results[0].position.lat;
+                    var long = data.results[0].position.lon;
+                    advanced(hiddenCity, lat, long, beds, rooms, radius);
+                }
 
-
-
-    // $('#search-bar').keypress(function(event) {
-    //     if(event.which == 13) {
-    //         // searchInterface();
-    //         filter();
-    //     }
-    //   });
-
-    // $(document).on('click', '#search', function (){
-    //     // searchInterface();
-    //     filter();
-    // });
-
-
-    // $(document).on('click', '#test', function (){
-    //     $.ajax({
-    //         url: window.location.protocol + '//' + window.location.host + '/api/search/create',
-    //         method: "GET",
-    //         data: {
-    //             // month: 0
-    //           },
-    //         success: function(data, state) {
-    //         //   console.log(data);
-    //         },
-    //         error: function(request, state, error) {
-    //           console.log(error);
-    //         }
-    //       });
-          
-    // });
+            },
+            error: function (request, state, error) {
+                console.log(error);
+            }
+        });
+    });
 
 });
 
-
-
-// function
-// aggiungere interfaccia ricerca
-// function searchInterface() {
-//     $('main').html('');
-//     var source = $('#menu-template').html();
-//     var template = Handlebars.compile(source);	
-//     var context={
-//         hello: 'hello'
-//         };
-//         var html = template(context);
-//         $('.search-inteface').append(html);
-// }
-
-
 // prendi citta lat e long
 function filter(city) {
-    // var city = $('#search-bar').val();
+    // ricerca solo per citta' con 20 radius
     $.ajax({
         url: "https://api.tomtom.com/search/2/search/" + city + ".json?",
         method: "GET",
         data: {
-                    limit: 1,
-                    key: 'em63COYYAtRKh4NxqgeBdkGNHC8p1is8' 
+            limit: 1,
+            key: 'em63COYYAtRKh4NxqgeBdkGNHC8p1is8'
         },
         success: function (data) {
-                if(data.results == 0){
-                    alert ('Citta\' non trovata');
-                } else {
-                    var lat = data.results[0].position.lat;
-                    var long = data.results[0].position.lon;
-                    search(city, lat, long);
-                }
+            if (data.results == 0) {
+                alert('Citta\' non trovata');
+            } else {
+                var lat = data.results[0].position.lat;
+                var long = data.results[0].position.lon;
+                search(city, lat, long);
+            }
 
         },
         error: function (request, state, error) {
@@ -89,45 +68,81 @@ function search(city, lat, long) {
         url: window.location.protocol + '//' + window.location.host + '/api/search',
         method: "GET",
         data: {
-                city: city,
-                beds: '',
-                rooms: '',
-                lat: lat,
-                long: long
-            },
-        success: function(data, state) {
+            city: city,
+            lat: lat,
+            long: long
+        },
+        success: function (data, state) {
 
             // aggiungi i flat con info
             var source = $('#flat-template').html();
-            var template = Handlebars.compile(source);	
-            
-            if(data.flats <= 0){
+            var template = Handlebars.compile(source);
+
+            if (data.flats <= 0) {
                 alert('Spiacenti, non ci sono appartamenti disponiili')
             }
-            else{
+            else {
                 for (var i = 0; i < data.flats.length; i++) {
                     var flat = data.flats[i];
-                    // console.log(flat.title);
-            
-                    var context={
-                    title: flat.title,
-                    city: flat.city,
-                    rooms: flat.rooms
-                    //   poster: results[i].poster,
+
+                    var context = {
+                        title: flat.title,
+                        city: flat.city,
+                        rooms: flat.rooms
                     };
                     var html = template(context);
                     $('.flats').append(html);
-              };
+                };
             };
             $('#search-bar').val('');
         },
-        error: function(request, state, error) {
+        error: function (request, state, error) {
             console.log(error);
         }
     });
 }
 
+// ricerca avanzata
+function advanced(city, lat, long, beds, rooms, radius) {
+    $.ajax({
+        url: window.location.protocol + '//' + window.location.host + '/api/search/advanced',
+        method: "GET",
+        data: {
+            city: city,
+            lat: lat,
+            long: long,
+            beds: beds,
+            rooms: rooms,
+            radius: radius
+        },
+        success: function (data, state) {
 
+            // aggiungi i flat con info
+            var source = $('#flat-template').html();
+            var template = Handlebars.compile(source);
+            if (data.flats <= 0) {
+                alert('Spiacenti, non ci sono appartamenti disponiili')
+            }
+            else {
+                for (var i = 0; i < data.flats.length; i++) {
+                    var flat = data.flats[i];
+
+                    var context = {
+                        title: flat.title,
+                        city: flat.city,
+                        rooms: flat.rooms
+                    };
+                    var html = template(context);
+                    $('.flats').append(html);
+                };
+            };
+            $('#search-bar').val('');
+        },
+        error: function (request, state, error) {
+            console.log(error);
+        }
+    });
+}
 
 
 

@@ -22,8 +22,8 @@ class SearchController extends Controller
         // dati inseriti nella ricerca
         $data = $request->all();
         $city = $data['city'];
-        $beds = $data['beds'];
-        $rooms = $data['rooms'];
+        // $beds = $data['beds'];
+        // $rooms = $data['rooms'];
         $lat = $data['lat'];
         $lng = $data['long'];
         
@@ -35,28 +35,28 @@ class SearchController extends Controller
         
         $db = DB::table('flats')->get();
     
-            $flats = DB::table("flats")
-            ->select("*"
-            ,DB::raw("6371 * acos(cos(radians(" . $lat . ")) 
-            * cos(radians(flats.lat)) 
-            * cos(radians(flats.long) - radians(" . $lng . ")) 
-            + sin(radians(" .$lat. ")) 
-            * sin(radians(flats.lat))) AS distance"))
-            // ->groupBy("flats.id")
-            ->having("distance", "<=", 20)
-            ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
-            ->where('flat_addresses.city', '=', $city)
-            ->where(function ($db) use($beds){
-                if($beds != null){
-                    $db->where('flats.beds', '=', $beds);
-                }
-            })
-            ->where(function ($db) use($rooms){
-                if($rooms != null){
-                    $db->where('flats.beds', '=', $rooms);
-                }
-            })
-            ->get();
+        $flats = DB::table("flats")
+        ->select("*"
+        ,DB::raw("6371 * acos(cos(radians(" . $lat . ")) 
+        * cos(radians(flats.lat)) 
+        * cos(radians(flats.long) - radians(" . $lng . ")) 
+        + sin(radians(" .$lat. ")) 
+        * sin(radians(flats.lat))) AS distance"))
+        // ->groupBy("flats.id")
+        ->having("distance", "<=", 20)
+        ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
+        ->where('flat_addresses.city', '=', $city)
+        // ->where(function ($db) use($beds){
+        //     if($beds != null){
+        //         $db->where('flats.beds', '=', $beds);
+        //     }
+        // })
+        // ->where(function ($db) use($rooms){
+        //     if($rooms != null){
+        //         $db->where('flats.beds', '=', $rooms);
+        //     }
+        // })
+        ->get();
 
             // FUNZIONANTE
         // $flats = DB::table('flats')
@@ -73,11 +73,6 @@ class SearchController extends Controller
         //     }
         // })
         // ->get();
-
-
-           
-
-        
         
         $result = [
             'flats' => $flats
@@ -85,6 +80,50 @@ class SearchController extends Controller
         return response()->json($result, 200);
 
     }
+
+
+    public function advanced(Request $request) {
+        // dati inseriti nella ricerca
+        $data = $request->all();
+        $city = $data['city'];
+        $lat = $data['lat'];
+        $lng = $data['long'];
+        $beds = $data['beds'];
+        $rooms = $data['rooms'];
+        $radius = $data['radius'];
+        // extra services
+
+
+        $db = DB::table('flats')->get();
+    
+        $flats = DB::table("flats")
+        ->select("*"
+        ,DB::raw("6371 * acos(cos(radians(" . $lat . ")) 
+        * cos(radians(flats.lat)) 
+        * cos(radians(flats.long) - radians(" . $lng . ")) 
+        + sin(radians(" .$lat. ")) 
+        * sin(radians(flats.lat))) AS distance"))
+        ->having("distance", "<=", $radius)
+        ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
+        ->where('flat_addresses.city', '=', $city)
+        ->where(function ($db) use($beds){
+            if($beds != null){
+                $db->where('flats.beds', '=', $beds);
+            }
+        })
+        ->where(function ($db) use($rooms){
+            if($rooms != null){
+                $db->where('flats.rooms', '=', $rooms);
+            }
+        })
+        ->get();
+
+        $result = [
+            'flats' => $flats
+        ];
+        return response()->json($result, 200);
+    }
+
 
     /**
      * Show the form for creating a new resource.

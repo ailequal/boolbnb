@@ -21,4 +21,5 @@ Route::name('api.')->namespace('Api')->group(function () {
     Route::get('map', 'MapController@index')->name('map.index');
     Route::get('map/create', 'MapController@create')->name('map.create');
     Route::get('search', 'SearchController@index')->name('search.index');
+    Route::get('search/advanced', 'SearchController@advanced')->name('search.advanced');
  });
