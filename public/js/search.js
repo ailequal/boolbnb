@@ -16094,14 +16094,28 @@ var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebar
 $(document).ready(function () {
   $('#search-bar').keypress(function (event) {
     if (event.which == 13) {
+      searchInterface();
       filter();
     }
   });
   $(document).on('click', '#search', function () {
+    searchInterface();
     filter();
   });
 }); // function
-// prendi citta lat e long
+// aggiungere interfaccia ricerca
+
+function searchInterface() {
+  $('main').html('');
+  var source = $('#menu-template').html();
+  var template = Handlebars.compile(source);
+  var context = {
+    hello: 'hello'
+  };
+  var html = template(context);
+  $('main').append(html);
+} // prendi citta lat e long
+
 
 function filter() {
   var city = $('#search-bar').val();
@@ -16140,8 +16154,8 @@ function search(city, lat, _long2) {
       "long": _long2
     },
     success: function success(data, state) {
-      $('main').html('');
-      var source = $('#entry-template').html();
+      // aggiungi i flat con info
+      var source = $('#flat-template').html();
       var template = Handlebars.compile(source);
 
       if (data.flats <= 0) {

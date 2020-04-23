@@ -5,11 +5,13 @@ const Handlebars = require('handlebars');
 $(document).ready(function () {
     $('#search-bar').keypress(function(event) {
         if(event.which == 13) {
+            searchInterface();
             filter();
         }
       });
 
     $(document).on('click', '#search', function (){
+        searchInterface();
         filter();
     });
 });
@@ -17,6 +19,19 @@ $(document).ready(function () {
 
 
 // function
+// aggiungere interfaccia ricerca
+function searchInterface() {
+    $('main').html('');
+    var source = $('#menu-template').html();
+    var template = Handlebars.compile(source);	
+    var context={
+        hello: 'hello'
+        };
+        var html = template(context);
+        $('main').append(html);
+}
+
+
 // prendi citta lat e long
 function filter() {
     var city = $('#search-bar').val();
@@ -56,8 +71,9 @@ function search(city, lat, long) {
                 long: long
             },
         success: function(data, state) {
-            $('main').html('');
-            var source = $('#entry-template').html();
+
+            // aggiungi i flat con info
+            var source = $('#flat-template').html();
             var template = Handlebars.compile(source);	
             
             if(data.flats <= 0){

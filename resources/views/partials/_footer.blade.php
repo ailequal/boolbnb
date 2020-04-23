@@ -35,7 +35,21 @@
 
 </footer>
 {{-- handlebars --}}
-<script id="entry-template" type="text/x-handlebars-template">
+<script id="menu-template" type="text/x-handlebars-template">
+  <div class="entry">
+    <label for="text">Radius</label>
+
+  <select id="radius">
+    <option value="10">10</option>
+    <option value="20" selected="20">20</option>
+    <option value="30">30</option>
+    <option value="40">40</option>
+    <option value="50">50</option>
+  </select> 
+  </div>
+  </div>
+</script>
+<script id="flat-template" type="text/x-handlebars-template">
   <div class="entry">
     <h1>@{{'title'}}</h1>
     <div class="body">
