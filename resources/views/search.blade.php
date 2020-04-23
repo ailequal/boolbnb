@@ -54,27 +54,27 @@
 		<ul>
 			<li>
 				<label for="wifi">Wi Fi</label>
-				<input type="checkbox" name="wifi">
+				<input id="wifi" type="checkbox" name="wifi">
 			</li>
 			<li>
 				<label for="smoking">Area fumatori</label>
-				<input type="checkbox" name="smoking">
+				<input id="smoking" type="checkbox" name="smoking">
 			</li>
 			<li>
 				<label for="parking">Parcheggio</label>
-				<input type="checkbox" name="parking">
+				<input id="parking" type="checkbox" name="parking">
 			</li>
 			<li>
 				<label for="swimming-pool">Piscina</label>
-				<input type="checkbox" name="swimming-pool">
+				<input id="swimming-pool" type="checkbox" name="swimming-pool">
 			</li>
 			<li>
 				<label for="breakfast">Colazione</label>
-				<input type="checkbox" name="breakfast">
+				<input id="breakfast" type="checkbox" name="breakfast">
 			</li>
 			<li>
 				<label for="view">Camera con vista</label>
-				<input type="checkbox" name="view">
+				<input id="view" type="checkbox" name="view">
 			</li>
 		</ul>
 	</div>

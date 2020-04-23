@@ -16099,6 +16099,42 @@ $(document).ready(function () {
     var rooms = $('#rooms').val();
     var beds = $('#beds').val();
     var radius = $('#radius').val();
+    var wifi = false;
+
+    if ($('#wifi').is(":checked")) {
+      wifi = true;
+    }
+
+    var smoking = false;
+
+    if ($('#smoking').is(":checked")) {
+      smoking = true;
+    }
+
+    var parking = false;
+
+    if ($('#parking').is(":checked")) {
+      parking = true;
+    }
+
+    var swimmingPool = false;
+
+    if ($('#swimming-pool').is(":checked")) {
+      swimmingPool = true;
+    }
+
+    var breakfast = false;
+
+    if ($('#breakfast').is(":checked")) {
+      breakfast = true;
+    }
+
+    var view = false;
+
+    if ($('#view').is(":checked")) {
+      view = true;
+    }
+
     $.ajax({
       url: "https://api.tomtom.com/search/2/search/" + hiddenCity + ".json?",
       method: "GET",
@@ -16112,7 +16148,7 @@ $(document).ready(function () {
         } else {
           var lat = data.results[0].position.lat;
           var _long = data.results[0].position.lon;
-          advanced(hiddenCity, lat, _long, beds, rooms, radius);
+          advanced(hiddenCity, lat, _long, beds, rooms, radius, wifi, smoking, parking, swimmingPool, breakfast, view);
         }
       },
       error: function error(request, state, _error) {
@@ -16188,7 +16224,7 @@ function search(city, lat, _long3) {
 } // ricerca avanzata
 
 
-function advanced(city, lat, _long4, beds, rooms, radius) {
+function advanced(city, lat, _long4, beds, rooms, radius, wifi, smoking, parking, swimmingPool, breakfast, view) {
   $.ajax({
     url: window.location.protocol + '//' + window.location.host + '/api/search/advanced',
     method: "GET",
@@ -16198,7 +16234,13 @@ function advanced(city, lat, _long4, beds, rooms, radius) {
       "long": _long4,
       beds: beds,
       rooms: rooms,
-      radius: radius
+      radius: radius,
+      wifi: wifi,
+      smoking: smoking,
+      parking: parking,
+      swimmingPool: swimmingPool,
+      breakfast: breakfast,
+      view: view
     },
     success: function success(data, state) {
       // aggiungi i flat con info
