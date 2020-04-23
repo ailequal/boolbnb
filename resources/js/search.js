@@ -5,17 +5,46 @@ const Handlebars = require('handlebars');
 $(document).ready(function () {
     $('#search-bar').keypress(function(event) {
         if(event.which == 13) {
-          search();
+            filter();
         }
       });
+
     $(document).on('click', '#search', function (){
-        search();
+        filter();
     });
 });
 
+
+
 // function
-function search() {
+// prendi citta lat e long
+function filter() {
     var city = $('#search-bar').val();
+    $.ajax({
+        url: "https://api.tomtom.com/search/2/search/" + city + ".json?",
+        method: "GET",
+        data: {
+                    limit: 1,
+                    key: 'em63COYYAtRKh4NxqgeBdkGNHC8p1is8' 
+        },
+        success: function (data) {
+                if(data.results == 0){
+                    alert ('Citta\' non trovata');
+                } else {
+                    var lat = data.results[0].position.lat;
+                    var long = data.results[0].position.lon;
+                    search(city, lat, long);
+                }
+
+        },
+        error: function (request, state, error) {
+            console.log(error);
+        }
+    });
+}
+
+// fai la ricerca nel db
+function search(city, lat, long) {
     $.ajax({
         url: window.location.protocol + '//' + window.location.host + '/api/search',
         method: "GET",
@@ -23,8 +52,8 @@ function search() {
                 city: city,
                 beds: '',
                 rooms: '',
-                lat: '45.07396',
-                long: '7.63005'
+                lat: lat,
+                long: long
             },
         success: function(data, state) {
             $('main').html('');

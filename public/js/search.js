@@ -16094,16 +16094,41 @@ var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebar
 $(document).ready(function () {
   $('#search-bar').keypress(function (event) {
     if (event.which == 13) {
-      search();
+      filter();
     }
   });
   $(document).on('click', '#search', function () {
-    search();
+    filter();
   });
 }); // function
+// prendi citta lat e long
 
-function search() {
+function filter() {
   var city = $('#search-bar').val();
+  $.ajax({
+    url: "https://api.tomtom.com/search/2/search/" + city + ".json?",
+    method: "GET",
+    data: {
+      limit: 1,
+      key: 'em63COYYAtRKh4NxqgeBdkGNHC8p1is8'
+    },
+    success: function success(data) {
+      if (data.results == 0) {
+        alert('Citta\' non trovata');
+      } else {
+        var lat = data.results[0].position.lat;
+        var _long = data.results[0].position.lon;
+        search(city, lat, _long);
+      }
+    },
+    error: function error(request, state, _error) {
+      console.log(_error);
+    }
+  });
+} // fai la ricerca nel db
+
+
+function search(city, lat, _long2) {
   $.ajax({
     url: window.location.protocol + '//' + window.location.host + '/api/search',
     method: "GET",
@@ -16111,8 +16136,8 @@ function search() {
       city: city,
       beds: '',
       rooms: '',
-      lat: '45.07396',
-      "long": '7.63005'
+      lat: lat,
+      "long": _long2
     },
     success: function success(data, state) {
       $('main').html('');
@@ -16141,8 +16166,8 @@ function search() {
       ;
       $('#search-bar').val('');
     },
-    error: function error(request, state, _error) {
-      console.log(_error);
+    error: function error(request, state, _error2) {
+      console.log(_error2);
     }
   });
 }
@@ -16156,7 +16181,7 @@ function search() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/stefanoriccio/Desktop/Boolean esercizi/boolbnb/resources/js/search.js */"./resources/js/search.js");
+module.exports = __webpack_require__(/*! /Users/pacpera/repos/boolbnb/resources/js/search.js */"./resources/js/search.js");
 
 
 /***/ })
