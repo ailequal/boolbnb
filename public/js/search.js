@@ -16202,6 +16202,11 @@ function search(city, lat, _long3) {
       if (data.flats <= 0) {
         alert('Spiacenti, non ci sono appartamenti disponiili');
       } else {
+        // ordiare i data.flats per distance
+        data.flats.sort(function (a, b) {
+          return a.distance - b.distance;
+        });
+
         for (var i = 0; i < data.flats.length; i++) {
           var flat = data.flats[i];
           var context = {
@@ -16248,7 +16253,9 @@ function advanced(lat, _long4, beds, rooms, radius, wifi, smoking, parking, swim
         alert('Spiacenti, non ci sono appartamenti disponiili');
       } else {
         // ordiare i data.flats per distance
-        console.log(data.flats);
+        data.flats.sort(function (a, b) {
+          return a.distance - b.distance;
+        });
 
         for (var i = 0; i < data.flats.length; i++) {
           var source = $('#flat-template').html();

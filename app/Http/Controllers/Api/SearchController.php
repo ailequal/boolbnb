@@ -168,8 +168,6 @@ class SearchController extends Controller
                 $arrayBest[] = $newFlats[$key];
             }
         }
-        // ordina risultati da piu' vicino a piu' lontano
-        // $arrayBest = array_sort($arrayBest, 'distance', SORT_DESC);
 
         // invio json come risultato di risposta
         $result = [
