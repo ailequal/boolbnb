@@ -4,6 +4,25 @@
     href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.52.0/maps/maps.css' />
 @endsection
  @section('main')
+
+ <div>
+  @if ($errors->any())
+  <div class="alert alert-danger">
+    <ul>
+      @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+  @endif
+</div>
+<div>
+  @if (isset($status))
+  @dd($status);
+  {{$status}}
+  @endif
+</div>
+
    <div class="box-cover container"></div>
    <div class="box-desc container">
      <div class="box-info">
@@ -60,22 +79,24 @@
       <div id='map' class='map'></div>
      </div>
      <div class="box-message">
-       <form action="" method="POST">
+      <form action="{{route('message.store')}}" method="POST">
          @csrf
          @method('POST')
+         
          <h3>Scrivi al proprietario</h3>
          <div class="form-group">
            <label for="title">Titolo</label>
-           <input type="text" name='title' placeholder="Titolo">
+           <input type="text" name='title' placeholder="Titolo" value="{{old('title')}}">
          </div>
          <div class="form-group">
            <label for="email">Email</label>
-           <input type="text" name='email' placeholder="Email">
+           <input type="text" name='email' placeholder="Email" value="{{(Auth::user()) ? Auth::user()->email : old('email')}}">
          </div>
          <div class="form-group">
            <label for="message">Messaggio</label>
-           <input type="text" name='message' placeholder="Messaggio">
+           <input type="text" name='message' placeholder="Messaggio" value="{{old('message')}}">
          </div>
+         <input type="hidden" name="id" value="{{$flats->id}}"> 
          <input type="submit" value="Submit">
        </form>
      </div>

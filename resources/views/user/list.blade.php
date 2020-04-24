@@ -6,6 +6,9 @@
        <button class="btn btn-primary mb-3" type="button" name="button">
          Crea un nuovo appartamento
       </button>
+      <button class="btn btn-primary mb-3" type="button" name="button">
+        <a href="{{route('account.message.index')}}">Messaggi Ricevuti</a>
+      </button>
      </a>
    </div>
    <div class="list-flat container">
