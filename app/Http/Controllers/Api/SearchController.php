@@ -51,7 +51,6 @@ class SearchController extends Controller
     {
         // dati inseriti nella ricerca
         $data = $request->all();
-        $city = $data['city'];
         $lat = $data['lat'];
         $lng = $data['long'];
         $beds = $data['beds'];
@@ -77,7 +76,7 @@ class SearchController extends Controller
             ->join('extra_service_flat', 'flats.id', '=', 'extra_service_flat.flat_id')
             ->join('extra_services', 'extra_service_flat.extra_service_id', '=', 'extra_services.id')
             ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
-            ->where('flat_addresses.city', '=', $city)
+            ->orderBy('flats.id')
             ->where(function ($db) use($beds){
                 if($beds != null){
                     $db->where('flats.beds', '=', $beds);
@@ -168,6 +167,9 @@ class SearchController extends Controller
                 unset($newFlats[$key]);
             }
         }
+
+        // ordina risultati da piu' vicino a piu' lontano
+        $newFlats = array_sort($newFlats, 'distance', SORT_DESC);
 
         // invio json come risultato di risposta
         $result = [
