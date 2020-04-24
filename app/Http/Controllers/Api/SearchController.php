@@ -36,7 +36,7 @@ class SearchController extends Controller
             * sin(radians(flats.lat))) AS distance"))
             ->having("distance", "<=", 20)
             ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
-            ->where('flat_addresses.city', '=', $city)
+            ->where('flat_addresses.city', 'LIKE', '%'.$city.'%')
             ->get();
 
         // invio json come risultato di risposta
@@ -115,6 +115,7 @@ class SearchController extends Controller
 
         // controllo che hanno i servizi che l'utente richiede
         // ciclare i nuovi flats con extra aggiornati
+        $arrayBest = [];
         foreach ($newFlats as $key => $newFlat) {
             // variabile di controllo generica
             $check = true;
@@ -162,18 +163,17 @@ class SearchController extends Controller
                     $check = false;
                 }
             }
-            // se il check e' negativo, elimina il flat perche' non ha i requisiti extra richiesti
-            if (!$check) {
-                unset($newFlats[$key]);
+            // se il check e' positivo, aggiungi il flat a un nuovo array
+            if ($check) {
+                $arrayBest[] = $newFlats[$key];
             }
         }
-
         // ordina risultati da piu' vicino a piu' lontano
-        $newFlats = array_sort($newFlats, 'distance', SORT_DESC);
+        // $arrayBest = array_sort($arrayBest, 'distance', SORT_DESC);
 
         // invio json come risultato di risposta
         $result = [
-            'flats' => $newFlats
+            'flats' => $arrayBest
         ];
         return response()->json($result, 200);
     }

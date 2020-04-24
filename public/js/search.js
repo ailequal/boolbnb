@@ -16087,6 +16087,8 @@ module.exports = g;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebars/dist/cjs/handlebars.js");
@@ -16099,37 +16101,37 @@ $(document).ready(function () {
     var rooms = $('#rooms').val();
     var beds = $('#beds').val();
     var radius = $('#radius').val();
-    var wifi = false;
+    var wifi = null;
 
     if ($('#wifi').is(":checked")) {
       wifi = 'wifi';
     }
 
-    var smoking = false;
+    var smoking = null;
 
     if ($('#smoking').is(":checked")) {
       smoking = 'smoking';
     }
 
-    var parking = false;
+    var parking = null;
 
     if ($('#parking').is(":checked")) {
       parking = 'parking';
     }
 
-    var swimmingPool = false;
+    var swimmingPool = null;
 
     if ($('#swimming-pool').is(":checked")) {
       swimmingPool = 'swimming_pool';
     }
 
-    var breakfast = false;
+    var breakfast = null;
 
     if ($('#breakfast').is(":checked")) {
       breakfast = 'breakfast';
     }
 
-    var view = false;
+    var view = null;
 
     if ($('#view').is(":checked")) {
       view = 'view';
@@ -16148,7 +16150,7 @@ $(document).ready(function () {
         } else {
           var lat = data.results[0].position.lat;
           var _long = data.results[0].position.lon;
-          advanced(hiddenCity, lat, _long, beds, rooms, radius, wifi, smoking, parking, swimmingPool, breakfast, view);
+          advanced(lat, _long, beds, rooms, radius, wifi, smoking, parking, swimmingPool, breakfast, view);
         }
       },
       error: function error(request, state, _error) {
@@ -16224,12 +16226,11 @@ function search(city, lat, _long3) {
 } // ricerca avanzata
 
 
-function advanced(city, lat, _long4, beds, rooms, radius, wifi, smoking, parking, swimmingPool, breakfast, view) {
+function advanced(lat, _long4, beds, rooms, radius, wifi, smoking, parking, swimmingPool, breakfast, view) {
   $.ajax({
     url: window.location.protocol + '//' + window.location.host + '/api/search/advanced',
     method: "GET",
     data: {
-      city: city,
       lat: lat,
       "long": _long4,
       beds: beds,
@@ -16243,20 +16244,23 @@ function advanced(city, lat, _long4, beds, rooms, radius, wifi, smoking, parking
       view: view
     },
     success: function success(data, state) {
-      // aggiungi i flat con info
-      var source = $('#flat-template').html();
-      var template = Handlebars.compile(source);
-
       if (data.flats <= 0) {
         alert('Spiacenti, non ci sono appartamenti disponiili');
       } else {
+        // ordiare i data.flats per distance
+        console.log(data.flats);
+
         for (var i = 0; i < data.flats.length; i++) {
+          var source = $('#flat-template').html();
+          var template = Handlebars.compile(source);
           var flat = data.flats[i];
-          var context = {
+
+          var context = _defineProperty({
             title: flat.title,
             city: flat.city,
             rooms: flat.rooms
-          };
+          }, "rooms", flat.beds);
+
           var html = template(context);
           $('.flats').append(html);
         }

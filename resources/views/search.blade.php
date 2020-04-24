@@ -15,6 +15,7 @@
 
 	<label for="text">Letti</label>
 	<select id="beds">
+		<option value="" selected>none</option>
 		<option value="1">1</option>
 		<option value="2">2</option>
 		<option value="3">3</option>
@@ -30,6 +31,7 @@
 
 	<label for="text">Stanze</label>
 	<select id="rooms">
+		<option value="" selected>none</option>
 		<option value="1">1</option>
 		<option value="2">2</option>
 		<option value="3">3</option>
