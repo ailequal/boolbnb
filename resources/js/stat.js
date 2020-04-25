@@ -51,4 +51,50 @@ $(document).ready(function () {
             console.log(error);
         }
     });
+
+    //chiamata per messaggi
+    $.ajax({
+        url: window.location.protocol + '//' + window.location.host + '/api/stats/messages',
+        method: "GET",
+        data: {
+            id: id
+        },
+        success: function (data, state) {
+            var ctx = document.getElementById('myMessage').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: ["Giorno", "Settimana", "Mese"],
+                    datasets: [{
+                        label: "Messaggi Ricevuti",
+                        data: [data.day, data.week, data.month],
+                        backgroundColor: [
+                            "rgba(255, 99, 132, 0.2)",
+                            "rgba(54, 162, 235, 0.2)",
+                            "rgba(255, 206, 86, 0.2)",
+                        ],
+                        borderColor: [
+                            "rgba(255, 99, 132, 1)",
+                            "rgba(54, 162, 235, 1)",
+                            "rgba(255, 206, 86, 1)",
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+
+        },
+        error: function (request, state, error) {
+            console.log(error);
+        }
+    });
 });

@@ -23,5 +23,6 @@ Route::name('api.')->namespace('Api')->group(function () {
     Route::get('search', 'SearchController@index')->name('search.index');
     Route::get('search/advanced', 'SearchController@advanced')->name('search.advanced');
     Route::get('/stats', 'StatController@index')->name('stat.index');
+    Route::get('/stats/messages', 'StatController@message')->name('stat.message');
  });
  

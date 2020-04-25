@@ -10,7 +10,7 @@ class StatController extends Controller
 {
     public function show($slug){
         $flat = Flat::where('slug', $slug)->first();
-
+        // controllo utente ha quel flat che richiede di vedere
         if(empty($flat)){
           abort(404);
         }
