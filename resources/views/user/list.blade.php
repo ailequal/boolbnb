@@ -33,7 +33,9 @@
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger mb-2" name="button">DELETE</button>
               </form>
-              <button class="btn btn-secondary mb-2" type="button" name="button">Statistiche</button>
+              <button class="btn btn-secondary mb-2" type="button" name="button">
+                <a href="{{route('account.stat.show', $flat->slug)}}">Statistiche</a>
+              </button>
             </div>
           </div>
         </li> 

@@ -20,6 +20,7 @@ class FlatController extends Controller
     {
 
       $flats = Flat::where('slug', $slug)->first();
+      $flats->vzt()->increment();
 
       if(empty($flats)){
         abort(404);

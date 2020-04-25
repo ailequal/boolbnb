@@ -27,5 +27,5 @@ Route::name('account.')->namespace('Account')->middleware('auth')->prefix('accou
     Route::resource('flats','FlatController');
     Route::get('/', 'FlatController@index')->name('index');
     Route::get('/messages', 'MessageController@index')->name('message.index');
+    Route::get('/stats/{slug}', 'StatController@show')->name('stat.show');
 });
- 
