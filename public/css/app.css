@@ -11133,6 +11133,10 @@ footer .footer-right ul li {
   background-position: center;
 }
 
+.hidden {
+  display: none;
+}
+
 .box-desc {
   display: flex;
   align-items: center;

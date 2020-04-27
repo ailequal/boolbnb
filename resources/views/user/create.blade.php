@@ -130,7 +130,7 @@
 
       </div>
 
-      <h3>Promo attivabili</h3>
+      {{-- <h3>Promo attivabili</h3>
 
       <div class="form-group">
         <label for="promo_service">Promozioni Aggiuntivi</label>
@@ -139,7 +139,7 @@
             <span>{{$promo_service->description}}</span>
             <input type="radio" name="promo_service[]"value="{{$promo_service->id}}">
           </div>
-        @endforeach
+        @endforeach --}}
 
       </div>
     <input id="submit" type="submit" value="Submit">

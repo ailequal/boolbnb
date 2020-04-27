@@ -125,9 +125,9 @@ class FlatController extends Controller
             $newFlat->extra_service()->attach($data['extra_service']);
         } 
         
-        if(isset($data['promo_service'])) {
-            $newFlat->promo_service()->attach($data['promo_service']);
-        }
+        // if(isset($data['promo_service'])) {
+        //     $newFlat->promo_service()->attach($data['promo_service']);
+        // }
 
         // if ($request->validate($this->validateRules)->fails()) {
         //     return redirect()->back()->withInput();
@@ -226,9 +226,9 @@ class FlatController extends Controller
             $flat->extra_service()->sync($data['extra_service']);
         } 
         
-        if(isset($data['promo_service'])) {
-            $flat->promo_service()->sync($data['promo_service']);
-        } 
+        // if(isset($data['promo_service'])) {
+        //     $flat->promo_service()->sync($data['promo_service']);
+        // } 
 
         return redirect()->route('show.flat', $flat->slug);
 
@@ -249,7 +249,7 @@ class FlatController extends Controller
             abort(500);
         }
         $flat->extra_service()->detach();
-        $flat->promo_service()->detach();
+        // $flat->promo_service()->detach();
         Storage::disk('public')->delete($flat->cover);
         $flat->delete();
 

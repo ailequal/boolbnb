@@ -107,7 +107,7 @@
 
       </div>
 
-      <h3>Promo attivabili</h3>
+      {{-- <h3>Promo attivabili</h3>
 
       <div class="form-group">
         <label for="promo_service">Promozioni Aggiuntivi</label>
@@ -116,7 +116,7 @@
             <span>{{$promo_service->description}}</span>
             <input type="radio" name="promo_service[]"value="{{$promo_service->id}}" {{($flat->promo_service->contains($promo_service->id)) ? 'checked' : ''}}>
           </div>
-        @endforeach
+        @endforeach --}}
 
       </div>
     {{-- <span>{{$tag->name}}</span>
