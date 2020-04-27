@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Promo_service;
+use App\Flat;
 
 class BrainController extends Controller
 {
@@ -15,6 +16,8 @@ class BrainController extends Controller
     }
     public function store(Request $request){
         $data = $request->all();
-        dd($data);
+        $flat = Flat::where('id', $data['flat_id'])->first();
+        $flat->promo_service()->sync($data['promo_id']);
+        return redirect()->route('home');
     }
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://js.braintreegateway.com/web/dropin/1.22.1/js/dropin.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
@@ -15,9 +16,9 @@
     <form action="{{route('brain.store')}}" method="post">
       @csrf
       @method('POST')
-      <input type="hidden" name="promo_name" value="{{$promo->id}}">
+      <input type="hidden" name="promo_id" value="{{$promo->id}}">
       <input type="hidden" name="flat_id" value="{{$flat_id}}">
-      <input type="button" value="Sumbit payment">
+      <input type="submit" value="Submit payment" id="payment">
     </form>
 </div>
 <script>
