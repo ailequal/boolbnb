@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cfbad888a0f0e21b75013cc1ab70b7b9",
+    "content-hash": "7f94ede00bf80a665a1938912b8eb0a3",
     "packages": [
         {
             "name": "awssat/laravel-visits",
@@ -89,6 +89,50 @@
                 "visits"
             ],
             "time": "2020-04-04T11:55:10+00:00"
+        },
+        {
+            "name": "braintree/braintree_php",
+            "version": "5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/braintree/braintree_php.git",
+                "reference": "f32fece534cce96cdbe9c0c6bd5af12469333900"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/braintree/braintree_php/zipball/f32fece534cce96cdbe9c0c6bd5af12469333900",
+                "reference": "f32fece534cce96cdbe9c0c6bd5af12469333900",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-dom": "*",
+                "ext-hash": "*",
+                "ext-openssl": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=7.2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Braintree\\": "lib/Braintree"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Braintree",
+                    "homepage": "https://www.braintreepayments.com"
+                }
+            ],
+            "description": "Braintree PHP Client Library",
+            "time": "2020-03-25T16:55:18+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

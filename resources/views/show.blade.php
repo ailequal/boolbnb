@@ -67,21 +67,21 @@
    <div>
 
    @if (Auth::check() && Auth::User()->id == $flats->user_id)
-      <form action="{{route('brain.data')}}" method="post">
+      <form action="{{route('payment.index')}}" method="post">
        @csrf
        @method('POST')
         <span>{{$promos[0]->description}}</span>
         <span>{{$promos[0]->price}}</span>
-        <input type="radio" name="id" class="ciao" id="{{$promos[0]->id}}" value="{{$promos[0]->id}}">
+        <input type="radio" name="price" class="ciao" id="{{$promos[0]->id}}" value="{{$promos[0]->price}}">
         
 
         <span>{{$promos[1]->description}}</span>
         <span>{{$promos[1]->price}}</span>
-        <input type="radio" name="id" class="ciao" id="{{$promos[1]->id}}" value="{{$promos[1]->id}}">
+        <input type="radio" name="price" class="ciao" id="{{$promos[1]->id}}" value="{{$promos[1]->price}}">
 
         <span>{{$promos[2]->description}}</span>
         <span>{{$promos[2]->price}}</span>
-        <input type="radio" name="id" class="ciao" id="{{$promos[2]->id}}" value="{{$promos[2]->id}}">
+        <input type="radio" name="price" class="ciao" id="{{$promos[2]->id}}" value="{{$promos[2]->price}}">
       <input type="hidden" name="flat_id" value="{{$flats->id}}">
         <input type="submit" value="Paga" class="hidden" id="bottone">
      </form>
@@ -93,10 +93,8 @@
       $(document).ready(function () {
         $(document).on('click', '.ciao', function () {
           if ($('#1').is(':checked') || $('#2').is(':checked') || $('#3').is(':checked')) {
-          $('#bottone').removeClass('hidden');
-          } else {
-            $('#bottone').addClass('hidden');
-          }
+            $('#bottone').removeClass('hidden');
+          } 
         })
       })
     </script>

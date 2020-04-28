@@ -29,6 +29,8 @@ Route::name('account.')->namespace('Account')->middleware('auth')->prefix('accou
     Route::get('/messages', 'MessageController@index')->name('message.index');
     Route::get('/stats/{slug}', 'StatController@show')->name('stat.show');
 });
-// Route::get('/braintree', 'BrainController@index')->name('brain');
-Route::post('/braintree/payment', 'BrainController@data')->name('brain.data');
-Route::post('/braintree/store', 'BrainController@store')->name('brain.store');
+
+// mostra pagina pagamento
+Route::post('/payment/make', 'PaymentsController@index')->name('payment.index');
+// effettua il pagamento
+Route::get('/payment/make/{price}', 'PaymentsController@make')->name('payment.make');
