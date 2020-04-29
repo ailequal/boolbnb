@@ -1,5 +1,7 @@
 @extends('layouts.boolbnb')
+
 @section('main')
+
 <div class="search-interface">
 	<div class="second_navbar">
 		<div class="typology">
@@ -14,6 +16,7 @@
 				<option value="50">50 Km</option>
 			</select>
 		</div>
+
 		<div class="typology">
 			<label for="text">
 				<p class="category">Letti: </p>
@@ -32,6 +35,7 @@
 				<option value="10">10</option>
 			</select>
 		</div>
+
 		<div class="typology">
 			<label for="text">
 				<p class="category">Stanze: </p>
@@ -55,7 +59,10 @@
 				<option value="15">15</option>
 			</select>
 		</div>
+
+
 	</div>
+
 	<div class="extra-services">
 		<h3 class="services">Soggiorno con Servizi Extra: </h3>
 		<ul>
@@ -85,18 +92,21 @@
 			</li>
 		</ul>
 	</div>
-	<input type="button" value="Ricerca avanzata" class="filter">
-</div>
-<div class="flatsPromo">
+
+	{{-- <input type="button" value="Ricerca avanzata" class="filter"> --}}
 
 </div>
+
+
+<div class="flatsPromo">
+</div>
 <div class="flats">
-	{{-- lista tutti flat --}}
+    {{-- lista tutti flat --}}
 </div>
 <input id="city" type="hidden" value="{{$data['city']}}">
 {{-- handlebars --}}
 <script id="flat-template" type="text/x-handlebars-template">
-	<div class="entry">
+    <div class="entry">
     <h1>@{{'title'}}</h1>
     <div class="body">
      <p>@{{'city'}}</p>
@@ -105,7 +115,7 @@
   </div>
 </script>
 <script id="flatPromo-template" type="text/x-handlebars-template">
-	<div class="entry" style="background-color:red;">
+    <div class="entry" style="background-color:red;">
     <h1>@{{'title'}}</h1>
     <div class="body">
      <p>@{{'city'}}</p>
