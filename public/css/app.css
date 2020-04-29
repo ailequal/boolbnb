@@ -11224,10 +11224,6 @@ h1 {
   height: 50px;
 }
 
-h1 {
-  color: #484848;
-}
-
 h2 {
   color: #484848;
 }
@@ -11245,12 +11241,40 @@ h3 {
   width: 100%;
 }
 
+.box-promo {
+  border: 1px solid #ff385c;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+}
+
+.box-promo .promo-form {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.box-promo .promo-form span {
+  vertical-align: middle;
+  font-size: 1.2rem;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+}
+
+.box-promo .promo-form input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+}
+
+.box-promo .promo-form .submit {
+  margin-left: 30px;
+}
+
 .box-desc {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  color: black;
-  padding: 0;
   margin-top: 20px;
 }
 
@@ -11258,8 +11282,16 @@ h3 {
   max-width: 700px;
 }
 
+.box-desc .box-info #title {
+  color: #484848;
+}
+
 .box-desc .box-info p {
   color: #888888;
+}
+
+.box-desc .box-services {
+  margin: auto;
 }
 
 .box-desc .box-services li {
@@ -11398,8 +11430,12 @@ h3 {
     width: calc(100% - 20px);
   }
 
-  .extra-box {
-    width: calc(100% / 2 - 20px);
+  .box-extraService {
+    width: calc(200% - 20px);
+  }
+
+  .extra-service {
+    width: calc(100% - 20px);
   }
 }
 
