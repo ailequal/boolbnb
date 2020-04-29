@@ -21,6 +21,7 @@ class CreateFlatPromoServiceTable extends Migration
             $table->foreign('promo_service_id')->references('id')->on('promo_services')->onDelete('cascade');
 
             $table->timestamp('created_at');
+            $table->dateTime('end');
         });
     }
 

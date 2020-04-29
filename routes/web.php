@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('my-home');
-})->name('my-home');;
+Route::get('/','FlatController@index')->name('my-home');
 
 Auth::routes();
 

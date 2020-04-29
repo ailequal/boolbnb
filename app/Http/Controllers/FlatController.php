@@ -7,14 +7,17 @@ use App\Http\Controllers\Controller;
 use App\Flat;
 use Illuminate\Support\Facades\Auth;
 use App\Promo_service;
+use Carbon\Carbon;
 
 class FlatController extends Controller
 {
     public function index()
     {
       $flats = Flat::all();
-
-      return view ('flat', compact('flats'));
+      foreach ($flats as $flat) {
+        dd($flat->promo_service);
+      }
+      return view ('my-home', compact('flats'));
     }
 
     public function show($slug)

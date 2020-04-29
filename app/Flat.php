@@ -44,7 +44,7 @@ class Flat extends Model
     }
 
     public function promo_service(){
-        return $this->belongsToMany('App\Promo_service');
+        return $this->belongsToMany('App\Promo_service')->withPivot('created_at')->withPivot('end');
     }
 
     public function flat_address()
