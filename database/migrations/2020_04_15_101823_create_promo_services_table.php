@@ -15,7 +15,7 @@ class CreatePromoServicesTable extends Migration
     {
         Schema::create('promo_services', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('description');
+            $table->text('type');
             $table->decimal('price', 6, 2);
             $table->string('time');
             $table->timestamps();

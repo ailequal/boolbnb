@@ -87,6 +87,9 @@
 	</div>
 	<input type="button" value="Ricerca avanzata" class="filter">
 </div>
+<div class="flatsPromo">
+
+</div>
 <div class="flats">
 	{{-- lista tutti flat --}}
 </div>
@@ -94,6 +97,15 @@
 {{-- handlebars --}}
 <script id="flat-template" type="text/x-handlebars-template">
 	<div class="entry">
+    <h1>@{{'title'}}</h1>
+    <div class="body">
+     <p>@{{'city'}}</p>
+     <p>@{{'rooms'}}</p>
+    </div>
+  </div>
+</script>
+<script id="flatPromo-template" type="text/x-handlebars-template">
+	<div class="entry" style="background-color:red;">
     <h1>@{{'title'}}</h1>
     <div class="body">
      <p>@{{'city'}}</p>

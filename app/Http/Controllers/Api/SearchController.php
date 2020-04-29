@@ -9,6 +9,7 @@ use App\Promo_service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class SearchController extends Controller
 {
@@ -24,9 +25,25 @@ class SearchController extends Controller
         $city = $data['city'];
         $lat = $data['lat'];
         $lng = $data['long'];
-        
+        $now = Carbon::now();
         // chiamata al db con calcolo radius di 20 km
         $db = DB::table('flats')->get();
+        $flatsPromo = DB::table("flats")
+            ->select("*"
+            ,DB::raw("6371 * acos(cos(radians(" . $lat . ")) 
+            * cos(radians(flats.lat)) 
+            * cos(radians(flats.long) - radians(" . $lng . ")) 
+            + sin(radians(" .$lat. ")) 
+            * sin(radians(flats.lat))) AS distance"))
+            ->having("distance", "<=", 20)
+            ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
+            ->where('flat_addresses.city', 'LIKE', '%'.$city.'%')
+            ->where('hidden', '=', 0)
+            ->join('flat_promo_service', 'flats.id', '=', 'flat_promo_service.flat_id')
+            ->join('promo_services', 'flat_promo_service.promo_service_id', '=', 'promo_services.id')
+            ->where('end', '>', $now)
+            ->get();
+         
         $flats = DB::table("flats")
             ->select("*"
             ,DB::raw("6371 * acos(cos(radians(" . $lat . ")) 
@@ -38,10 +55,13 @@ class SearchController extends Controller
             ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
             ->where('flat_addresses.city', 'LIKE', '%'.$city.'%')
             ->where('hidden', '=', 0)
+            ->leftJoin('flat_promo_service', 'flats.id', '=', 'flat_promo_service.flat_id')
+            ->leftJoin('promo_services', 'flat_promo_service.promo_service_id', '=', 'promo_services.id')
+            ->where('promo_service_id', '=', null)
             ->get();
-
-        // invio json come risultato di risposta
+        
         $result = [
+            'flatsPromo' => $flatsPromo,
             'flats' => $flats
         ];
         return response()->json($result, 200);

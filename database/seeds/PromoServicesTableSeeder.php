@@ -35,7 +35,7 @@ class PromoServicesTableSeeder extends Seeder
           ];
           foreach ($services as $key => $service) {
             $newService = new Promo_Service;
-            $newService->description = $service[0];
+            $newService->type = $service[0];
             $newService->price = $service[1];
             $newService->time = $service[2];
             $newService->save();

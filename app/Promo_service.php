@@ -8,7 +8,7 @@ class Promo_service extends Model
 {
     protected $fillable = [
 
-        'description',
+        'type',
         'time',
         'price'
     ];
