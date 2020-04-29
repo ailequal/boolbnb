@@ -1,0 +1,41 @@
+.main-container{
+  // background-color: #FAF3EB;
+
+.head-title{
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.messages-box{
+
+  ul{
+    list-style: none;
+    li .message{
+      margin-bottom: 50px;
+      padding: 15px;
+      border-left: 2px solid lightgrey;
+      border-bottom: 2px solid lightgrey;
+      border-radius: 10px;
+      background-color: white;
+       box-shadow: 8px 9px 16px -6px rgba(0,0,0,0.50);
+      // &:hover{
+      //   box-shadow: 8px 9px 16px -6px rgba(0,0,0,0.80);
+      // }
+      h2{
+        font-weight: bold
+      }
+      .message-text{
+        line-height: 30px;
+        margin: 10px 0 20px 0;
+      }
+    }
+  }
+}
+}
+// MEDIA QUERY
+@media screen and (max-width: 768px) {
+  .messages-box ul{
+    padding-left: 0;
+  }
+}
