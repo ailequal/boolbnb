@@ -17,24 +17,23 @@
    {{-- Lista appartamenti --}}
    <div class="list-flat container">
      <ul>
-       {{-- Primo appartamento --}}
        @foreach ($flats as $flat)
           <li>
             <div class="flat-box mb-3">
               <div class="box-image">
-                {{-- <img src="{{asset('storage/' . $flat->cover)}}" alt=""> --}}
-                <img src="{{asset('images/Lago-Appartamento-Store-Arnhem-1.jpg')}}" alt="">
+                <a href="{{route('show.flat', $flat->slug)}}">
+                  <img src="{{asset('storage/' . $flat->cover)}}" alt="Immagine copertina">
+                  {{-- <img src="{{asset('images/Lago-Appartamento-Store-Arnhem-1.jpg')}}" alt=""> --}}
+                </a>
               </div>
-
               <div class="box-info">
                 <a href="{{route('show.flat', $flat->slug)}}">
                   <h4 class="bold">{{$flat->title}}</h4>
                   <p>{{$flat->description}}</p>
+                  <span class="bold">{{$flat->price_day}} €</span>
+                  <span>a notte</span>
                 </a>
-                <span class="bold">{{$flat->price_day}} €</span>
-                <span>a notte</span>
               </div>
-
               <div class="box-button">
                 <a href="{{route('account.flats.edit', $flat->slug)}}">
                   <button class="btn info-btn mb-2" type="button" name="button">Modifica</button>

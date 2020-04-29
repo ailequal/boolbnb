@@ -11071,15 +11071,17 @@ body {
 
 .btn {
   line-height: 30px;
-  background-color: #ff385c;
-  border: 1px solid lightgrey;
   border-radius: 10px;
   color: white;
   transition: 0.6s;
+  border: 1px solid lightgrey;
+  background-color: #ff385c;
   background-size: 200% auto;
 }
 
 .btn:hover {
+  color: white;
+  border: 1px solid lightgrey;
   background-color: #92174d;
   background-position: right center;
   background-image: linear-gradient(to right, #ff385c 0%, #92174d 51%, #ff385c 100%);
@@ -11098,22 +11100,8 @@ h1 {
   margin-bottom: 30px;
 }
 
-.welcome h1 {
-  margin-bottom: 20px;
-  background: -webkit-linear-gradient(#92174d, #e41d5c);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .welcome a .info-btn {
-  background-color: #e5e0e0;
-  border: 1px solid lightgrey;
   font-size: 16px;
-}
-
-.welcome a .info-btn:hover {
-  color: white;
-  background-color: #ff385c;
 }
 
 .list-flat {
@@ -11158,7 +11146,7 @@ h1 {
 }
 
 .list-flat ul .flat-box .box-info a:hover {
-  text-decoration: underline;
+  text-decoration: none;
   color: #635c5f;
 }
 
@@ -11170,12 +11158,14 @@ h1 {
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-top: 10px;
 }
 
 .list-flat ul .flat-box .box-button .btn-danger {
   line-height: 30px;
   transition: 0.6s;
   border-radius: 10px;
+  background-color: #db0a0a;
   background-size: 200% auto;
 }
 
