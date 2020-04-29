@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Flat;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Promo_service;
 use Carbon\Carbon;
 
@@ -13,7 +14,17 @@ class FlatController extends Controller
 {
     public function index()
     {
-      $flats = Flat::all();
+      // chiamamo tutti i flat dal db
+      // prendi solo quelli con la promo e end maggiore di now
+      $now = Carbon::now();
+
+      $flats = DB::table("flats")
+      ->select("*")
+      ->join('flat_promo_service', 'flats.id', '=', 'flat_promo_service.flat_id')
+      ->join('promo_services', 'flat_promo_service.promo_service_id', '=', 'promo_services.id')
+      ->where('end', '>', $now)
+      ->get();
+      dd($flats);
       foreach ($flats as $flat) {
         dd($flat->promo_service);
       }

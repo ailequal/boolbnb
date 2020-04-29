@@ -20,7 +20,7 @@ class PaymentController extends Controller
         } else {
             $date = Carbon::now()->addHour(144);
         }
-        // $date = Carbon::now()->addHour(24);
+        
         $result = $flat->promo_service()->attach($data['promo'],['end' => $date]);
         return response()->json($result);
     }
