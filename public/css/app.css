@@ -11217,11 +11217,22 @@ h1 {
 }
 
 .submit {
+  width: 200px;
+  line-height: 30px;
+  border-radius: 10px;
   color: white;
+  transition: 0.6s;
+  border: 1px solid lightgrey;
   background-color: #ff385c;
-  border-radius: 5px;
-  width: 100px;
-  height: 50px;
+  background-size: 200% auto;
+}
+
+.submit:hover {
+  color: white;
+  border: 1px solid lightgrey;
+  background-color: #92174d;
+  background-position: right center;
+  background-image: linear-gradient(to right, #ff385c 0%, #92174d 51%, #ff385c 100%);
 }
 
 h2 {
@@ -11259,14 +11270,15 @@ h3 {
 .box-promo .promo-form span {
   vertical-align: middle;
   font-size: 1.2rem;
-  margin: 5px 10px 5px 0;
-  padding: 10px;
+  margin: 5px 8px 5px 0;
+  padding: 3px;
 }
 
 .box-promo .promo-form input {
   vertical-align: middle;
   margin: 5px 10px 5px 0;
   padding: 10px;
+  margin-bottom: 10px;
 }
 
 .box-promo .promo-form .submit {

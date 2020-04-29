@@ -32,7 +32,7 @@
 {{-- controllo utente autenticato e se ha flat suo e se e' vuota la promo --}}
 @if (Auth::check() && Auth::User()->id == $flats->user_id && !empty($flats->promo_service[0]) == false)
 <div>
-  <h2>Ciao {{Auth::user()->name}}, hai già pensato di mettere in risalto il tuo appartamento? </h2>
+  <h1>Ciao {{Auth::user()->name}}, hai già pensato di mettere in risalto il tuo appartamento? </h1>
 </div>
 <div>
   <form action="{{route('payment.index')}}" method="post" class="promo-form">
@@ -40,22 +40,22 @@
  @method('POST')
   
     <span>{{$promos[0]->type}}</span>
-    <span>{{$promos[0]->price}}</span>
+    <span>{{$promos[0]->price}}€</span>
     <input type="radio" name="price" class="ciao" id="{{$promos[0]->id}}" value="{{$promos[0]->price}}">
   
   
   
     <span>{{$promos[1]->type}}</span>
-    <span>{{$promos[1]->price}}</span>
+    <span>{{$promos[1]->price}}€</span>
     <input type="radio" name="price" class="ciao" id="{{$promos[1]->id}}" value="{{$promos[1]->price}}">
   
  
     <span>{{$promos[2]->type}}</span>
-    <span>{{$promos[2]->price}}</span>
+    <span>{{$promos[2]->price}}€</span>
     <input type="radio" name="price" class="ciao" id="{{$promos[2]->id}}" value="{{$promos[2]->price}}">
     <input type="hidden" name="flat_id" value="{{$flats->id}}">
   
-  <input type="submit" value="Paga" class="hidden" class="btn btn-primary" id="bottone">
+  <input type="submit" value="Vai al pagamento" class="hidden" class="btn btn-primary" id="bottone">
 </div>
 </form>
 @endif
@@ -69,19 +69,19 @@
  @csrf
  @method('POST')
   <span>{{$promos[0]->description}}</span>
-  <span>{{$promos[0]->price}}</span>
+  <span>{{$promos[0]->price}}€</span>
   <input type="radio" name="price" class="ciao" id="{{$promos[0]->id}}" value="{{$promos[0]->price}}">
   
 
   <span>{{$promos[1]->description}}</span>
-  <span>{{$promos[1]->price}}</span>
+  <span>{{$promos[1]->price}}€</span>
   <input type="radio" name="price" class="ciao" id="{{$promos[1]->id}}" value="{{$promos[1]->price}}">
 
   <span>{{$promos[2]->description}}</span>
-  <span>{{$promos[2]->price}}</span>
+  <span>{{$promos[2]->price}}€</span>
   <input type="radio" name="price" class="ciao" id="{{$promos[2]->id}}" value="{{$promos[2]->price}}"><br>
   <input type="hidden" name="flat_id" value="{{$flats->id}}">
-  <input type="submit" value="Paga" class="hidden" id="bottone">
+  <input type="submit" value="Vai al pagamento" class="hidden" id="bottone">
 </form>
     @endif
 
