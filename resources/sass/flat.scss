@@ -1,86 +1,153 @@
-.box-cover{
-  height: 300px;
-  background-image: url('/images/world.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+// generali
+.hidden {
+    display: none;
 }
-.hidden{
-  display: none;
+.container {
+    margin-bottom: 40px;
 }
-.box-desc{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: black;
-  padding: 0;
-  margin-top: 20px;
-
-    .box-info{
-      max-width: 700px;
+.submit {
+    color: white;
+    background-color: $mainColor;
+    border-radius: 5px;
+    width: 100px;
+    height: 50px;
+}
+h1 {
+    color: #484848;
+}
+h2 {
+    color: #484848;
+}
+h3 {
+    color: #484848;
+}
+.box-cover {
+    height: 300px;
+    // background-image: url('/images/world.jpg'); // background-repeat: no-repeat;
+    // background-size: cover;
+    // background-position: center;
+    img {
+        height: 300px;
+        width: 100%;
     }
 }
-
-.box-images{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-    .image{
-      width: calc(100% / 3 - 20px);
-      overflow: hidden;
-      max-height: 200px;
-      margin: 10px;
-        img{
-          width: 100%;
+.box-desc {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: black;
+    padding: 0;
+    margin-top: 20px;
+    .box-info {
+        max-width: 700px;
+        p {
+            color: #888888;
+        }
+    }
+    .box-services li {
+        font-size: 17px;
+        list-style: none;
+        margin-bottom: 10px;
+        .fas {
+            color: $mainColor;
+            margin-right: 10px;
         }
     }
 }
+.box-images {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    .image {
+        width: calc(100% / 3 - 20px);
+        overflow: hidden;
+        max-height: 200px;
+        margin: 10px;
+        img {
+            width: 100%;
+        }
+    }
+}
+.box-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    .box-map {
+        height: 300px;
+        width: calc(100% / 2 - 20px);
+        margin: 10px;
+        text-align: center;
+        background-color: lightgreen;
 
-.box-bottom{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-    .box-map{
-      height: 300px;
-      width: calc(100% / 2 - 20px);
-      margin: 10px;
-      text-align: center;
-      background-color: lightgreen;
-      #map {
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .box-extraService {
+        width: calc(100% / 2 - 20px);
+        margin: 10px;
+        .extra-service {
+            text-align: center;
+            ul li {
+                display: inline-block;
+                font-size: 17px;
+                list-style: none;
+                margin-right: 20px;
+                margin-bottom: 10px;
+                .fas {
+                    color: $mainColor;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+.mex-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .box-message {
         width: 100%;
-        height: 100%;
-      }
+        text-align: center;
     }
-    .box-message{
-    width: calc(100% / 2 - 20px);
-    margin: 10px;
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
     }
-  }
+    .label {
+        width: 33%;
+    }
+    .input {
+        width: 33%;
+    }
+    // .submit{
+    // color: white;
+    // background-color: $mainColor;
 
-
+    // border-radius: 5px;
+    // width: 100px;
+    // height: 50px; // }
+}
 // Media Query
 @media screen and (max-width: 768px) {
-  .box-desc{
-    display: block;
-  }
-
-  .box-images .image{
-    width: calc(100% / 2 - 20px);
-  }
-
-  .box-bottom .box-map{
-    width: calc(100% - 20px);
-  }
-
-  .box-bottom .box-message{
-  width: calc(100% - 20px);
-  }
+    .box-desc {
+        display: block;
+    }
+    .box-images .image {
+        width: calc(100% / 2 - 20px);
+    }
+    .box-bottom .box-map {
+        width: calc(100% - 20px);
+    }
+    .box-bottom .box-message {
+        width: calc(100% - 20px);
+    }
 }
-
 @media screen and (max-width: 425px) {
-  .box-images .image{
-    width: calc(100% - 20px);
-  }
+    .box-images .image {
+        width: calc(100% - 20px);
+    }
 }
