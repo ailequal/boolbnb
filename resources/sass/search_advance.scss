@@ -1,4 +1,6 @@
-
+main {
+  display: flex;
+}
 .margin {
   width: 60%;
   margin: auto;
@@ -6,6 +8,7 @@
 .search-interface{
   padding-top: 25px;
   padding-bottom: 25px;
+  padding-left: 50px;
 }
 .typology {
   padding-left: 15px;
@@ -20,7 +23,7 @@
   display: flex;
 }
 #radius, #beds, #rooms {
-  border: 1px solid #3490dc;
+  border: 1px solid $blue;
   border-radius: 4px;
   font-size: 18px;
 }
@@ -53,12 +56,25 @@
 .icone_space {
   color: $blue;
 }
+// appartamenti
+.flats {
+  padding-left: 50px;
+  padding-top: 25px;
+}
+
+
+
+
 
 // media query
 @media screen and (max-width: 768px) {
   .margin {
     width: 80%;
     margin:auto;
+  }
+  main {
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -68,9 +84,12 @@
     margin: auto;
   }
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 455px) {
   .margin {
     width: 100%;
     margin: auto;
+  }
+  .search-interface {
+    padding: 0px;
   }
 }

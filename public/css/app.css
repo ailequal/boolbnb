@@ -11373,6 +11373,10 @@ h3 {
   }
 }
 
+main {
+  display: flex;
+}
+
 .margin {
   width: 60%;
   margin: auto;
@@ -11381,6 +11385,7 @@ h3 {
 .search-interface {
   padding-top: 25px;
   padding-bottom: 25px;
+  padding-left: 50px;
 }
 
 .typology {
@@ -11399,7 +11404,7 @@ h3 {
 #radius,
 #beds,
 #rooms {
-  border: 1px solid #3490DC;
+  border: 1px solid #3490dc;
   border-radius: 4px;
   font-size: 18px;
 }
@@ -11438,10 +11443,20 @@ h3 {
   color: #3490dc;
 }
 
+.flats {
+  padding-left: 50px;
+  padding-top: 25px;
+}
+
 @media screen and (max-width: 768px) {
   .margin {
     width: 80%;
     margin: auto;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -11452,10 +11467,14 @@ h3 {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 455px) {
   .margin {
     width: 100%;
     margin: auto;
+  }
+
+  .search-interface {
+    padding: 0px;
   }
 }
 

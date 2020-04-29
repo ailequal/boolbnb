@@ -100,7 +100,7 @@
 
 <div class="flatsPromo">
 </div>
-<div class="flats">
+<div class="flats ">
     {{-- lista tutti flat --}}
 </div>
 <input id="city" type="hidden" value="{{$data['city']}}">
