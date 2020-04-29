@@ -102,9 +102,14 @@
   </div>
 </div>
 
-{{-- Sezione delle promo --}}
-@if (Auth::check() && Auth::User()->id == $flats->user_id)
-<form action="{{route('payment.index')}}" method="post">
+@php
+    use Carbon\Carbon;
+    $now = Carbon::now();
+@endphp
+
+{{-- controllo utente autenticato e se ha flat suo e se e' vuota la promo --}}
+@if (Auth::check() && Auth::User()->id == $flats->user_id && !empty($flats->promo_service[0]) == false)
+	<form action="{{route('payment.index')}}" method="post">
  @csrf
  @method('POST')
 	<span>{{$promos[0]->description}}</span>
@@ -123,6 +128,35 @@
 	<input type="submit" value="Paga" class="hidden" id="bottone">
 </form>
 @endif
+
+
+{{-- controllo utente autenticato e se ha flat suo e se e' non e' vuota la promo --}}
+@if (Auth::check() && Auth::User()->id == $flats->user_id && !empty($flats->promo_service[0]) == true)
+
+		@if ($flats->promo_service[0]->pivot->end < $now)
+			<form action="{{route('payment.index')}}" method="post">
+ @csrf
+ @method('POST')
+	<span>{{$promos[0]->description}}</span>
+	<span>{{$promos[0]->price}}</span>
+	<input type="radio" name="price" class="ciao" id="{{$promos[0]->id}}" value="{{$promos[0]->price}}">
+	
+
+	<span>{{$promos[1]->description}}</span>
+	<span>{{$promos[1]->price}}</span>
+	<input type="radio" name="price" class="ciao" id="{{$promos[1]->id}}" value="{{$promos[1]->price}}">
+
+	<span>{{$promos[2]->description}}</span>
+	<span>{{$promos[2]->price}}</span>
+	<input type="radio" name="price" class="ciao" id="{{$promos[2]->id}}" value="{{$promos[2]->price}}">
+<input type="hidden" name="flat_id" value="{{$flats->id}}">
+	<input type="submit" value="Paga" class="hidden" id="bottone">
+</form>
+		@endif
+
+@endif
+
+{{-- @endif --}}
 <script>
   $(document).ready(function () {
     $(document).on('click', '.ciao', function () {
