@@ -16087,8 +16087,6 @@ module.exports = g;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebars/dist/cjs/handlebars.js");
@@ -16098,6 +16096,7 @@ $(document).ready(function () {
   filter(hiddenCity);
   $(document).on('click', '.filter', function () {
     $('.flats').html('');
+    $('.flatsPromo').html('');
     var rooms = $('#rooms').val();
     var beds = $('#beds').val();
     var radius = $('#radius').val();
@@ -16275,33 +16274,58 @@ function advanced(lat, _long4, beds, rooms, radius, wifi, smoking, parking, swim
       view: view
     },
     success: function success(data, state) {
-      if (data.flats <= 0) {
-        alert('Spiacenti, non ci sono appartamenti disponiili');
-      } else {
-        // ordiare i data.flats per distance
-        data.flats.sort(function (a, b) {
-          return a.distance - b.distance;
-        });
+      if (data.flats.length > 0 || data.flatsPromo.length > 0) {
+        if (data.flats <= 0) {} else {
+          // ordiare i data.flats per distance
+          data.flats.sort(function (a, b) {
+            return a.distance - b.distance;
+          });
 
-        for (var i = 0; i < data.flats.length; i++) {
-          var source = $('#flat-template').html();
-          var template = Handlebars.compile(source);
-          var flat = data.flats[i];
+          for (var i = 0; i < data.flats.length; i++) {
+            var source = $('#flat-template').html();
+            var template = Handlebars.compile(source);
+            var flat = data.flats[i];
+            var context = {
+              title: flat.title,
+              city: flat.city,
+              rooms: flat.rooms
+            };
+            var html = template(context);
+            $('.flats').append(html);
+          }
 
-          var context = _defineProperty({
-            title: flat.title,
-            city: flat.city,
-            rooms: flat.rooms
-          }, "rooms", flat.beds);
-
-          var html = template(context);
-          $('.flats').append(html);
+          ;
         }
 
         ;
+
+        if (data.flatsPromo <= 0) {} else {
+          // ordiare i data.flats per distance
+          data.flatsPromo.sort(function (a, b) {
+            return a.distance - b.distance;
+          });
+
+          for (var i = 0; i < data.flatsPromo.length; i++) {
+            var source = $('#flatPromo-template').html();
+            var template = Handlebars.compile(source);
+            var flatPromo = data.flatsPromo[i];
+            var context = {
+              title: flatPromo.title,
+              city: flatPromo.city,
+              rooms: flatPromo.rooms
+            };
+            var html = template(context);
+            $('.flatsPromo').append(html);
+          }
+
+          ;
+        }
+
+        ;
+      } else {
+        alert('nessun risultato');
       }
 
-      ;
       $('#search-bar').val('');
     },
     error: function error(request, state, _error4) {
@@ -16319,7 +16343,7 @@ function advanced(lat, _long4, beds, rooms, radius, wifi, smoking, parking, swim
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/boolbnb/resources/js/search.js */"./resources/js/search.js");
+module.exports = __webpack_require__(/*! C:\Users\manue\OneDrive\Documenti\Corso Boolean\Esercizi Boolean\boolbnb\resources\js\search.js */"./resources/js/search.js");
 
 
 /***/ })
