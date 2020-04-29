@@ -96,7 +96,7 @@
 			</ul>
 		</div>
 	
-		{{-- <input type="button" value="Ricerca avanzata" class="filter"> --}}
+		<input type="button" value="Ricerca avanzata" class="filter">
 	
 	</div>
 	
