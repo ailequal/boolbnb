@@ -7,7 +7,7 @@
 
 	<div class="search-interface">
 		<div class="second_navbar">
-			<div class="typology">
+			<div>
 				<label for="text">
 					<p class="category">Entro: </p>
 				</label>
@@ -95,8 +95,15 @@
 				</li>
 			</ul>
 		</div>
+
+		<div class="button_padding">
+			<input class="btn button_padding" type="button" value="Ricerca avanzata" class="filter">
+		</div>
 	
+<<<<<<< Updated upstream
 		<input type="button" value="Ricerca avanzata" class="filter">
+=======
+>>>>>>> Stashed changes
 	
 	</div>
 	
@@ -109,13 +116,29 @@
 	<input id="city" type="hidden" value="{{$data['city']}}">
 	{{-- handlebars --}}
 	<script id="flat-template" type="text/x-handlebars-template">
-		<div class="entry">
-		<h1>@{{'title'}}</h1>
-		<div class="body">
-		 <p>@{{'city'}}</p>
-		 <p>@{{'rooms'}}</p>
+		<div>
+
+			<img class="images_search" src="https://toscano.azureedge.net/imm/rszo_eb2c31d2-257c-4a49-aaa8-b83e7d17719c.jpg" alt="">
+			  <div class="entry">
+				<h4>@{{'title'}}</h4>
+				<div class="body">
+					{{-- @dd($rooms); --}}
+				<p>Citta': @{{'city'}} <i class="point fas fa-circle"></i>
+					Letti: @{{'beds'}} <i class="point fas fa-circle"></i> 
+					Bagni: @{{'bathrooms'}}
+				</p>
+				<p>Stanze: @{{'rooms'}} <i class="point fas fa-circle"></i>
+					Wifi: <i class="point fas fa-circle"></i>
+					Smoking: <i class="point fas fa-circle"></i>
+					Parking: <i class="point fas fa-circle"></i>
+					Swiming Pool: <i class="point fas fa-circle"></i>
+					Breakfast: <i class="point fas fa-circle"></i>
+					Views: <i class="point fas fa-circle"></i>
+				</p>
+				</div>
+			</div>
+
 		</div>
-	  </div>
 	</script>
 	<script id="flatPromo-template" type="text/x-handlebars-template">
 		<div class="entry" style="background-color:red;">

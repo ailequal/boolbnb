@@ -11459,10 +11459,7 @@ h3 {
 
 .general_main {
   display: flex;
-}
-
-.margin {
-  width: 60%;
+  max-width: 1100px;
   margin: auto;
 }
 
@@ -11476,7 +11473,7 @@ h3 {
   padding-left: 15px;
 }
 
-.typology label .category {
+label .category {
   font-size: 22px;
   font-weight: bolder;
 }
@@ -11493,14 +11490,11 @@ h3 {
   font-size: 18px;
 }
 
-.extra-services {
-  padding: 30px;
-}
-
 .extra-services ul {
   display: flex;
   flex-direction: column;
   list-style: none;
+  padding-left: 10px;
 }
 
 .extra-services ul li {
@@ -11523,6 +11517,10 @@ h3 {
   margin-top: 0.5em;
 }
 
+.button_padding {
+  text-align: center;
+}
+
 .icone_space {
   color: #3490dc;
 }
@@ -11532,27 +11530,33 @@ h3 {
   padding-top: 25px;
 }
 
-@media screen and (max-width: 768px) {
-  .margin {
-    width: 80%;
-    margin: auto;
-  }
+.images_search {
+  border-radius: 6px;
+  width: 300px;
+}
 
-  main {
+.point {
+  font-size: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .general_main {
     display: flex;
     flex-direction: column;
+    width: 80%;
+    margin: auto;
   }
 }
 
 @media screen and (max-width: 510px) {
-  .margin {
+  .general_main {
     width: 90%;
     margin: auto;
   }
 }
 
 @media screen and (max-width: 455px) {
-  .margin {
+  .generel_main {
     width: 100%;
     margin: auto;
   }
