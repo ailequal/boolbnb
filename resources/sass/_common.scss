@@ -5,3 +5,25 @@ body{
 .container{
   max-width: 1200px;
 }
+
+.btn{
+  line-height: 30px;
+  background-color: $mainColor;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  color: white;
+  transition: 0.6s;
+  background-size: 200% auto;
+  &:hover{
+    background-color: $secondaryColor;
+    background-position: right center;
+    background-image: linear-gradient(to right, $mainColor 0%, $secondaryColor 51%, $mainColor 100%);
+  }
+}
+
+h1{
+  margin-bottom: 20px;
+  background: -webkit-linear-gradient(rgb(146, 23, 77), rgb(228, 29, 92) );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

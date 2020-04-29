@@ -11069,6 +11069,29 @@ body {
   max-width: 1200px;
 }
 
+.btn {
+  line-height: 30px;
+  background-color: #ff385c;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  color: white;
+  transition: 0.6s;
+  background-size: 200% auto;
+}
+
+.btn:hover {
+  background-color: #92174d;
+  background-position: right center;
+  background-image: linear-gradient(to right, #ff385c 0%, #92174d 51%, #ff385c 100%);
+}
+
+h1 {
+  margin-bottom: 20px;
+  background: -webkit-linear-gradient(#92174d, #e41d5c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .welcome {
   text-align: center;
   margin-top: 30px;
@@ -11127,7 +11150,7 @@ body {
 
 .list-flat ul .flat-box .box-info {
   max-width: 700px;
-  margin-right: 15px;
+  margin-right: 50px;
 }
 
 .list-flat ul .flat-box .box-info a {
@@ -11149,37 +11172,23 @@ body {
   flex-direction: column;
 }
 
-.list-flat ul .flat-box .box-button a .info-btn,
-.list-flat ul .flat-box .box-button .info-btn {
+.list-flat ul .flat-box .box-button .btn-danger {
   line-height: 30px;
-  background-color: #ff385c;
-  border: 1px solid lightgrey;
-  border-radius: 10px;
   transition: 0.6s;
+  border-radius: 10px;
   background-size: 200% auto;
 }
 
-.list-flat ul .flat-box .box-button a .info-btn:hover,
-.list-flat ul .flat-box .box-button .info-btn:hover {
-  color: white;
-  background-color: #92174d;
+.list-flat ul .flat-box .box-button .btn-danger:hover {
+  color: #faff00;
   background-position: right center;
-  background-image: linear-gradient(to right, #ff385c 0%, #92174d 51%, #ff385c 100%);
+  background-image: linear-gradient(to right, red 0%, #b31217 51%, red 100%);
 }
 
-.list-flat ul .flat-box .box-button .info-stat {
-  line-height: 30px;
-  background-color: #e5e0e0;
-  border: 1px solid lightgrey;
-  border-radius: 10px;
-}
-
-.list-flat ul .flat-box .box-button .info-stat:hover {
-  box-shadow: 8px 9px 16px -6px rgba(0, 0, 0, 0.8);
-}
-
-.list-flat ul .flat-box .box-button .info-stat a:hover {
-  text-decoration: none;
+@media screen and (max-width: 1024px) {
+  .list-flat ul .flat-box {
+    padding: 5px 5px 0 0;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -11188,9 +11197,18 @@ body {
     text-align: center;
   }
 
+  .list-flat ul .flat-box .box-image {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .list-flat ul .flat-box .box-info {
+    margin: 10px auto;
+  }
+
   .list-flat ul .flat-box .box-button {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: auto;
     max-width: 500px;
   }

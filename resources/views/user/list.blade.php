@@ -22,7 +22,7 @@
           <li>
             <div class="flat-box mb-3">
               <div class="box-image">
-                <img src="{{asset('storage/' . $flat->cover)}}" alt="">
+                {{-- <img src="{{asset('storage/' . $flat->cover)}}" alt=""> --}}
                 <img src="{{asset('images/Lago-Appartamento-Store-Arnhem-1.jpg')}}" alt="">
               </div>
 
@@ -39,49 +39,20 @@
                 <a href="{{route('account.flats.edit', $flat->slug)}}">
                   <button class="btn info-btn mb-2" type="button" name="button">Modifica</button>
                 </a>
+                <a href="{{route('account.stat.show', $flat->slug)}}">
+                  <button class="btn info-btn mb-2" type="button" name="button">
+                  Statistiche
+                  </button>
+                </a>
                 <form action="{{route('account.flats.destroy', $flat->id)}}" method="POST">
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="btn info-btn mb-2" name="button">Cancella</button>
+                  <button type="submit" class="btn btn-danger mb-2" name="button">Cancella</button>
                 </form>
-                <button class="btn info-stat mb-2" type="button" name="button">
-                  <a href="{{route('account.stat.show', $flat->slug)}}">Statistiche</a>
-                </button>
               </div>
             </div>
           </li>
-        {{-- Secondo appartamento --}}
-        <li>
-          <div class="flat-box mb-3">
-          <div class="box-image">
-            {{-- <img src="{{asset('storage/' . $flat->cover)}}" alt=""> --}}
-            <img src="{{asset('images/Lago-Appartamento-Store-Arnhem-1.jpg')}}" alt="">
-          </div>
-
-          <div class="box-info">
-            <a href="{{route('show.flat', $flat->slug)}}">
-              <h4>{{$flat->title}}</h4>
-              <p>{{$flat->description}}</p>
-            </a>
-            <span class="bold">{{$flat->price_day}} €</span>
-            <span>a notte</span>
-          </div>
-
-          <div class="box-button">
-            <a href="{{route('account.flats.edit', $flat->slug)}}"><button class="btn btn-warning mb-2" type="button" name="button">Modifica</button></a>
-            <form action="{{route('account.flats.destroy', $flat->id)}}" method="POST">
-              @csrf
-              @method('DELETE')
-              <button type="submit" class="btn btn-danger mb-2" name="button">Cancella</button>
-            </form>
-            <button class="btn btn-secondary mb-2" type="button" name="button">
-              <a href="{{route('account.stat.show', $flat->slug)}}">Statistiche</a>
-            </button>
-          </div>
-        </div>
-      </li>
-       @endforeach
+        @endforeach
      </ul>
-
    </div>
  @endsection
