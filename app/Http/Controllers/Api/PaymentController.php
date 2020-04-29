@@ -21,6 +21,7 @@ class PaymentController extends Controller
             $date = Carbon::now()->addHour(144);
         }
         
+        $flat->promo_service()->detach();
         $result = $flat->promo_service()->attach($data['promo'],['end' => $date]);
         return response()->json($result);
     }

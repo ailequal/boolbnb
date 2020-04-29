@@ -18,17 +18,20 @@ class FlatController extends Controller
       // prendi solo quelli con la promo e end maggiore di now
       $now = Carbon::now();
 
-      $flats = DB::table("flats")
+      $flatsPromo = DB::table("flats")
       ->select("*")
       ->join('flat_promo_service', 'flats.id', '=', 'flat_promo_service.flat_id')
       ->join('promo_services', 'flat_promo_service.promo_service_id', '=', 'promo_services.id')
       ->where('end', '>', $now)
       ->get();
-      dd($flats);
-      foreach ($flats as $flat) {
-        dd($flat->promo_service);
-      }
-      return view ('my-home', compact('flats'));
+      $flats = DB::table("flats")
+      ->select("*")
+      ->leftJoin('flat_promo_service', 'flats.id', '=', 'flat_promo_service.flat_id')
+      ->leftJoin('promo_services', 'flat_promo_service.promo_service_id', '=', 'promo_services.id')
+      ->where('promo_service_id', '=', null)
+      // ->whereColumn('promo_service_id', null)
+      ->get();
+      return view ('my-home', compact('flats','flatsPromo'));
     }
 
     public function show($slug)
