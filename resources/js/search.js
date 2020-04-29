@@ -104,58 +104,54 @@ function search(city, lat, long) {
             long: long
         },
         success: function (data, state) {
+            if (data.flats.length > 0 || data.flatsPromo.length > 0) {
+                if (data.flats <= 0) {
 
-            // if (data.flats > 0 && data.flatsPromo > 0) {
-            //     // tutto il codice sotto
-            // } else {
-            //     alert('niente');
-            // }
+                } else {
+                    // ordiare i data.flats per distance
+                    data.flats.sort(function (a, b) {
+                        return a.distance - b.distance;
+                    })
+
+                    for (var i = 0; i < data.flats.length; i++) {
+                        var source = $('#flat-template').html();
+                        var template = Handlebars.compile(source);
+                        var flat = data.flats[i];
+                        var context = {
+                            title: flat.title,
+                            city: flat.city,
+                            rooms: flat.rooms
+                        };
+                        var html = template(context);
+                        $('.flats').append(html);
+                    };
+                };
+                if (data.flatsPromo <= 0) {
+
+                } else {
+                    // ordiare i data.flats per distance
+                    data.flatsPromo.sort(function (a, b) {
+                        return a.distance - b.distance;
+                    })
+
+                    for (var i = 0; i < data.flatsPromo.length; i++) {
+                        var source = $('#flatPromo-template').html();
+                        var template = Handlebars.compile(source);
+                        var flatPromo = data.flatsPromo[i];
+                        var context = {
+                            title: flatPromo.title,
+                            city: flatPromo.city,
+                            rooms: flatPromo.rooms
+                        };
+                        var html = template(context);
+                        $('.flatsPromo').append(html);
+                    };
+                };
+            } else {
+                alert('nessun risultato');
+            }
 
             // aggiungi i flat con info
-            if (data.flats <= 0) {
-                alert('Spiacenti, non ci sono appartamenti da poveri')
-            }
-            else {
-                // ordiare i data.flats per distance
-                data.flats.sort(function (a, b) {
-                    return a.distance - b.distance;
-                })
-                
-                for (var i = 0; i < data.flats.length; i++) {
-                    var source = $('#flat-template').html();
-                    var template = Handlebars.compile(source);
-                    var flat = data.flats[i];
-                    var context = {
-                        title: flat.title,
-                        city: flat.city,
-                        rooms: flat.rooms
-                    };
-                    var html = template(context);
-                    $('.flats').append(html);
-                };
-            };
-            if (data.flatsPromo <= 0) {
-                alert('Spiacenti, non ci sono appartamenti premium')
-            }
-            else {
-                // ordiare i data.flats per distance
-                data.flatsPromo.sort(function (a, b) {
-                    return a.distance - b.distance;
-                })
-
-                for (var i = 0; i < data.flatsPromo.length; i++) {
-                    var source = $('#flatPromo-template').html();
-                    var template = Handlebars.compile(source);
-                    var flatPromo = data.flatsPromo[i];
-                    var context = {
-                        title: flatPromo.title,
-                        city: flatPromo.city,
-                        rooms: flatPromo.rooms
-                    };
-                    var html = template(context);
-                    $('.flatsPromo').append(html);
-                };
-            };
             $('#search-bar').val('');
         },
         error: function (request, state, error) {
@@ -186,8 +182,7 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
 
             if (data.flats <= 0) {
                 alert('Spiacenti, non ci sono appartamenti disponiili')
-            }
-            else {
+            } else {
 
                 // ordiare i data.flats per distance
                 data.flats.sort(function (a, b) {
@@ -217,6 +212,3 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
         }
     });
 }
-
-
-
