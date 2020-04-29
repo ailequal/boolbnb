@@ -23,13 +23,14 @@ class FlatController extends Controller
       ->join('flat_promo_service', 'flats.id', '=', 'flat_promo_service.flat_id')
       ->join('promo_services', 'flat_promo_service.promo_service_id', '=', 'promo_services.id')
       ->where('end', '>', $now)
+      ->where('hidden', '=', 0)
       ->get();
       $flats = DB::table("flats")
       ->select("*")
       ->leftJoin('flat_promo_service', 'flats.id', '=', 'flat_promo_service.flat_id')
       ->leftJoin('promo_services', 'flat_promo_service.promo_service_id', '=', 'promo_services.id')
       ->where('promo_service_id', '=', null)
-      // ->whereColumn('promo_service_id', null)
+      ->where('hidden', '=', 0)
       ->get();
       return view ('my-home', compact('flats','flatsPromo'));
     }

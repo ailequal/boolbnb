@@ -79,28 +79,35 @@
     </div>
   </div>
 </div>
-{{-- container messaggi --}} <div class="mex-container">
-  <div class="box-message">
-    <form action="{{route('message.store')}}" method="POST"> @csrf
-      @method('POST')
-      <h2>Scrivi al proprietario</h2>
-      <div class="form-group">
-        <label class='label' for="title">Titolo</label>
-        <input class='input' type="text" name='title' placeholder="Titolo" value="{{old('title')}}">
-      </div>
-      <div class="form-group">
-        <label class='label' for="email">Email</label>
-        <input class='input' type="text" name='email' placeholder="Email"
-          value="{{(Auth::user()) ? Auth::user()->email : old('email')}}">
-      </div>
-      <div class="form-group">
-        <label class='label' for="message">Messaggio</label>
-        <input class='input' type="text" name='message' placeholder="Messaggio" value="{{old('message')}}">
-      </div>
-      <input type="hidden" name="id" value="{{$flats->id}}"> <input class='submit' type="submit" value="Submit">
-    </form>
+
+{{-- se l'utente ha questo appartamento, niente box messaggi --}}
+@if (Auth::check() && Auth::User()->id == $flats->user_id)
+{{-- container messaggi --}}
+@else
+  <div class="mex-container">
+    <div class="box-message">
+      <form action="{{route('message.store')}}" method="POST"> @csrf
+        @method('POST')
+        <h2>Scrivi al proprietario</h2>
+        <div class="form-group">
+          <label class='label' for="title">Titolo</label>
+          <input class='input' type="text" name='title' placeholder="Titolo" value="{{old('title')}}">
+        </div>
+        <div class="form-group">
+          <label class='label' for="email">Email</label>
+          <input class='input' type="text" name='email' placeholder="Email"
+            value="{{(Auth::user()) ? Auth::user()->email : old('email')}}">
+        </div>
+        <div class="form-group">
+          <label class='label' for="message">Messaggio</label>
+          <input class='input' type="text" name='message' placeholder="Messaggio" value="{{old('message')}}">
+        </div>
+        <input type="hidden" name="id" value="{{$flats->id}}"> <input class='submit' type="submit" value="Submit">
+      </form>
+    </div>
   </div>
-</div>
+
+@endif
 
 @php
     use Carbon\Carbon;

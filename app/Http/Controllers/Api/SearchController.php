@@ -37,6 +37,7 @@ class SearchController extends Controller
             ->having("distance", "<=", 20)
             ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
             ->where('flat_addresses.city', 'LIKE', '%'.$city.'%')
+            ->where('hidden', '=', 0)
             ->get();
 
         // invio json come risultato di risposta
@@ -87,6 +88,7 @@ class SearchController extends Controller
                     $db->where('flats.rooms', '=', $rooms);
                 }
             })
+            ->where('hidden', '=', 0)
             ->get();
 
         // filtrare i flats sistemando i servizi extra
