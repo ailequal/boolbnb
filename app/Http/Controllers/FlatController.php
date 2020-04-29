@@ -8,6 +8,7 @@ use App\Flat;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Promo_service;
+use App\Extra_service;
 use Carbon\Carbon;
 
 class FlatController extends Controller
@@ -44,8 +45,14 @@ class FlatController extends Controller
       if(empty($flats)){
         abort(404);
       }
+      $extras = DB::table("flats")
+      ->select("*")
+      ->join('extra_service_flat', 'flats.id', '=', 'extra_service_flat.flat_id')
+      ->join('extra_services', 'extra_service_flat.extra_service_id', '=', 'extra_services.id')
+      ->get();
 
-      return view('show', compact('flats', 'promos'));
+
+      return view('show', compact('flats', 'promos', 'extras'));
     }
 }
 

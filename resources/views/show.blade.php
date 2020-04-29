@@ -18,13 +18,15 @@
   @endif
 </div>
 {{-- @dd($flats->extra_service[1]->name); --}}
+{{-- @dd($extras); --}}
 <div class="box-cover container">
   <img src="{{asset('storage/' . $flats->cover)}}" alt="Copertina della casa">
 </div>
 <div class="box-desc container ">
   <div class="box-info">
+    
     <h1>{{$flats->title}}</h1>
-    <p>{{$flats->flat_address->street}} - {{$flats->flat_address->city}}</p>
+    <p>{{$flats->flat_address->street}} {{$flats->flat_address->street_number}} - {{$flats->flat_address->city}}</p>
     <p>{{$flats->description}}</p>
   </div>
   <div class="box-services">
@@ -71,12 +73,72 @@
     <div id='map' class='map'></div>
   </div>
   <div class="box-extraService">
-    {{-- @dd($promos); --}} <div class="extra-service">
-      <ul>
-        {{-- <li><i class="fas fa-wifi"></i> {{$flats->extra_service[0]->name}}</li> --}}
-        {{-- <li><i class="fas fa-smoking"></i> {{$flats->extra_service[1]->name}}</ li> --}}
-      </ul>
+    <div class="extra-service">
+      {{-- <ul class= "extra-list"> --}}
+        <h2 class="extra-title">Servizi disponibili</h2>
+        @foreach ($flats->extra_service as $key => $extra) 
+          <div class='extra-box'>
+           {{-- @if($extra->name == 'wifi')
+           <span><i class="fas fa-wifi"></i></span>
+           @elseif($extra->name == 'smoking')
+           <span><i class="fas fa-smoking"></i></span>
+           @elseif($extra->name == 'parking')
+           <span><i class="fas fa-parking"></i></span>
+           @elseif($extra->name == 'swimming pool')
+           <span><i class="fas fa-swimming-pool"></i></span>
+           @elseif($extra->name == 'breakfast')
+           <span><i class="fas fa-coffee"></i></span>
+           @elseif($extra->name == 'view')
+           <span><i class="fas fa-mountain"></i></span>
+           @endif --}}
+           
+           <h2>@if($extra->name == 'wifi')
+            <span><i class="fas fa-wifi"></i></span>
+            @elseif($extra->name == 'smoking')
+            <span><i class="fas fa-smoking"></i></span>
+            @elseif($extra->name == 'parking')
+            <span><i class="fas fa-parking"></i></span>
+            @elseif($extra->name == 'swimming pool')
+            <span><i class="fas fa-swimming-pool"></i></span>
+            @elseif($extra->name == 'breakfast')
+            <span><i class="fas fa-coffee"></i></span>
+            @elseif($extra->name == 'view')
+            <span><i class="fas fa-mountain"></i></span>
+            @endif{{$extra->name}}</h2>
+            <p>In questo appartamento è possibile fare quello scritto sopra</p>
+          </div>
+        @endforeach
+
+        {{-- @foreach ($extra_services as $extra_service)
+        <div>
+          <span>{{$extra_service->name}}</span>
+          <input type="checkbox" name="extra_service[]"value="{{$extra_service->id}}" {{($flat->extra_service->contains($extra_service->id)) ? 'checked' : ''}}>
+        </div>
+      @endforeach --}}
+
+        {{-- <li>©</i> {{$flats->extra_service[0]->name}}</li> 
+       <li><i class="fas fa-smoking"></i> {{$flats->extra_service[1]->name}}</li>  --}}
+      {{-- </ul> --}}
     </div>
+    <script>
+      $(document).ready(function () {
+
+        // console.log($(".extra-list").html());
+        
+          // if ($('.extra-name').html() == '<i class="icon"></i> wifi'){
+          // $('.icon').addClass("fas fa-wifi"); 
+          // }
+          if (($('.extra-name').html() == '<i class="icon"></i> smoking')){
+            console.log('ciao');
+            
+            $('.icon').addClass("fas fa-smoking"); 
+          }
+        
+       
+        // console.log($('.extra-name').html());
+      
+      })
+    </script>
   </div>
 </div>
 

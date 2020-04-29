@@ -87,16 +87,47 @@ h3 {
         }
     }
     .box-extraService {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
         width: calc(100% / 2 - 20px);
-        margin: 10px;
+        
         .extra-service {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
             text-align: center;
-            ul li {
-                display: inline-block;
-                font-size: 17px;
-                list-style: none;
-                margin-right: 20px;
-                margin-bottom: 10px;
+            .extra-title{
+                width: 100%;
+                text-align: center;
+                color: $mainColor;
+                margin-bottom: 20px;
+            }
+            // ul li {
+            //     display: inline-block;
+            //     font-size: 17px;
+            //     list-style: none;
+            //     margin-right: 20px;
+            //     margin-bottom: 10px;
+            //     .fas {
+            //         color: $mainColor;
+            //         margin-right: 10px;
+            //     }
+            // }
+            span{
+                line-height: 50%;
+            }
+            .extra-box{
+                display: flex;
+                flex-wrap: wrap;
+                width: calc(100% / 3 - 20px);
+                h2{
+                    text-align: center;
+                    width: 100%;
+                    font-size: 1.4rem;
+                }
                 .fas {
                     color: $mainColor;
                     margin-right: 10px;
@@ -118,10 +149,16 @@ h3 {
         margin-bottom: 20px;
     }
     .label {
-        width: 33%;
+        // width: 33%;
+        
     }
     .input {
         width: 33%;
+        margin-left: 20px;
+    }
+    .input:last-child{
+        width: 30%;
+        margin-left: 5px;
     }
     // .submit{
     // color: white;
@@ -144,6 +181,9 @@ h3 {
     }
     .box-bottom .box-message {
         width: calc(100% - 20px);
+    }
+    .extra-box{
+        width: calc(100% / 2 - 20px);
     }
 }
 @media screen and (max-width: 425px) {
