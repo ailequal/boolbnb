@@ -99,12 +99,6 @@
 		<div class="button_padding">
 			<input class="btn button_padding" type="button" value="Ricerca avanzata" class="filter">
 		</div>
-	
-<<<<<<< Updated upstream
-		<input type="button" value="Ricerca avanzata" class="filter">
-=======
->>>>>>> Stashed changes
-	
 	</div>
 	
 	
