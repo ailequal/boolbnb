@@ -131,6 +131,7 @@ h3 {
         align-items: center;
         justify-content: space-between;
         width: calc(100% / 2 - 20px);
+
         
         .extra-service {
             display: flex;
@@ -199,12 +200,12 @@ h3 {
     .box-bottom .box-message {
         width: calc(100% - 20px);
     }
-    .box-extraService{
-        width: calc(200% - 20px);
-    }
-    .extra-service{
+    .box-bottom .box-extraService{
         width: calc(100% - 20px);
     }
+    // .extra-service{
+    //     width: calc(100% - 20px);
+    // }
 }
 @media screen and (max-width: 425px) {
     .box-images .image {

@@ -11442,11 +11442,7 @@ h3 {
     width: calc(100% - 20px);
   }
 
-  .box-extraService {
-    width: calc(200% - 20px);
-  }
-
-  .extra-service {
+  .box-bottom .box-extraService {
     width: calc(100% - 20px);
   }
 }
