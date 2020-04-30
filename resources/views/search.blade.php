@@ -97,7 +97,7 @@
 		</div>
 
 		<div class="button_padding">
-			<input class="btn button_padding" type="button" value="Ricerca avanzata" class="filter">
+			<input class="btn button_padding filter" type="button" value="Ricerca avanzata">
 		</div>
 	</div>
 	
