@@ -11680,6 +11680,12 @@ label .category {
   }
 }
 
+.main-container {
+  width: 70%;
+  margin: 0 auto;
+  font-size: 15px;
+}
+
 .main-container .head-title {
   text-align: center;
   margin-top: 30px;
@@ -11697,14 +11703,21 @@ label .category {
   border-bottom: 2px solid lightgrey;
   border-radius: 10px;
   background-color: white;
-  box-shadow: 8px 9px 16px -6px rgba(0, 0, 0, 0.5);
 }
 
-.main-container .messages-box ul li .message h2 {
+.main-container .messages-box ul li .message h4 {
   font-weight: bold;
 }
 
-.main-container .messages-box ul li .message .message-text {
+.main-container .messages-box ul li .message .line-email span {
+  text-decoration: underline;
+}
+
+.main-container .messages-box ul #content-hidden {
+  display: none;
+}
+
+.main-container .messages-box ul #content-hidden .message-text {
   line-height: 30px;
   margin: 10px 0 20px 0;
 }

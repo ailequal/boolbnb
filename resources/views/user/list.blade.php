@@ -22,8 +22,8 @@
             <div class="flat-box mb-3">
               <div class="box-image">
                 <a href="{{route('show.flat', $flat->slug)}}">
-                  <img src="{{asset('storage/' . $flat->cover)}}" alt="Immagine copertina">
-                  {{-- <img src="{{asset('images/Lago-Appartamento-Store-Arnhem-1.jpg')}}" alt=""> --}}
+                  {{-- <img src="{{asset('storage/' . $flat->cover)}}" alt="Immagine copertina"> --}}
+                  <img src="{{asset('images/Lago-Appartamento-Store-Arnhem-1.jpg')}}" alt="">
                 </a>
               </div>
               <div class="box-info">
