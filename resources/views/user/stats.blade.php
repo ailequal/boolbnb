@@ -1,22 +1,36 @@
 @extends('layouts.boolbnb')
 @section('main')
 
+@php
+    use Carbon\Carbon;
+    $now = Carbon::now()->month;
+    $months = [
+        1 => 'Gennaio',
+        2 => 'Febbraio',
+        3 => 'Marzo',
+        4 => 'Aprile',
+        5 => 'Maggio',
+        6 => 'Giugno',
+        7 => 'Luglio',
+        8 => 'Agosto',
+        9 => 'Settembre',
+        10 => 'Ottobre',
+        11 => 'Novembre',
+        12 => 'Dicembre'
+    ];
+@endphp
+
 <label for="month">Visualizza le statistiche per il mese: </label>
 
 <select id="month">
     <option class="default" value="" disabled selected="">--</option>
-    <option value="1">Gennaio</option>
-    <option value="2">Febbraio</option>
-    <option value="3">Marzo</option>
-    <option value="4">Aprile</option>
-    <option value="5">Maggio</option>
-    <option value="6">Giugno</option>
-    <option value="7">Luglio</option>
-    <option value="8">Agosto</option>
-    <option value="9">Settembre</option>
-    <option value="10">Ottobre</option>
-    <option value="11">Novembre</option>
-    <option value="12">Dicembre</option>
+    @for ($i = 1; $i <= $now; $i++)
+    @foreach ($months as $key => $month)
+        @if ($key == $i)
+        <option value="{{$key}}">{{$month}}</option>
+        @endif
+    @endforeach
+    @endfor
 </select>
 
 <div style="width:800px; height:500px;">
