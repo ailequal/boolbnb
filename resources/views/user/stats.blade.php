@@ -1,16 +1,12 @@
 @extends('layouts.boolbnb')
  @section('main')
 
-    <div style="width:500px; height:500px;">
-            <canvas id="test" width="400" height="400"></canvas>
+    <div style="width:800px; height:500px;">
+            <canvas id="myChart"></canvas>
     </div>
     <div style="width:500px; height:500px;">
-            <canvas id="myChart" width="400" height="400"></canvas>
+            <canvas id="myMessage"></canvas>
     </div>
-    <div style="width:500px; height:500px;">
-            <canvas id="myMessage" width="400" height="400"></canvas>
-    </div>
-
 
     <input type="hidden" id="id" value="{{$flat->id}}">
 

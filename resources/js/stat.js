@@ -18,20 +18,12 @@ $(document).ready(function () {
             var myChart = new Chart(ctx, {
                 type: "line",
                 data: {
-                    labels: ["Giorno", "Settimana", "Mese"],
+                    labels: data.days,
                     datasets: [{
                         label: "Visite",
-                        data: [data.day, data.week, data.month],
-                        backgroundColor: [
-                            "rgba(255, 99, 132, 0.2)",
-                            "rgba(54, 162, 235, 0.2)",
-                            "rgba(255, 206, 86, 0.2)",
-                        ],
-                        borderColor: [
-                            "rgba(255, 99, 132, 1)",
-                            "rgba(54, 162, 235, 1)",
-                            "rgba(255, 206, 86, 1)",
-                        ],
+                        data: data.stats,
+                        backgroundColor: "rgba(54, 162, 235, 0.2)",
+                        borderColor: "rgba(54, 162, 235, 0.2)",
                         borderWidth: 2
                     }]
                 },
@@ -95,51 +87,6 @@ $(document).ready(function () {
         },
         error: function (request, state, error) {
             console.log(error);
-        }
-    });
-
-
-
-
-
-
-    var ctx = document.getElementById('test').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: "line",
-        data: {
-
-            // moment
-            // febbraio
-            // [
-            //     01,02, 28
-            // ]
-
-
-            labels: ["1", "2", "3",'4','5'],
-            datasets: [{
-                label: "Visite",
-                data: [2, 3, 4],
-                backgroundColor: [
-                    "rgba(255, 99, 132, 0.2)",
-                    "rgba(54, 162, 235, 0.2)",
-                    "rgba(255, 206, 86, 0.2)",
-                ],
-                borderColor: [
-                    "rgba(255, 99, 132, 1)",
-                    "rgba(54, 162, 235, 1)",
-                    "rgba(255, 206, 86, 1)",
-                ],
-                borderWidth: 2
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
         }
     });
 

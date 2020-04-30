@@ -31,6 +31,7 @@ class StatController extends Controller
 
         // numero di girni totali del mese attuale
         $days = Carbon::now()->daysInMonth;
+
         // array con dati finali
         $stats = [];
         // cicliamo ogni singolo giorno del mese
@@ -48,8 +49,16 @@ class StatController extends Controller
             }
         }
 
+        $statsNew = array_values($stats);
+
+        $daysArray = [];
+        for ($i=1; $i <= $days ; $i++) { 
+            $daysArray[] = $i;
+        }
+
         $result = [
-            'stats'=> $stats
+            'stats'=> $statsNew,
+            'days' => $daysArray
         ];
         return response()->json($result, 200);
     }
