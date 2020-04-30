@@ -107,6 +107,14 @@ $(document).ready(function () {
     var myChart = new Chart(ctx, {
         type: "line",
         data: {
+
+            // moment
+            // febbraio
+            // [
+            //     01,02, 28
+            // ]
+
+
             labels: ["1", "2", "3",'4','5'],
             datasets: [{
                 label: "Visite",

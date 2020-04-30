@@ -19,21 +19,37 @@ class StatController extends Controller
         $visits = DB::table('visits')
         ->select('*')
         ->where('flat_id', $flat->id)
-        ->orderby('visits.id', 'desc')
+        ->orderby('visits.created_at', 'asc')
         ->get();
         $timestamps = [];
         foreach ($visits as $visit) {
             $day = new Carbon($visit->created_at);
             if ($day->isSameMonth(Carbon::now())) {
-                $timestamps[] = $visit->created_at;
+                $timestamps[] = new Carbon($visit->created_at);
             }
         }
-        dd($timestamps);
+
+        // numero di girni totali del mese attuale
+        $days = Carbon::now()->daysInMonth;
+        // array con dati finali
+        $stats = [];
+        // cicliamo ogni singolo giorno del mese
+        for ($i=1; $i <= $days; $i++) {
+            $j = 0;
+            // cicliamo le date nella tabella visits del db
+            foreach ($timestamps as $key => $timestamp) {
+                // controlliamo che il giorno attuale $i e' uguale al giorno del timestamp
+                if ($timestamp->day == $i) {
+                    $j =  $j + 1;
+                    $stats[$i] = $j;
+                } else {
+                    $stats[$i] = $j;
+                }
+            }
+        }
 
         $result = [
-            'day'=> $day, 
-            'week'=> $week, 
-            'month'=> $month 
+            'stats'=> $stats
         ];
         return response()->json($result, 200);
     }
