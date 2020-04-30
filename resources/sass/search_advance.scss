@@ -1,5 +1,4 @@
 .general_main {
-  display: flex;
   max-width: 1100px;
   margin: auto;
 }
@@ -32,14 +31,12 @@ label {
 .extra-services {
   ul {
     display: flex;
-    flex-direction: column;
     list-style: none;
     padding-left: 10px;
   }
   ul li {
     font-size: 15px;
     font-weight: 300;
-    width: 200px;
   }
   .services {
     margin-bottom: 25px;
@@ -57,6 +54,11 @@ label {
 
 .button_padding {
   text-align: center;
+  margin-top: 15px;
+}
+.button_center {
+  width: 200px;
+  text-align: center;
 }
 .icone_space {
   color: $blue;
@@ -64,6 +66,7 @@ label {
 // appartamenti
 .flats {
   padding-left: 50px;
+  padding-right: 50px;
   padding-top: 25px;
 }
 
@@ -82,13 +85,43 @@ label {
   .entry {
     display: flex;
     flex-direction: column;
-    width: 250px;
+    width: 100%;
     padding: 15px;
   }
 }
 .flex_details h4 {
   text-align: center;
   padding-bottom: 10px;
+  font-size: 28px;
+  font-weight: 700;
+}
+.flex_details ul li {
+  font-size: 20px;
+}
+.flatsPromo {
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 25px;
+}
+.special_promo {
+  padding: 15px;
+  border: 3px solid #ccac00;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 6px 7px 10px -4px rgba(0, 0, 0, 0.6);
+  display: flex;
+  .entry {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+  }
+}
+.special_promo h4 {
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 28px;
+  font-weight: 700;
 }
 
 
@@ -97,7 +130,6 @@ label {
 // media query
 @media screen and (max-width: 1110px) {
   .general_main {
-    display: flex;
     width: 100%;
     margin:auto;
   }
@@ -122,6 +154,15 @@ label {
   .search-interface {
     padding-left: 50px;
   }
+  .extra-services ul {
+    display: flex;
+    flex-direction: column;
+  }
+  .button_center {
+    width: 150px;
+    text-align: center;
+  }
+  
 }
 
 @media screen and (max-width: 768px) {
@@ -132,8 +173,14 @@ label {
   .images_search {
       width: 200px;
   }
+  .flex_details h4 {
+      font-size: 18px;
+  }
+  .special_promo h4 {
+      font-size: 18px;
+  }
 }
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 550px) {
   .generel_main {
     width: 100%;
     margin: auto;
@@ -142,6 +189,18 @@ label {
     padding: 0px;
   }
   .images_search {
-      width: 150px;
+    width: 100%;
+  }
+  .flex_details {
+    display: flex;
+    flex-direction: column;
+  }
+  .flex_details h4 {
+    font-size: 18px;
+  }
+  .special_promo h4{
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
   }
 }

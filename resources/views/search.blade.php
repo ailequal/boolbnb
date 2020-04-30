@@ -97,12 +97,13 @@
 		</div>
 
 		<div class="button_padding">
-			<input class="btn button_padding filter" type="button" value="Ricerca avanzata">
+			<input class="btn button_padding button_center filter" type="button" value="Ricerca avanzata">
 		</div>
 	</div>
 	
 	
 	<div class="flatsPromo">
+
 	</div>
 	<div class="flats ">
 		{{-- lista tutti flat --}}
@@ -126,13 +127,20 @@
 		</div>
 	</script>
 	<script id="flatPromo-template" type="text/x-handlebars-template">
-		<div class="entry" style="background-color:red;">
-		<h1>@{{'title'}}</h1>
-		<div class="body">
-		 <p>@{{'city'}}</p>
-		 <p>@{{'rooms'}}</p>
+		<div class="special_promo">
+			<img class="images_search" src="https://toscano.azureedge.net/imm/rszo_eb2c31d2-257c-4a49-aaa8-b83e7d17719c.jpg" alt="">
+			<div class="entry">
+			    <h4>@{{'title'}}</h4>
+			    <div class="body">
+			      <ul>
+					<li>Citta': @{{'city'}}</li>
+					<li>Stanze: @{{'rooms'}}</li>
+					<li>Bagni: @{{'bathrooms'}}</li>
+					<li>Letti: @{{'beds'}}</li>
+				  </ul>
+			    </div>
+		    </div>
 		</div>
-	  </div>
 	</script>
 	<script src="{{asset('js/search.js')}}"></script>
 </div>
