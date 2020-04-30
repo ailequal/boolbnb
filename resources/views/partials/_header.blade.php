@@ -31,7 +31,7 @@
           @if (Route::has('login'))
           @auth
           <li>
-            <a class="btn btn-primary" href="{{ url('/home') }}">Home</a>
+          <a class="btn btn-primary" href="{{ route('account.index') }}">{{Auth::user()->name}}</a>
           </li>
           @else
           <li>
