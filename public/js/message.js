@@ -11002,7 +11002,7 @@ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /opt/lampp/htdocs/boolbnb/resources/js/message.js */"./resources/js/message.js");
+module.exports = __webpack_require__(/*! /Users/stefanoriccio/Desktop/Boolean esercizi/boolbnb/resources/js/message.js */"./resources/js/message.js");
 
 
 /***/ })

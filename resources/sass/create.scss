@@ -1,15 +1,30 @@
 // general
 .cont{
     display: flex;
+    flex:wrap;
     justify-content: space-around;
     align-items: center;
+    font-weight: bold;
+    color: #888888;
 }
 .hide{
     display: none;
 }
-
+.map-button{
+    margin-bottom: 30px;
+    // margin-top: 15px;
+}
+#submit{
+    background-color: transparent;
+    &:hover{
+        cursor: help;
+    }
+}
 .create-container{
     width: calc(100% -20px);
+    max-width: 1200px;
+    text-align: center;
+    
 
     .left-container{
         width: 100%;
@@ -37,8 +52,9 @@
                 border: 0;
             }
             .cover-custom {
-                padding-left: 55px;
-                width: 300px;
+                // padding-left: 55px;
+                margin-left: -50px;
+                width: 220px;
                 height: 45px;
                 line-height: 45px;
                 border-radius: 10px;
@@ -56,27 +72,77 @@
                 }
             }
             
+        } 
+        .form-group.hide-flat{
+            border: 2px solid $mainColor;
+            
+            margin: 30px 80px;
+            padding: 10px;
+                .radius {
+                    width: calc(50% - 10px);
+                }
         }
-        .map-button{
-            margin-bottom: 30px;
-            margin-top: 15px;
+        .form-group.extra_services{
+            margin: 30px 60px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around;
+            text-align: center;
+            .extra_services_box{
+                display: flex;
+                flex-wrap: wrap;
+                width: calc(100% / 3 - 10px);
+                span{
+                    text-align: center;
+                    i{
+                        color: $mainColor;
+                        margin-right: 5px;
+                    }
+                }
+            }
         }
+    
     }
+    
     .right-container{
         position:relative;
         width: 100%;
         height: 180vh;
         #map{
-            border: 20px solid $mainColor;
-            position: absolute;
-            top:0;
-            right: 20px;
-            width: 100%;
-            height: 100vh;
+            position: fixed;
+            border: 10px solid $mainColor;
+            top: 120px;
+            right: 50px;
+            width: 50%;
+            height: 400px;
         }
     }
 }
 
+//media Query
+@media screen and (max-width: 768px) {
+
+    .create-container{
+        display: block;
+
+        .right-container{
+            margin-top: 30px;
+            max-width: 500px;
+            height: 100vh;
+            margin-left: 100px;
+            #map{
+                position: relative;
+                top: 0;
+                margin-left: 100px;
+                min-width: 500px;
+                height: 100vh;
+                
+            }
+        }
+    }
+  
+}
 
 
 

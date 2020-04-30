@@ -144,7 +144,6 @@
             @elseif($extra->name == 'view')
             <span><i class="fas fa-mountain"></i></span>
             @endif{{$extra->name}}</h2>
-            <p>In questo appartamento è possibile fare quello scritto sopra</p>
           </div>
         @endforeach
     </div>

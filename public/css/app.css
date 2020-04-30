@@ -11208,32 +11208,57 @@ h1 {
   }
 }
 
-.create-container {
+.cont {
   display: flex;
-  justify-content: center;
+  flex: wrap;
+  justify-content: space-around;
   align-items: center;
+  font-weight: bold;
+  color: #888888;
 }
 
 .hide {
   display: none;
 }
 
-.form-group {
+.map-button {
   margin-bottom: 30px;
 }
 
-.form-group .label {
+#submit {
+  background-color: transparent;
+}
+
+#submit:hover {
+  cursor: help;
+}
+
+.create-container {
+  width: calc(100% -20px);
+  max-width: 1200px;
+  text-align: center;
+}
+
+.create-container .left-container {
+  width: 100%;
+}
+
+.create-container .left-container .form-group {
+  margin-bottom: 30px;
+}
+
+.create-container .left-container .form-group .label {
   display: inline-block;
   width: 100px;
   margin-right: 40px;
 }
 
-.form-group span .box {
+.create-container .left-container .form-group span .box {
   border: 2px solid #ff385c;
   border-radius: 5px;
 }
 
-.form-group input[type=file] {
+.create-container .left-container .form-group input[type=file] {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -11244,9 +11269,9 @@ h1 {
   border: 0;
 }
 
-.form-group .cover-custom {
-  padding-left: 55px;
-  width: 300px;
+.create-container .left-container .form-group .cover-custom {
+  margin-left: -50px;
+  width: 220px;
   height: 45px;
   line-height: 45px;
   border-radius: 10px;
@@ -11257,7 +11282,7 @@ h1 {
   background-size: 200% auto;
 }
 
-.form-group .cover-custom:hover {
+.create-container .left-container .form-group .cover-custom:hover {
   color: white;
   border: 1px solid lightgrey;
   background-color: #92174d;
@@ -11265,8 +11290,74 @@ h1 {
   background-image: linear-gradient(to right, #ff385c 0%, #92174d 51%, #ff385c 100%);
 }
 
-.map-button {
-  margin-bottom: 30px;
+.create-container .left-container .form-group.hide-flat {
+  border: 2px solid #ff385c;
+  margin: 30px 80px;
+  padding: 10px;
+}
+
+.create-container .left-container .form-group.hide-flat .radius {
+  width: calc(50% - 10px);
+}
+
+.create-container .left-container .form-group.extra_services {
+  margin: 30px 60px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.create-container .left-container .form-group.extra_services .extra_services_box {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% / 3 - 10px);
+}
+
+.create-container .left-container .form-group.extra_services .extra_services_box span {
+  text-align: center;
+}
+
+.create-container .left-container .form-group.extra_services .extra_services_box span i {
+  color: #ff385c;
+  margin-right: 5px;
+}
+
+.create-container .right-container {
+  position: relative;
+  width: 100%;
+  height: 180vh;
+}
+
+.create-container .right-container #map {
+  position: fixed;
+  border: 10px solid #ff385c;
+  top: 120px;
+  right: 50px;
+  width: 50%;
+  height: 400px;
+}
+
+@media screen and (max-width: 768px) {
+  .create-container {
+    display: block;
+  }
+
+  .create-container .right-container {
+    margin-top: 30px;
+    max-width: 500px;
+    height: 100vh;
+    margin-left: 100px;
+  }
+
+  .create-container .right-container #map {
+    position: relative;
+    top: 0;
+    margin-left: 100px;
+    min-width: 500px;
+    height: 100vh;
+  }
 }
 
 .hidden {
@@ -11725,6 +11816,44 @@ label .category {
 @media screen and (max-width: 768px) {
   .messages-box ul {
     padding-left: 0;
+  }
+}
+
+.stats h1 {
+  text-align: center;
+}
+
+.stats .box-stats {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.stats .box-stats .info {
+  text-align: center;
+}
+
+.stats .box-stats .info h4 {
+  background: -webkit-linear-gradient(#92174d, #e41d5c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stats .box-stats .visits,
+.stats .box-stats .messages {
+  width: calc((100% / 2) - 40px);
+  margin: 20px;
+}
+
+@media screen and (max-width: 992px) {
+  .stats .box-stats {
+    display: block;
+  }
+
+  .stats .box-stats .visits,
+  .stats .box-stats .messages {
+    width: 90vw;
+    margin: 40px auto;
   }
 }
 
