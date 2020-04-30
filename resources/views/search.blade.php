@@ -121,13 +121,7 @@
 					Letti: @{{'beds'}} <i class="point fas fa-circle"></i> 
 					Bagni: @{{'bathrooms'}}
 				</p>
-				<p>Stanze: @{{'rooms'}} <i class="point fas fa-circle"></i>
-					Wifi: <i class="point fas fa-circle"></i>
-					Smoking: <i class="point fas fa-circle"></i>
-					Parking: <i class="point fas fa-circle"></i>
-					Swiming Pool: <i class="point fas fa-circle"></i>
-					Breakfast: <i class="point fas fa-circle"></i>
-					Views: <i class="point fas fa-circle"></i>
+				<p>Stanze: @{{'rooms'}}
 				</p>
 				</div>
 			</div>

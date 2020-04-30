@@ -121,7 +121,9 @@ function search(city, lat, long) {
                         var context = {
                             title: flat.title,
                             city: flat.city,
-                            rooms: flat.rooms
+                            rooms: flat.rooms,
+                            bathrooms: flat.bathrooms,
+                            beds: flat.beds
                         };
                         var html = template(context);
                         $('.flats').append(html);
