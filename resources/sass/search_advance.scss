@@ -21,6 +21,7 @@ label {
 
 .second_navbar {
   display: flex;
+  width: 400px;
 }
 #radius, #beds, #rooms {
   border: 1px solid $blue;
@@ -47,6 +48,7 @@ label {
     font-size: 20px;
     width: 50px;
     text-align: center;
+    color: $mainColor;
   }
   label {
     margin-top: 0.5em;
@@ -70,35 +72,76 @@ label {
   width: 300px;
 }
 
-.point {
-  font-size: 10px;
+.flex_details {
+  padding: 15px;
+  border: 1px solid lightgrey;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 6px 7px 10px -4px rgba(0, 0, 0, 0.6);
+  display: flex;
+  .entry {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    padding: 15px;
+  }
+}
+.flex_details h4 {
+  text-align: center;
+  padding-bottom: 10px;
 }
 
 
 
 
 // media query
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1110px) {
+  .general_main {
+    display: flex;
+    width: 100%;
+    margin:auto;
+  }
+  .images_search {
+      width: 270px;
+  }
+  .search-interface {
+    padding-left: 50px;
+  }
+}
+
+@media screen and (max-width: 992px) {
   .general_main {
     display: flex;
     flex-direction: column;
     width: 80%;
-    margin:auto;
+    margin: auto;
+  }
+  .images_search {
+    width: 250px;
+  }
+  .search-interface {
+    padding-left: 50px;
   }
 }
 
-@media screen and (max-width: 510px) {
+@media screen and (max-width: 768px) {
   .general_main {
     width: 90%;
     margin: auto;
   }
+  .images_search {
+      width: 200px;
+  }
 }
-@media screen and (max-width: 455px) {
+@media screen and (max-width: 460px) {
   .generel_main {
     width: 100%;
     margin: auto;
   }
   .search-interface {
     padding: 0px;
+  }
+  .images_search {
+      width: 150px;
   }
 }

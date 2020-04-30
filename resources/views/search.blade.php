@@ -110,22 +110,19 @@
 	<input id="city" type="hidden" value="{{$data['city']}}">
 	{{-- handlebars --}}
 	<script id="flat-template" type="text/x-handlebars-template">
-		<div>
-
+		<div class="flex_details">
 			<img class="images_search" src="https://toscano.azureedge.net/imm/rszo_eb2c31d2-257c-4a49-aaa8-b83e7d17719c.jpg" alt="">
 			  <div class="entry">
 				<h4>@{{'title'}}</h4>
 				<div class="body">
-					{{-- @dd($rooms); --}}
-				<p>Citta': @{{'city'}} <i class="point fas fa-circle"></i>
-					Letti: @{{'beds'}} <i class="point fas fa-circle"></i> 
-					Bagni: @{{'bathrooms'}}
-				</p>
-				<p>Stanze: @{{'rooms'}}
-				</p>
+					<ul>
+						<li>Citta': @{{'city'}}</li>
+						<li>Stanze: @{{'rooms'}}</li>
+						<li>Bagni: @{{'bathrooms'}}</li>
+						<li>Letti: @{{'beds'}}</li>
+					</ul>
 				</div>
-			</div>
-
+			  </div>
 		</div>
 	</script>
 	<script id="flatPromo-template" type="text/x-handlebars-template">
