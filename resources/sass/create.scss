@@ -1,60 +1,82 @@
 // general
-.create-container{
+.cont{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-
 }
 .hide{
     display: none;
 }
 
-.form-group{
-    margin-bottom: 30px;
-    .label{
-        display: inline-block;
-        width: 100px;
-        margin-right: 40px;
-    }
-    span{
-        .box{
-            border: 2px solid $mainColor;
-            border-radius: 5px;
+.create-container{
+    width: calc(100% -20px);
+
+    .left-container{
+        width: 100%;
+        .form-group{
+            margin-bottom: 30px;
+            .label{
+                display: inline-block;
+                width: 100px;
+                margin-right: 40px;
+            }
+            span{
+                .box{
+                    border: 2px solid $mainColor;
+                    border-radius: 5px;
+                }
+            }
+            input[type="file"] {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0,0,0,0);
+                border: 0;
+            }
+            .cover-custom {
+                padding-left: 55px;
+                width: 300px;
+                height: 45px;
+                line-height: 45px;
+                border-radius: 10px;
+                color: white;
+                transition: 0.6s;
+                border: 1px solid lightgrey;
+                background-color: $mainColor;
+                background-size: 200% auto;
+                &:hover{
+                  color: white;
+                  border: 1px solid lightgrey;
+                  background-color: $secondaryColor;
+                  background-position: right center;
+                  background-image: linear-gradient(to right, $mainColor 0%, $secondaryColor 51%, $mainColor 100%);
+                }
+            }
+            
+        }
+        .map-button{
+            margin-bottom: 30px;
+            margin-top: 15px;
         }
     }
-    input[type="file"] {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0,0,0,0);
-        border: 0;
-    }
-    .cover-custom {
-        padding-left: 55px;
-        width: 300px;
-        height: 45px;
-        line-height: 45px;
-        border-radius: 10px;
-        color: white;
-        transition: 0.6s;
-        border: 1px solid lightgrey;
-        background-color: $mainColor;
-        background-size: 200% auto;
-        &:hover{
-          color: white;
-          border: 1px solid lightgrey;
-          background-color: $secondaryColor;
-          background-position: right center;
-          background-image: linear-gradient(to right, $mainColor 0%, $secondaryColor 51%, $mainColor 100%);
+    .right-container{
+        position:relative;
+        width: 100%;
+        height: 180vh;
+        #map{
+            border: 20px solid $mainColor;
+            position: absolute;
+            top:0;
+            right: 20px;
+            width: 100%;
+            height: 100vh;
         }
     }
-    
 }
 
-.map-button{
-    margin-bottom: 30px;
-}
+
+
 
