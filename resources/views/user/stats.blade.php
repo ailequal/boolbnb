@@ -20,47 +20,66 @@
     ];
 @endphp
 
-<h1 class="visitsTotal"></h1>
+<div class="stats">
+    
+    <h1>Statistiche di: {{$flat->title}}</h1>
+    
+    <div class="box-stats">
+        <div class="visits">
 
-<label for="month">Visualizza le statistiche per il mese: </label>
+            <div class="info">
+                <h4 class="visitsTotal"></h4>
+                
+                <label for="month">Visualizza le statistiche per il mese di: </label>
+                
+                <select id="month">
+                <option class="default" value="" hidden selected="">{{$months[$now]}}</option>
+                    @for ($i = 1; $i <= $now; $i++)
+                    @foreach ($months as $key => $month)
+                        @if ($key == $i)
+                        <option value="{{$key}}">{{$month}}</option>
+                        @endif
+                    @endforeach
+                    @endfor
+                </select>
+            </div>
+            
+            <div style="width:100%; height:100%;">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
 
-<select id="month">
-<option class="default" value="" hidden selected="">{{$months[$now]}}</option>
-    @for ($i = 1; $i <= $now; $i++)
-    @foreach ($months as $key => $month)
-        @if ($key == $i)
-        <option value="{{$key}}">{{$month}}</option>
-        @endif
-    @endforeach
-    @endfor
-</select>
+        <div class="messages">
 
-<div style="width:800px; height:500px;">
-    <canvas id="myChart"></canvas>
+            <div class="info">
+                <h4 class="messagesTotal"></h4>
+                
+                <label for="monthMessages">Visualizza le statistiche per il mese di: </label>
+
+                <select id="monthMessages">
+                    <option class="default" value="" disabled selected="">{{$months[$now]}}</option>
+                    @for ($i = 1; $i <= $now; $i++)
+                    @foreach ($months as $key => $month)
+                        @if ($key == $i)
+                        <option value="{{$key}}">{{$month}}</option>
+                        @endif
+                    @endforeach
+                    @endfor
+                </select>
+            </div>
+            
+            <div style="width:100%; height:100%;">
+                <canvas id="myMessage"></canvas>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    <input type="hidden" id="id" value="{{$flat->id}}">
+    
+    <script src="{{asset('js/stat.js')}}"></script>
 </div>
 
-
-<h1 class="messagesTotal"></h1>
-
-<label for="monthMessages">Visualizza le statistiche per il mese: </label>
-
-<select id="monthMessages">
-    <option class="default" value="" disabled selected="">{{$months[$now]}}</option>
-    @for ($i = 1; $i <= $now; $i++)
-    @foreach ($months as $key => $month)
-        @if ($key == $i)
-        <option value="{{$key}}">{{$month}}</option>
-        @endif
-    @endforeach
-    @endfor
-</select>
-
-<div style="width:800px; height:500px;">
-    <canvas id="myMessage"></canvas>
-</div>
-
-<input type="hidden" id="id" value="{{$flat->id}}">
-
-<script src="{{asset('js/stat.js')}}"></script>
 
 @endsection

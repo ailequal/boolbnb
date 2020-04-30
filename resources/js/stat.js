@@ -20,7 +20,7 @@ $(document).ready(function () {
             month: ''
         },
         success: function (data, state) {
-            $('.visitsTotal').text(data.total);
+            $('.visitsTotal').text('Le visite totali di questo mese sono: ' + data.total);
 
             var ctx = document.getElementById('myChart').getContext('2d');
             var myChart = new Chart(ctx, {
@@ -64,7 +64,7 @@ $(document).ready(function () {
                 month: month
             },
             success: function (data, state) {
-                $('.visitsTotal').text(data.total);
+                $('.visitsTotal').text('Le visite totali di questo mese sono: ' + data.total);
 
                 var ctx = document.getElementById('myChart').getContext('2d');
                 var myChart = new Chart(ctx, {
@@ -105,7 +105,7 @@ $(document).ready(function () {
             month: ''
         },
         success: function (data, state) {
-            $('.messagesTotal').text(data.total);
+            $('.messagesTotal').text('I messaggi totali di questo mese sono: ' + data.total);
 
             var ctx = document.getElementById('myMessage').getContext('2d');
             var myChart = new Chart(ctx, {
@@ -148,7 +148,7 @@ $(document).ready(function () {
                 month: month
             },
             success: function (data, state) {
-                $('.messagesTotal').text(data.total);
+                $('.messagesTotal').text('I messaggi totali di questo mese sono: ' + data.total);
 
                 var ctx = document.getElementById('myMessage').getContext('2d');
                 var myChart = new Chart(ctx, {

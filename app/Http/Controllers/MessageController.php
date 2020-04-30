@@ -10,7 +10,7 @@ class MessageController extends Controller
     public function store(Request $request) {
         $this->validateRules =[
             'title'=> 'required|string|max:255',
-            'email'=> 'required|string|max:255',
+            'email'=> 'required|email|max:255',
             'message'=> 'required|string|max:500'
           ];
 
