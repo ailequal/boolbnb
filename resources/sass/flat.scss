@@ -190,10 +190,6 @@ h3 {
         margin-left: 50px;
         margin-bottom: 20px;
     }
-    // .input:last-child{
-    //     width: 30%;
-    //     margin-left: 5px;
-    // }
 }
 // Media Query
 @media screen and (max-width: 768px) {
@@ -212,9 +208,6 @@ h3 {
     .box-bottom .box-extraService{
         width: calc(100% - 20px);
     }
-    // .extra-service{
-    //     width: calc(100% - 20px);
-    // }
 }
 @media screen and (max-width: 425px) {
     .box-images .image {

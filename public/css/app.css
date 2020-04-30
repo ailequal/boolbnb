@@ -11208,6 +11208,67 @@ h1 {
   }
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hide {
+  display: none;
+}
+
+.form-group {
+  margin-bottom: 30px;
+}
+
+.form-group .label {
+  display: inline-block;
+  width: 100px;
+  margin-right: 40px;
+}
+
+.form-group span .box {
+  border: 2px solid #ff385c;
+  border-radius: 5px;
+}
+
+.form-group input[type=file] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.form-group .cover-custom {
+  padding-left: 55px;
+  width: 300px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 10px;
+  color: white;
+  transition: 0.6s;
+  border: 1px solid lightgrey;
+  background-color: #ff385c;
+  background-size: 200% auto;
+}
+
+.form-group .cover-custom:hover {
+  color: white;
+  border: 1px solid lightgrey;
+  background-color: #92174d;
+  background-position: right center;
+  background-image: linear-gradient(to right, #ff385c 0%, #92174d 51%, #ff385c 100%);
+}
+
+.map-button {
+  margin-bottom: 30px;
+}
+
 .hidden {
   display: none;
 }
