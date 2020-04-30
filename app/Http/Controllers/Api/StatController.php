@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Flat;
 use App\Message;
+use Carbon\Carbon;
+use App\Visit;
 
 class StatController extends Controller
 {
@@ -14,9 +16,19 @@ class StatController extends Controller
         $data = $request->all();
         $id = $data['id'];
         $flat = Flat::where('id', $id)->first();
-        $day = $flat->vzt()->period('day')->count();
-        $week = $flat->vzt()->period('week')->count();
-        $month = $flat->vzt()->period('month')->count();
+        $visits = DB::table('visits')
+        ->select('*')
+        ->where('flat_id', $flat->id)
+        ->orderby('visits.id', 'desc')
+        ->get();
+        $timestamps = [];
+        foreach ($visits as $visit) {
+            $day = new Carbon($visit->created_at);
+            if ($day->isSameMonth(Carbon::now())) {
+                $timestamps[] = $visit->created_at;
+            }
+        }
+        dd($timestamps);
 
         $result = [
             'day'=> $day, 

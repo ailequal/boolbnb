@@ -17,7 +17,7 @@ class ExtraServicesTableSeeder extends Seeder
             'wifi',
             'smoking',
             'parking',
-            'swimming pool',
+            'swimming_pool',
             'breakfast',
             'view'
         ];

@@ -51,9 +51,8 @@ class Flat extends Model
     {
         return $this->hasOne('App\Flat_address');
     }
-
-    public function vzt()
+    public function visits()
     {
-        return visits($this);
+        return $this->hasMany('App\Visit');
     }
 }

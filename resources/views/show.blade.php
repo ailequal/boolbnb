@@ -136,7 +136,7 @@
             <span><i class="fas fa-smoking"></i></span>
             @elseif($extra->name == 'parking')
             <span><i class="fas fa-parking"></i></span>
-            @elseif($extra->name == 'swimming pool')
+            @elseif($extra->name == 'swimming_pool')
             <span><i class="fas fa-swimming-pool"></i></span>
             @elseif($extra->name == 'breakfast')
             <span><i class="fas fa-coffee"></i></span>

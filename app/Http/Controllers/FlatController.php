@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Promo_service;
 use App\Extra_service;
 use Carbon\Carbon;
+use App\Visit;
 
 class FlatController extends Controller
 {
@@ -18,7 +19,6 @@ class FlatController extends Controller
       // chiamamo tutti i flat dal db
       // prendi solo quelli con la promo e end maggiore di now
       $now = Carbon::now();
-
       $flatsPromo = DB::table("flats")
       ->select("*")
       ->join('flat_promo_service', 'flats.id', '=', 'flat_promo_service.flat_id')
@@ -38,19 +38,43 @@ class FlatController extends Controller
 
     public function show($slug)
     {
+      $ip = request()->ip();
       $promos = Promo_service::all();
       $flats = Flat::where('slug', $slug)->first();
-      $flats->vzt()->increment();
 
       if(empty($flats)){
         abort(404);
       }
+      $lastVisit = DB::table('visits')
+        ->select('*')
+        ->where('flat_id', $flats->id)
+        ->orderby('visits.id', 'desc')
+        ->first();
+        if(!isset($lastVisit->created_at)){
+          $newVisit = new Visit;
+          $newVisit->ip_address = $ip;
+          $newVisit->flat_id = $flats->id;
+          $saved = $newVisit->save();
+        } else {
+          $myDate = new Carbon($lastVisit->created_at);
+          $control = new Carbon($lastVisit->created_at);
+          $control = $control->addHour(1);
+          if (!Carbon::now()->lessThan($control)) {
+            $newVisit = new Visit;
+            $newVisit->ip_address = $ip;
+            $newVisit->flat_id = $flats->id;
+            $saved = $newVisit->save();
+          }
+        }
+      
+
       $extras = DB::table("flats")
       ->select("*")
       ->join('extra_service_flat', 'flats.id', '=', 'extra_service_flat.flat_id')
       ->join('extra_services', 'extra_service_flat.extra_service_id', '=', 'extra_services.id')
       ->get();
-
+       
+      
 
       return view('show', compact('flats', 'promos', 'extras'));
     }
