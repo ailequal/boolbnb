@@ -1,5 +1,5 @@
 // general
-.container{
+.create-container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,22 +8,6 @@
 .hide{
     display: none;
 }
-// #file-upload-button{
-//     line-height: 30px;
-//     border-radius: 10px;
-//     color: white;
-//     transition: 0.6s;
-//     border: 1px solid lightgrey;
-//     background-color: $mainColor;
-//     background-size: 200% auto;
-//     &:hover{
-//       color: white;
-//       border: 1px solid lightgrey;
-//       background-color: $secondaryColor;
-//       background-position: right center;
-//       background-image: linear-gradient(to right, $mainColor 0%, $secondaryColor 51%, $mainColor 100%);
-//     }
-// }
 
 .form-group{
     margin-bottom: 30px;
@@ -73,3 +57,4 @@
 .map-button{
     margin-bottom: 30px;
 }
+

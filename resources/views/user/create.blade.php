@@ -5,7 +5,7 @@
 
 @extends('layouts.boolbnb')
 @section('main')
-<div class="container">
+<div class="create-container">
     <form action="{{route('account.flats.store')}}" method="POST" enctype='multipart/form-data'>
         {{-- token generator --}}
         @csrf
