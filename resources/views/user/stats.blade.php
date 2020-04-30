@@ -20,10 +20,12 @@
     ];
 @endphp
 
+<h1 class="visitsTotal"></h1>
+
 <label for="month">Visualizza le statistiche per il mese: </label>
 
 <select id="month">
-    <option class="default" value="" disabled selected="">--</option>
+<option class="default" value="" hidden selected="">{{$months[$now]}}</option>
     @for ($i = 1; $i <= $now; $i++)
     @foreach ($months as $key => $month)
         @if ($key == $i)
@@ -36,7 +38,24 @@
 <div style="width:800px; height:500px;">
     <canvas id="myChart"></canvas>
 </div>
-<div style="width:500px; height:500px;">
+
+
+<h1 class="messagesTotal"></h1>
+
+<label for="monthMessages">Visualizza le statistiche per il mese: </label>
+
+<select id="monthMessages">
+    <option class="default" value="" disabled selected="">{{$months[$now]}}</option>
+    @for ($i = 1; $i <= $now; $i++)
+    @foreach ($months as $key => $month)
+        @if ($key == $i)
+        <option value="{{$key}}">{{$month}}</option>
+        @endif
+    @endforeach
+    @endfor
+</select>
+
+<div style="width:800px; height:500px;">
     <canvas id="myMessage"></canvas>
 </div>
 
