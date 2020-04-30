@@ -15,6 +15,7 @@ class StatController extends Controller
     public function index(Request $request){
         $data = $request->all();
         $id = $data['id'];
+        $month = $data['month'];
         $flat = Flat::where('id', $id)->first();
         $visits = DB::table('visits')
         ->select('*')

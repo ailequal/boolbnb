@@ -5,13 +5,20 @@ var Chart = require('chart.js');
 // chart.js
 $(document).ready(function () {
 
-		var id = $('#id').val();
+        var id = $('#id').val();
+        
+        var month;
+        $(document).on('change', $('#month'), function() {
+            month = $('#month').val();
+            console.log(month);
+        });
 
     $.ajax({
         url: window.location.protocol + '//' + window.location.host + '/api/stats',
         method: "GET",
         data: {
-            id: id
+            id: id,
+            month: 1
         },
         success: function (data, state) {
             var ctx = document.getElementById('myChart').getContext('2d');
