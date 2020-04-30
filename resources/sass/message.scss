@@ -21,16 +21,17 @@
       border-radius: 10px;
       background-color: white;
       // box-shadow: 8px 9px 16px -6px rgba(0,0,0,0.50);
-
-      h4{
-        font-weight: bold
-      }
-      .line-email span{
-        text-decoration: underline;
+      .content-visible{
+        h4{
+          font-weight: bold
+        }
+        .line-email span{
+          text-decoration: underline;
+        }
       }
     }
 
-    #content-hidden {
+    .hidden-box {
       display:none;
 
       .message-text{
@@ -38,6 +39,10 @@
         margin: 10px 0 20px 0;
       }
     }
+    .button-hide{
+      display: none;
+    }
+
   }
 }
 }

@@ -12,41 +12,42 @@
 
 	<div class="messages-box container">
 		<ul>
+			@php
+				$i = 0;
+			@endphp
 			@foreach ($userMessage as $message)
 				<li>
 					<div class="message">
-						<h4>{{$message->title}}</h4>
-						<p class="line-email">
-							<span>Ricevuto da</span>:
-							{{$message->email}}
-
-							<a id="button" href="#">
-							Mostra/Nascondi
-							</a>
-						</p>
-					</div>
-					<div id="content-hidden">
-						<p class="message-text">"{{$message->message}}"
-						</p>
-						<p>Appartamento: {{$message->flat->title}}
-						</p>
+						<div id="content-hidden-{{ $i }}">
+							<h4>{{$message->title}}</h4>
+							<p class="line-email">
+								<span>Ricevuto da</span>:
+								{{$message->email}}
+								<a class="button-show" href="javascript:void(0);">
+									Mostra di più...
+								</a>
+							</p>
+							<div class="hidden-box">
+								<p class="message-text">"{{$message->message}}"
+								</p>
+								<p >Appartamento: {{$message->flat->title}}
+								</p>
+							</div>
+							<p>
+								<a class="button-hide" href="javascript:void(0);">
+									Mostra meno
+								</a>
+							</p>
+						</div>
 					</div>
 				</li>
+				@php
+					$i++;
+				@endphp
 			@endforeach
 		</ul>
 	</div>
 </div>
-{{-- <script type="text/javascript">
-
-
-function ShowHide(id){
- if(document.getElementById){
-  var el=document.getElementById(id);
-  el.style.display = (el.style.display=="block") ? "none" : "block";
- }
-}
-
-</script> --}}
 @endsection
 
 @section('script')
