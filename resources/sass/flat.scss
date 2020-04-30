@@ -173,19 +173,27 @@ h3 {
     .box-message {
         width: 100%;
         text-align: center;
+        .label{
+            display: inline-block;
+            width: 100px;
+        }
     }
     h2 {
         text-align: center;
         margin-bottom: 20px;
+        margin-left: 50px;
     }
     .input {
         width: 33%;
-        margin-left: 20px;
     }
-    .input:last-child{
-        width: 30%;
-        margin-left: 5px;
+    .submit{
+        margin-left: 50px;
+        margin-bottom: 20px;
     }
+    // .input:last-child{
+    //     width: 30%;
+    //     margin-left: 5px;
+    // }
 }
 // Media Query
 @media screen and (max-width: 768px) {

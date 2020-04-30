@@ -11411,19 +11411,24 @@ h3 {
   text-align: center;
 }
 
+.mex-container .box-message .label {
+  display: inline-block;
+  width: 100px;
+}
+
 .mex-container h2 {
   text-align: center;
   margin-bottom: 20px;
+  margin-left: 50px;
 }
 
 .mex-container .input {
   width: 33%;
-  margin-left: 20px;
 }
 
-.mex-container .input:last-child {
-  width: 30%;
-  margin-left: 5px;
+.mex-container .submit {
+  margin-left: 50px;
+  margin-bottom: 20px;
 }
 
 @media screen and (max-width: 768px) {
