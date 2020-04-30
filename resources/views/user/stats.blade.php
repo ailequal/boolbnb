@@ -1,7 +1,7 @@
 @extends('layouts.boolbnb')
 @section('main')
 
-<label for="month">Scegli un mese:</label>
+<label for="month">Visualizza le statistiche per il mese: </label>
 
 <select id="month">
     <option class="default" value="" disabled selected="">--</option>

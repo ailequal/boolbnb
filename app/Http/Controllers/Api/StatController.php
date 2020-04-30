@@ -22,16 +22,29 @@ class StatController extends Controller
         ->where('flat_id', $flat->id)
         ->orderby('visits.created_at', 'asc')
         ->get();
+
+        
         $timestamps = [];
         foreach ($visits as $visit) {
             $day = new Carbon($visit->created_at);
-            if ($day->isSameMonth(Carbon::now())) {
-                $timestamps[] = new Carbon($visit->created_at);
+            if ($month == null) {
+                if ($day->isSameMonth(Carbon::now())) {
+                    $timestamps[] = new Carbon($visit->created_at);
+                }
+            } else {
+                $monthCarbon = new Carbon('2020-' . $month . '-1 12:00:00');
+                if ($day->isSameMonth($monthCarbon)) {
+                    $timestamps[] = new Carbon($visit->created_at);
+                }
             }
         }
 
         // numero di girni totali del mese attuale
-        $days = Carbon::now()->daysInMonth;
+        if ($month == null) {
+            $days = Carbon::now()->daysInMonth;
+        } else {
+            $days = $monthCarbon->daysInMonth;
+        }
 
         // array con dati finali
         $stats = [];

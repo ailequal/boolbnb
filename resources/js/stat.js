@@ -29,8 +29,8 @@ $(document).ready(function () {
                     datasets: [{
                         label: "Visite",
                         data: data.stats,
-                        backgroundColor: "rgba(54, 162, 235, 0.2)",
-                        borderColor: "rgba(54, 162, 235, 0.2)",
+                        backgroundColor: "#ff385c",
+                        borderColor: "#ff385c",
                         borderWidth: 2
                     }]
                 },
