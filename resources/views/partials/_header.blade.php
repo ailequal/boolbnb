@@ -10,6 +10,7 @@
     integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
   @yield('head')
   <script src="{{ asset('js/app.js') }}" defer></script>
+  <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
   <title></title>
 </head>
 
@@ -56,7 +57,8 @@
           </li>
           @if (Route::has('register'))
           <li>
-            <a class="btn btn-primary" href="{{ route('register') }}">Registrati</a>
+            @include('partials.register')
+            <a class="btn btn-primary"  href="#registerModal" style="cursor: pointer" data-toggle="modal">Registrati</a>
           </li>
           @endif
           @endauth
@@ -70,6 +72,5 @@
       <input class="search-bar" type="text" name="" value="">
       <button class="search" type="button" name="button">Cerca</button>
     </div>
-
-
+    @yield('scripts')
   </header>
