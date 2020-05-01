@@ -41,6 +41,14 @@
                   <a class="btn btn-primary" href="{{ route('account.index') }}">Account</a>
                 </li>
                 <li>
+                  @if (Auth::check())  
+                    @php
+                        $id = Auth::User()->id;
+                    @endphp
+                    <a class="btn btn-primary" href="{{route('account.user.edit', $id)}}">Modifica</a>
+                  @endif
+                </li>
+                <li>
                   <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
                     {{ __('Logout') }}</a>
@@ -90,7 +98,12 @@
             <a class="btn btn-primary" href="{{ route('account.index') }}">Account</a>
           </li>
           <li>
-            <a class="btn btn-primary" href="#">Impostazioni</a>
+            @if (Auth::check())  
+              @php
+                  $id = Auth::User()->id;
+              @endphp
+              <a class="btn btn-primary" href="{{route('account.user.edit', $id)}}">Modifica</a>
+            @endif
           </li>
           <li>
             <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault();
