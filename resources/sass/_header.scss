@@ -4,6 +4,7 @@ header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin: 20px auto 80px auto;
         padding: 10px 0;
 
         .nav-left a {
@@ -27,7 +28,13 @@ header {
                 //   background-color: #ff385c;
                 //   color: white;
                 // }
+                a {
+                  width: 100px;
+                }
                 form {
+                  input {
+                    width: 100px;
+                  }
                   input.search-btn {
                     color:white;
                     background-color: #ff385c;
@@ -83,7 +90,9 @@ header {
                 -webkit-transition: width 0.4s ease-in-out;
                 transition: width 0.4s ease-in-out;
                 cursor: pointer;
-                &:hover {
+                &:hover,
+                &:active,
+                &:focus {
                     width: 180px;
                     outline-width: 0; // per chrome
                     outline: none; // per safari
@@ -111,6 +120,9 @@ header {
                 outline-width: 0; // per chrome
                 outline: none; // per safari
             }
+        }
+        input {
+          width: 100px;
         }
           input.search-btn {
             color:white;
@@ -228,6 +240,7 @@ header {
 }
 
 #menu a {
+  width: 100px;
   margin-bottom: 10px;
 }
 
