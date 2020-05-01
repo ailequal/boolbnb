@@ -26,7 +26,7 @@
             <form action="{{route('search')}}" method="POST">
               @csrf
               @method('POST')
-              <input id="search-bar" class="search-bar" type="text" name="city" value="">
+              <input class="search-bar" type="text" name="city" value="">
               <input type="submit" class="btn btn-primary" value="Cerca">
             </form>
           </li>
@@ -50,6 +50,9 @@
               </ul>
             </div>
           </li>
+          <li class="hamburger-icon">
+            <a href="#"><i class="fas fa-bars"></i></a>
+          </li>
           @else
           <li>
             @include('partials.login')
@@ -62,15 +65,19 @@
           </li>
           @endif
           @endauth
+          @endif
+        </ul>
       </div>
-      @endif
-      </ul>
       </div>
     </nav>
 
     <div class="search-mobile">
-      <input class="search-bar" type="text" name="" value="">
-      <button class="search" type="button" name="button">Cerca</button>
+      <form action="{{route('search')}}" method="POST">
+        @csrf
+        @method('POST')
+        <input class="search-bar" type="text" name="city" value="">
+        <input type="submit" class="btn btn-primary" value="Cerca">
+      </form>
     </div>
     @yield('scripts')
   </header>
