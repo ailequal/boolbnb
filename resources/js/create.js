@@ -64,6 +64,13 @@ $(document).ready(function () {
 		});
 	});
 
+	$(document).on('click', '.map-button', function () {
+
+		console.log('ciao');
+		$('#map-map').removeClass('hide-map');
+
+
+	});
 	
 });
 
