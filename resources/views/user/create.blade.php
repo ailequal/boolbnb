@@ -47,7 +47,6 @@
                 <span><input class="cap" type="text" name="zip_code" placeholder="Cap" value="{{old('zip_code')}}"></span>
             </div>
 
-            
             <input type="button" class="btn btn-primary map-button" value="Controlla indirizzo">
         </div>
         <div class="hide-map-box" id= "map-map">
@@ -117,16 +116,18 @@
     <div class="bottom-container cont">
         <div class= "bottom-box hide-flat">
             <p>Non sei sicuro del tuo annuncio? Puoi nasconderlo e renderlo pubblico più tardi<p>
-                <div class="radius">
-                    <span>Yes</span>
-                    <input type="radio" name="hidden"value="1">
-                </div>
-                <div class="radius">
-                    <span>No</span>
-                    <input type="radio" name="hidden"value="0" >
+                <div class="radius-container">
+                    <div class="radius">
+                        <span>Yes</span>
+                        <input type="radio" name="hidden"value="1">
+                    </div>
+                    <div class="radius">
+                        <span>No</span>
+                        <input type="radio" name="hidden"value="0" >
+                    </div>
                 </div>
         </div>
-        <div class= "bottom-box extra-service-box">
+        <div class= "bottom-box extra-service-container">
             @foreach ($extra_services as $extra_service)
                 <div class="extra_services_box cont">
                     <span>@if($extra_service->name == 'wifi')
