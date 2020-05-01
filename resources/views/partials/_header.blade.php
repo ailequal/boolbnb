@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
     integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
   @yield('head')
+  <script src="{{ asset('js/app.js') }}" defer></script>
   <title></title>
 </head>
 
@@ -50,7 +51,8 @@
           </li>
           @else
           <li>
-            <a class="btn btn-primary" href="{{ route('login') }}">Accedi</a>
+            @include('partials.login')
+            <a class="btn btn-primary"  href="#loginModal" style="cursor: pointer" data-toggle="modal">Accedi</a>
           </li>
           @if (Route::has('register'))
           <li>
