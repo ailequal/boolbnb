@@ -6,8 +6,12 @@
 
 @section('main')
 <div class="main-container">
-	<div class="head-title">
-		<h1>Lista Messaggi</h1>
+	<div class="divider-box">
+		<hr>
+		<div class="head-title">
+			<h1>Lista Messaggi</h1>
+		</div>
+		<hr>
 	</div>
 
 	<div class="messages-box container">
@@ -18,7 +22,7 @@
 			@foreach ($userMessage as $message)
 				<li>
 					<div class="message">
-						<div id="content-hidden-{{ $i }}">
+						<div id="content-visible-{{ $i }}" class="content-visible">
 							<h4>{{$message->title}}</h4>
 							<p class="line-email">
 								<span>Ricevuto da</span>:
@@ -27,12 +31,14 @@
 									Mostra di più...
 								</a>
 							</p>
+							{{-- Box nascosto --}}
 							<div class="hidden-box">
 								<p class="message-text">"{{$message->message}}"
 								</p>
 								<p >Appartamento: {{$message->flat->title}}
 								</p>
 							</div>
+							{{-- Bottone Mostra meno --}}
 							<p>
 								<a class="button-hide" href="javascript:void(0);">
 									Mostra meno

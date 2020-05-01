@@ -7,8 +7,7 @@ $(document).ready(function () {
      $("#" + id + " .button-show").hide();
      $("#" + id + " .button-hide").show();
      $("#" + id).parent().css( "background-color", "lightgrey");
-
-  });
+   });
 
   $(".button-hide").click(function () {
     var id = $(this).closest('div').attr('id');
@@ -16,8 +15,5 @@ $(document).ready(function () {
     $("#" + id + " .button-show").show();
     $("#" + id + " .button-hide").hide();
     $("#" + id).parent().css( "background-color", "");
-
   });
-
-
 });

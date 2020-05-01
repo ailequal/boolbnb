@@ -3,52 +3,86 @@
   margin: 0 auto;
   font-size: 15px;
 
-.head-title{
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 40px;
-}
+  .divider-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-.messages-box{
 
-  ul{
-    list-style: none;
-    li .message{
-      margin-bottom: 50px;
-      padding: 15px;
-      border-left: 2px solid lightgrey;
-      border-bottom: 2px solid lightgrey;
-      border-radius: 10px;
-      background-color: white;
-      // box-shadow: 8px 9px 16px -6px rgba(0,0,0,0.50);
-      .content-visible{
-        h4{
-          font-weight: bold
-        }
-        .line-email span{
-          text-decoration: underline;
+    hr{
+      width: 30%;
+      margin: 0 auto;
+      border-top: 2px solid lightgrey;
+    }
+
+    .head-title{
+      text-align: center;
+      margin: 30px 10px 50px 10px;
+      border: 2px solid lightgrey;
+      border-radius: 25px;
+      box-shadow: 8px 9px 16px -6px rgba(0,0,0,0.50);
+      h1{
+        margin: 13px;
+        font-size: 30px;
+      }
+    }
+  }
+
+  .messages-box{
+    ul{
+      list-style: none;
+      padding-left: 0;
+      li .message{
+        margin-bottom: 50px;
+        padding: 15px;
+        border-left: 2px solid lightgrey;
+        border-bottom: 2px solid lightgrey;
+        border-radius: 10px;
+        background-color: white;
+        // box-shadow: 8px 9px 16px -6px rgba(0,0,0,0.50);
+        .content-visible{
+          h4{
+            font-weight: bold
+          }
+          .line-email span{
+            text-decoration: underline;
+          }
+
+          .hidden-box {
+            display:none;
+
+            .message-text{
+              line-height: 30px;
+              margin: 10px 0 20px 0;
+            }
+          }
+
+          .button-hide{
+            display: none;
+          }
         }
       }
     }
-
-    .hidden-box {
-      display:none;
-
-      .message-text{
-        line-height: 30px;
-        margin: 10px 0 20px 0;
-      }
-    }
-    .button-hide{
-      display: none;
-    }
-
   }
 }
-}
 // MEDIA QUERY
+@media screen and (max-width: 1024px) {
+  .main-container .divider-box .head-title {
+    margin: 20px 7px 30px 7px;
+
+    h1 {
+      font-size: 27px;
+      margin: 7px;
+    }
+  }
+}
+
 @media screen and (max-width: 768px) {
   .messages-box ul{
     padding-left: 0;
   }
+
+  .main-container{
+    width: 80%;
+    }
 }
