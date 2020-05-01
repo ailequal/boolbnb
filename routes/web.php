@@ -15,6 +15,7 @@ Route::get('/','FlatController@index')->name('my-home');
 
 Auth::routes();
 
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/search', 'SearchController@index')->name('search');
 Route::get('/flats', 'FlatController@index')->name('flats');
@@ -23,6 +24,7 @@ Route::post('/flats/show/store', 'MessageController@store')->name('message.store
 
 Route::name('account.')->namespace('Account')->middleware('auth')->prefix('account')->group(function () {
     Route::resource('flats','FlatController');
+    Route::resource('user', 'UserController');
     Route::get('/', 'FlatController@index')->name('index');
     Route::get('/messages', 'MessageController@index')->name('message.index');
     Route::get('/stats/{slug}', 'StatController@show')->name('stat.show');
