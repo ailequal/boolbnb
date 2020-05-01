@@ -41,14 +41,14 @@ h3 {
     border-radius: 5px;
     padding: 10px;
     text-align: center;
-    
+
     .promo-form{
         display: flex;
         flex-flow: row wrap;
         align-items: center;
         margin-top: 20px;
         display: inline-block;
-        
+
 
         span{
             vertical-align: middle;
@@ -133,7 +133,7 @@ h3 {
         justify-content: space-around;
         width: calc(100% / 2 - 20px);
 
-        
+
         .extra-service {
             display: flex;
             flex-wrap: wrap;
@@ -176,6 +176,7 @@ h3 {
         .label{
             display: inline-block;
             width: 100px;
+            vertical-align: top;
         }
     }
     h2 {
