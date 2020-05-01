@@ -41,18 +41,18 @@
   @method('POST')
     
       <span>{{$promos[0]->type}}</span>
-      <span>{{$promos[0]->price}}€</span>
+      <span>{{$promos[0]->price}}€ - 24 ore</span>
       <input type="radio" name="price" class="ciao" id="{{$promos[0]->id}}" value="{{$promos[0]->price}}">
     
     
     
       <span>{{$promos[1]->type}}</span>
-      <span>{{$promos[1]->price}}€</span>
+      <span>{{$promos[1]->price}}€ per - 72 ore</span>
       <input type="radio" name="price" class="ciao" id="{{$promos[1]->id}}" value="{{$promos[1]->price}}">
     
   
       <span>{{$promos[2]->type}}</span>
-      <span>{{$promos[2]->price}}€</span>
+      <span>{{$promos[2]->price}}€ per - 144 ore</span>
       <input type="radio" name="price" class="ciao" id="{{$promos[2]->id}}" value="{{$promos[2]->price}}">
       <input type="hidden" name="flat_id" value="{{$flats->id}}">
     
