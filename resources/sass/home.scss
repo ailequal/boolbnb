@@ -1,5 +1,18 @@
+.box-carousel{
+  width: 90%;
+
+  margin: 0 auto;
+  border: 2px solid lightgrey;
+  border-radius: 10px;
+  box-shadow: 6px 7px 10px -4px rgba(0,0,0,0.80);
+
+  .carousel-inner img{
+    border-radius: 10px;
+  }
+}
 .promo{
-  margin-top: 60px;
+  margin-top: 100px;
+  text-align: center;
   h1{
     color: rgb(167, 25, 81);
     margin-bottom: 30px;

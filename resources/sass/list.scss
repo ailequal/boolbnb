@@ -2,51 +2,37 @@
   text-align: center;
   margin-top: 30px;
   margin-bottom: 30px;
-  // h1{
-  //   margin-bottom: 20px;
-  //   background: -webkit-linear-gradient(rgb(146, 23, 77), rgb(228, 29, 92) );
-  //     -webkit-background-clip: text;
-  //     -webkit-text-fill-color: transparent;
-  //   }
-    a{
-      .info-btn{
-        font-size: 16px;
-      }
+  a{
+    .info-btn{
+      font-size: 16px;
     }
+  }
 }
 
 .list-flat{
   padding: 0;
-
-   ul{
+  ul{
     list-style: none;
     padding: 0;
-
     .flat-box{
       display: flex;
       align-items: center;
-
       border: 1px solid lightgrey;
       border-radius: 10px;
       box-shadow: 6px 7px 10px -4px rgba(0,0,0,0.60);
       &:hover{
         box-shadow: 8px 9px 16px -6px rgba(0,0,0,0.80);
       }
-
-      .box-image{
-        // flex-basis: 300px;
-        // width: 300px;
-        flex-basis: 30%;
-        margin-right: 15px;
-        padding: 5px;
-        img{
-          width: 100%;
-          border-radius: 10px;
+        .box-image{
+          flex-basis: 30%;
+          margin-right: 15px;
+          padding: 5px;
+          img{
+            width: 100%;
+            border-radius: 10px;
+          }
         }
-      }
       .box-info{
-        // flex-basis: 700px;
-        // max-width: 700px;
         flex-basis: 55%;
         margin-right: 50px;
         padding: 5px;
@@ -62,7 +48,6 @@
         }
       }
       .box-button{
-        // flex-basis: auto;
         flex-basis: 15%;
         display: flex;
         align-items: center;
@@ -76,7 +61,6 @@
             background-size: 200% auto;
             &:hover{
               color: rgb(250, 255, 0);
-              // color: rgb(255, 157, 0);
               background-position: right center;
               background-image: linear-gradient(to right, rgb(255, 0, 0) 0%, #b31217 51%, rgb(255, 0, 0) 100%);
             }
@@ -91,14 +75,11 @@
   .list-flat ul {
     .flat-box{
       margin: 20px;
-
       .box-image {
         width: 40%;
         margin: 0 auto;
-
       }
     }
-
   }
 }
 
@@ -106,27 +87,22 @@
   .list-flat ul .flat-box{
     display: block;
     text-align: center;
-
     .box-image{
       width: 75%;
       margin: 0 auto;
       padding: 15px;
     }
-
     .box-info{
       margin: 10px auto;
     }
-
     .box-button{
       flex-direction: row;
       justify-content: space-around;
       margin: auto;
       max-width: 500px;
-
     }
   }
   .box-image img{
     text-align: center;
   }
-
 }
