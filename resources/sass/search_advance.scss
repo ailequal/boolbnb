@@ -88,6 +88,9 @@ label {
     width: 100%;
     padding: 15px;
   }
+  ul{
+    list-style: none;
+  }
 }
 .flex_details h4 {
   text-align: center;
@@ -116,12 +119,25 @@ label {
     width: 100%;
     padding: 15px;
   }
+  ul {
+    list-style: none;
+  }
 }
 .special_promo h4 {
   text-align: center;
   padding-bottom: 10px;
   font-size: 28px;
   font-weight: 700;
+}
+.special_promo ul li {
+  font-size: 20px;
+}
+.route_link {
+  color: #212529;
+}
+.route_link:hover {
+  text-decoration: none;
+  color: #212529;
 }
 
 

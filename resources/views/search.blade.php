@@ -90,7 +90,7 @@
 					<input id="breakfast" type="checkbox" name="breakfast">
 				</li>
 				<li>
-					<label for="view"><a href="#"><i class="icone fas fa-archway"></i></a> Camera con vista</label>
+					<label for="view"><a href="#"><i class="icone fas fa-mountain"></i></a> Camera con vista</label>
 					<input id="view" type="checkbox" name="view">
 				</li>
 			</ul>
@@ -111,36 +111,42 @@
 	<input id="city" type="hidden" value="{{$data['city']}}">
 	{{-- handlebars --}}
 	<script id="flat-template" type="text/x-handlebars-template">
-		<div class="flex_details">
-			<img class="images_search" src="https://toscano.azureedge.net/imm/rszo_eb2c31d2-257c-4a49-aaa8-b83e7d17719c.jpg" alt="">
-			  <div class="entry">
-				<h4>@{{'title'}}</h4>
-				<div class="body">
-					<ul>
+		<a class="route_link" href="http://127.0.0.1:8000/flats/@{{'slug'}}">
+			<div class="flex_details">
+				<img class="images_search" src="https://toscano.azureedge.net/imm/rszo_eb2c31d2-257c-4a49-aaa8-b83e7d17719c.jpg" alt="">
+				  <div class="entry">
+					<h4>@{{'title'}}</h4>
+					<div class="body">
+						<ul>
+							<li>Citta': @{{'city'}}</li>
+							<li>Stanze: @{{'rooms'}}</li>
+							<li>Bagni: @{{'bathrooms'}}</li>
+							<li>Letti: @{{'beds'}}</li>
+							<li>Descrizione: @{{'description'}}</li>
+						</ul>
+					</div>
+				  </div>
+			</div>
+		</a>
+	</script>
+	<script id="flatPromo-template" type="text/x-handlebars-template">
+		<a class="route_link" href="http://127.0.0.1:8000/flats/@{{'slug'}}">
+			<div class="special_promo">
+				<img class="images_search" src="https://toscano.azureedge.net/imm/rszo_eb2c31d2-257c-4a49-aaa8-b83e7d17719c.jpg" alt="">
+				<div class="entry">
+					<h4>@{{'title'}}</h4>
+					<div class="body">
+					  <ul>
 						<li>Citta': @{{'city'}}</li>
 						<li>Stanze: @{{'rooms'}}</li>
 						<li>Bagni: @{{'bathrooms'}}</li>
 						<li>Letti: @{{'beds'}}</li>
-					</ul>
+						<li>Descrizione: @{{'description'}}</li>
+					  </ul>
+					</div>
 				</div>
-			  </div>
-		</div>
-	</script>
-	<script id="flatPromo-template" type="text/x-handlebars-template">
-		<div class="special_promo">
-			<img class="images_search" src="https://toscano.azureedge.net/imm/rszo_eb2c31d2-257c-4a49-aaa8-b83e7d17719c.jpg" alt="">
-			<div class="entry">
-			    <h4>@{{'title'}}</h4>
-			    <div class="body">
-			      <ul>
-					<li>Citta': @{{'city'}}</li>
-					<li>Stanze: @{{'rooms'}}</li>
-					<li>Bagni: @{{'bathrooms'}}</li>
-					<li>Letti: @{{'beds'}}</li>
-				  </ul>
-			    </div>
-		    </div>
-		</div>
+			</div>
+		</a>
 	</script>
 	<script src="{{asset('js/search.js')}}"></script>
 </div>

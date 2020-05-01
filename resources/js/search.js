@@ -123,7 +123,10 @@ function search(city, lat, long) {
                             city: flat.city,
                             rooms: flat.rooms,
                             bathrooms: flat.bathrooms,
-                            beds: flat.beds
+                            beds: flat.beds,
+                            description: flat.description,
+                            slug: flat.slug
+                            
                         };
                         var html = template(context);
                         $('.flats').append(html);
@@ -144,7 +147,11 @@ function search(city, lat, long) {
                         var context = {
                             title: flatPromo.title,
                             city: flatPromo.city,
-                            rooms: flatPromo.rooms
+                            rooms: flatPromo.rooms,
+                            bathrooms: flatPromo.bathrooms,
+                            beds: flatPromo.beds,
+                            description: flatPromo.description,
+                            slug: flatPromo.slug
                         };
                         var html = template(context);
                         $('.flatsPromo').append(html);
@@ -199,7 +206,11 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
                         var context = {
                             title: flat.title,
                             city: flat.city,
-                            rooms: flat.rooms
+                            rooms: flat.rooms,
+                            bathrooms: flat.bathrooms,
+                            beds: flat.beds,
+                            description: flat.description,
+                            slug: flat.slug
                         };
                         var html = template(context);
                         $('.flats').append(html);
@@ -220,7 +231,11 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
                         var context = {
                             title: flatPromo.title,
                             city: flatPromo.city,
-                            rooms: flatPromo.rooms
+                            rooms: flatPromo.rooms,
+                            bathrooms: flatPromo.bathrooms,
+                            beds: flatPromo.beds,
+                            description: flatPromo.description,
+                            slug: flatPromo.slug
                         };
                         var html = template(context);
                         $('.flatsPromo').append(html);
