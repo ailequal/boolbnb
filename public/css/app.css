@@ -10909,8 +10909,51 @@ header nav .nav-right ul li {
   margin-left: 15px;
 }
 
+header nav .nav-right ul .user {
+  position: relative;
+}
+
+header nav .nav-right ul .user .dropdown {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+header nav .nav-right ul .user .dropdown ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+}
+
+header nav .nav-right ul .user .dropdown ul li {
+  margin: 10px 0 0 0;
+}
+
+header nav .nav-right ul .user:hover .dropdown {
+  display: inline-block;
+}
+
 header nav .nav-right ul .search-bar {
-  border-radius: 2px;
+  width: 10px;
+  margin: 0 10px 0 0;
+  border: 2px solid #ff385c;
+  border-radius: 4px;
+  padding: 6px 6px 6px 30px;
+  background-color: white;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/a/ad/VisualEditor_-_Icon_-_Search-big.svg");
+  background-position: 5px 5px;
+  background-repeat: no-repeat;
+  font-size: 14px;
+  transition: width 0.4s ease-in-out;
+}
+
+header nav .nav-right ul .search-bar:focus {
+  width: 180px;
+  outline-width: 0;
+  outline: none;
 }
 
 header nav .nav-right ul .search {
@@ -11126,9 +11169,9 @@ h1 {
 }
 
 .list-flat ul .flat-box .box-image {
-  width: 300px;
+  flex-basis: 30%;
   margin-right: 15px;
-  padding: 10px;
+  padding: 5px;
 }
 
 .list-flat ul .flat-box .box-image img {
@@ -11137,8 +11180,9 @@ h1 {
 }
 
 .list-flat ul .flat-box .box-info {
-  max-width: 700px;
+  flex-basis: 55%;
   margin-right: 50px;
+  padding: 5px;
 }
 
 .list-flat ul .flat-box .box-info a {
@@ -11155,6 +11199,7 @@ h1 {
 }
 
 .list-flat ul .flat-box .box-button {
+  flex-basis: 15%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -11176,8 +11221,9 @@ h1 {
 }
 
 @media screen and (max-width: 1024px) {
-  .list-flat ul .flat-box {
-    padding: 5px 5px 0 0;
+  .list-flat ul .flat-box .box-image {
+    width: 40%;
+    margin: 0 auto;
   }
 }
 
@@ -11188,8 +11234,9 @@ h1 {
   }
 
   .list-flat ul .flat-box .box-image {
-    width: 80%;
+    width: 75%;
     margin: 0 auto;
+    padding: 15px;
   }
 
   .list-flat ul .flat-box .box-info {
@@ -11217,8 +11264,12 @@ h1 {
   color: #888888;
 }
 
-.hide {
+.hide-map {
   display: none;
+}
+
+.block {
+  display: block;
 }
 
 .map-button {
@@ -11233,32 +11284,49 @@ h1 {
   cursor: help;
 }
 
-.create-container {
-  width: calc(100% -20px);
-  max-width: 1200px;
-  text-align: center;
+.top-container.cont {
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 20px);
+  height: 400px;
+  margin: auto;
 }
 
-.create-container .left-container {
-  width: 100%;
-}
-
-.create-container .left-container .form-group {
-  margin-bottom: 30px;
-}
-
-.create-container .left-container .form-group .label {
-  display: inline-block;
-  width: 100px;
-  margin-right: 40px;
-}
-
-.create-container .left-container .form-group span .box {
+.top-container.cont .top-box {
+  display: flex;
+  width: calc(50% - 10px);
+  height: 300px;
   border: 2px solid #ff385c;
-  border-radius: 5px;
 }
 
-.create-container .left-container .form-group input[type=file] {
+.top-container.cont .top-box.address-check {
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.top-container.cont #map-map {
+  width: 500px;
+  height: 300px;
+}
+
+.top-container.cont #map-map #map {
+  width: 500px;
+  height: 300px;
+}
+
+.medium-container.cont {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  width: calc(100% - 10px);
+  height: 300px;
+  margin: auto;
+  border: 2px solid #ff385c;
+}
+
+.medium-container.cont input[type=file] {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -11269,8 +11337,8 @@ h1 {
   border: 0;
 }
 
-.create-container .left-container .form-group .cover-custom {
-  margin-left: -50px;
+.medium-container.cont .cover-custom {
+  padding-left: 10px;
   width: 220px;
   height: 45px;
   line-height: 45px;
@@ -11282,7 +11350,7 @@ h1 {
   background-size: 200% auto;
 }
 
-.create-container .left-container .form-group .cover-custom:hover {
+.medium-container.cont .cover-custom:hover {
   color: white;
   border: 1px solid lightgrey;
   background-color: #92174d;
@@ -11290,17 +11358,26 @@ h1 {
   background-image: linear-gradient(to right, #ff385c 0%, #92174d 51%, #ff385c 100%);
 }
 
-.create-container .left-container .form-group.hide-flat {
+.bottom-container.cont {
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 20px);
+  height: 400px;
+  margin: auto;
+  font-size: 15px;
+}
+
+.bottom-container.cont .hide-flat {
   border: 2px solid #ff385c;
   margin: 30px 80px;
   padding: 10px;
 }
 
-.create-container .left-container .form-group.hide-flat .radius {
+.bottom-container.cont .hide-flat .radius {
   width: calc(50% - 10px);
 }
 
-.create-container .left-container .form-group.extra_services {
+.bottom-container.cont .extra-service-box {
   margin: 30px 60px;
   display: flex;
   flex-wrap: wrap;
@@ -11309,34 +11386,24 @@ h1 {
   text-align: center;
 }
 
-.create-container .left-container .form-group.extra_services .extra_services_box {
+.bottom-container.cont .extra-service-box .extra_services_box {
   display: flex;
   flex-wrap: wrap;
   width: calc(100% / 3 - 10px);
 }
 
-.create-container .left-container .form-group.extra_services .extra_services_box span {
+.bottom-container.cont .extra-service-box .extra_services_box span {
   text-align: center;
 }
 
-.create-container .left-container .form-group.extra_services .extra_services_box span i {
+.bottom-container.cont .extra-service-box .extra_services_box span i {
   color: #ff385c;
   margin-right: 5px;
 }
 
-.create-container .right-container {
-  position: relative;
-  width: 100%;
-  height: 180vh;
-}
-
-.create-container .right-container #map {
-  position: fixed;
-  border: 10px solid #ff385c;
-  top: 120px;
-  right: 50px;
-  width: 50%;
-  height: 400px;
+.submit-box {
+  margin: auto;
+  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -11861,7 +11928,6 @@ label .category {
 
 .main-container .divider-box hr {
   width: 30%;
-  margin: 0 auto;
   border-top: 2px solid lightgrey;
 }
 

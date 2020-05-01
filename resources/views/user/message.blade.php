@@ -1,11 +1,11 @@
 @extends('layouts.boolbnb')
-
 @section('head')
 	<script src="http://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
 @endsection
 
 @section('main')
 <div class="main-container">
+	{{-- Header --}}
 	<div class="divider-box">
 		<hr>
 		<div class="head-title">
@@ -13,7 +13,7 @@
 		</div>
 		<hr>
 	</div>
-
+	{{-- Il box dei messaggi --}}
 	<div class="messages-box container">
 		<ul>
 			@php
@@ -35,7 +35,7 @@
 							<div class="hidden-box">
 								<p class="message-text">"{{$message->message}}"
 								</p>
-								<p >Appartamento: {{$message->flat->title}}
+								<p>Appartamento: {{$message->flat->title}}
 								</p>
 							</div>
 							{{-- Bottone Mostra meno --}}
@@ -55,7 +55,7 @@
 	</div>
 </div>
 @endsection
-
+{{-- Script --}}
 @section('script')
 <script src="{{asset('js/message.js')}}"></script>
 @endsection

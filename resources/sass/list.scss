@@ -25,6 +25,7 @@
     .flat-box{
       display: flex;
       align-items: center;
+
       border: 1px solid lightgrey;
       border-radius: 10px;
       box-shadow: 6px 7px 10px -4px rgba(0,0,0,0.60);
@@ -33,17 +34,22 @@
       }
 
       .box-image{
-        width: 300px;
+        // flex-basis: 300px;
+        // width: 300px;
+        flex-basis: 30%;
         margin-right: 15px;
-        padding: 10px;
+        padding: 5px;
         img{
           width: 100%;
           border-radius: 10px;
         }
       }
       .box-info{
-        max-width: 700px;
+        // flex-basis: 700px;
+        // max-width: 700px;
+        flex-basis: 55%;
         margin-right: 50px;
+        padding: 5px;
         a{
           color: black;
           &:hover{
@@ -56,26 +62,12 @@
         }
       }
       .box-button{
+        // flex-basis: auto;
+        flex-basis: 15%;
         display: flex;
         align-items: center;
         flex-direction: column;
         margin-top: 10px;
-        // a .info-btn{
-        //     line-height: 30px;
-        //     background-color: $mainColor;
-        //     border: 1px solid lightgrey;
-        //     border-radius: 10px;
-        //     color: black;
-        //     transition: 0.6s;
-        //     background-size: 200% auto;
-        //   &:hover{
-        //     color: white;
-        //     background-color: $secondaryColor;
-        //     background-position: right center;
-        //     background-image: linear-gradient(to right, $mainColor 0%, $secondaryColor 51%, $mainColor 100%);
-        //     // background-image: linear-gradient(to right, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% );
-        //     }
-        //   }
           .btn-danger{
             line-height: 30px;
             transition: 0.6s;
@@ -96,8 +88,16 @@
 
 // MEDIA QUERY
 @media screen and (max-width: 1024px) {
-  .list-flat ul .flat-box{
-    padding: 5px 5px 0 0;
+  .list-flat ul {
+    .flat-box{
+
+      .box-image {
+        width: 40%;
+        margin: 0 auto;
+
+      }
+    }
+
   }
 }
 
@@ -107,8 +107,9 @@
     text-align: center;
 
     .box-image{
-      width: 80%;
+      width: 75%;
       margin: 0 auto;
+      padding: 15px;
     }
 
     .box-info{
