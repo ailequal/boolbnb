@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
     integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
   @yield('head')
@@ -16,12 +16,12 @@
   <header class="container">
     <nav>
       <div class="nav-left">
-      <a href="{{route('my-home')}}">Boolbnb</a>
+        <a href="{{route('my-home')}}">Boolbnb</a>
       </div>
       <div class="nav-right">
         <ul>
           <li>
-          <form action="{{route('search')}}" method="POST">
+            <form action="{{route('search')}}" method="POST">
               @csrf
               @method('POST')
               <input id="search-bar" class="search-bar" type="text" name="city" value="">
@@ -30,8 +30,23 @@
           </li>
           @if (Route::has('login'))
           @auth
-          <li>
-          <a class="btn btn-primary" href="{{ route('account.index') }}">{{Auth::user()->name}}</a>
+          <li class="user">
+            <a class="btn btn-primary" href="#">{{Auth::user()->name}}</a>
+            <div class="dropdown">
+              <ul>
+                <li>
+                  <a class="btn btn-primary" href="{{ route('account.index') }}">Account</a>
+                </li>
+                <li>
+                  <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}</a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                  </form>
+                </li>
+              </ul>
+            </div>
           </li>
           @else
           <li>

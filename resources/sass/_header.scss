@@ -22,12 +22,40 @@ header {
             margin: 0;
             li {
                 margin-left: 15px;
+                // .btn:active {
+                //   border-color: #ff385c;
+                //   background-color: #ff385c;
+                //   color: white;
+                // }
+            }
+
+            .user {
+              position: relative;
+              .dropdown {
+                display: none;
+                position: absolute;
+                top: 40px;
+                left: 50%;
+                transform: translateX(-50%);
+                ul {
+                  display: flex;
+                  flex-direction: column;
+                  list-style: none;
+                  padding: 0;
+                  li {
+                    margin: 10px 0 0 0;
+                  }
+                }
+              }
+              &:hover .dropdown {
+                display: inline-block;
+              }
             }
 
             .search-bar {
               width: 10px;
               margin: 0 10px 0 0;
-              border: 2px solid #ccc;
+              border: 2px solid #ff385c;
               border-radius: 4px;
               padding: 6px 6px 6px 30px;
               background-color: white;
@@ -39,6 +67,8 @@ header {
               transition: width 0.4s ease-in-out;
               &:focus {
                 width: 180px;
+                outline-width: 0; // per chrome
+                outline: none; // per safari
               }
             }
 
