@@ -23,3 +23,5 @@ mix.js('resources/js/search.js', 'public/js');
 mix.js('resources/js/stat.js', 'public/js');
 
 mix.js('resources/js/message.js', 'public/js');
+
+mix.js('resources/js/_header.js', 'public/js');

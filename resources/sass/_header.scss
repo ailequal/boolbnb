@@ -4,7 +4,7 @@ header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 10px;
+        padding: 10px 0;
 
         .nav-left a {
             color: rgb(255, 56, 92);
@@ -27,6 +27,14 @@ header {
                 //   background-color: #ff385c;
                 //   color: white;
                 // }
+                form {
+                  input.search-btn {
+                    color:white;
+                    background-color: #ff385c;
+                    opacity: 1;
+                    border: 1px solid #ff385c;
+                  }
+                }
             }
 
             .hamburger-icon {
@@ -74,7 +82,8 @@ header {
                 font-size: 14px;
                 -webkit-transition: width 0.4s ease-in-out;
                 transition: width 0.4s ease-in-out;
-                &:focus {
+                cursor: pointer;
+                &:hover {
                     width: 180px;
                     outline-width: 0; // per chrome
                     outline: none; // per safari
@@ -103,6 +112,12 @@ header {
                 outline: none; // per safari
             }
         }
+          input.search-btn {
+            color:white;
+            background-color: #ff385c;
+            opacity: 1;
+            border: 1px solid #ff385c;
+          }
     }
 }
 

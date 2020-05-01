@@ -24,11 +24,11 @@
       <div class="nav-right">
         <ul>
           <li>
-            <form action="{{route('search')}}" method="POST">
+            <form class="search-form-desktop" action="{{route('search')}}" method="POST">
               @csrf
               @method('POST')
               <input class="search-bar" type="text" name="city" value="">
-              <input type="submit" class="btn btn-primary" value="Cerca">
+              <input type="submit" class="btn btn-primary search-btn" value="Cerca">
             </form>
           </li>
           @if (Route::has('login'))
@@ -68,11 +68,11 @@
     </nav>
 
     <div class="search-mobile">
-      <form action="{{route('search')}}" method="POST">
+      <form class="search-form-mobile" action="{{route('search')}}" method="POST">
         @csrf
         @method('POST')
         <input class="search-bar" type="text" name="city" value="">
-        <input type="submit" class="btn btn-primary" value="Cerca">
+        <input type="submit" class="btn btn-primary search-btn" value="Cerca">
       </form>
     </div>
 
@@ -95,10 +95,10 @@
           <li>
             <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form-mobile').submit();">
-            {{ __('Logout') }}</a>
-          <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-          </form>
+              {{ __('Logout') }}</a>
+            <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
           </li>
           @else
           <li>
@@ -115,4 +115,5 @@
     @include('partials.login')
     @include('partials.register')
     @yield('scripts')
+  <script src="{{asset('js/_header.js')}}"></script>
   </header>
