@@ -1,71 +1,78 @@
-header{
-  // height: 100px;
-    nav{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px;
-
-
-      .nav-left a{
-        color: rgb(255, 56, 92);
-        font-size: 30px;
-
-        &:hover{
-          text-decoration: none;
-        }
-      }
-
-      .nav-right ul{
-        list-style: none;
+header {
+    // height: 100px;
+    nav {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        margin: 0;
-          li{
-            margin-left: 15px;
-          }
+        padding: 10px;
 
-        .search-bar{
-          border-radius: 2px;
+        .nav-left a {
+            color: rgb(255, 56, 92);
+            font-size: 30px;
+
+            &:hover {
+                text-decoration: none;
+            }
         }
 
-        .search{
-          border-radius: 2px;
+        .nav-right ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            margin: 0;
+            li {
+                margin-left: 15px;
+            }
+
+            .search-bar {
+              width: 10px;
+              margin: 0 10px 0 0;
+              border: 2px solid #ccc;
+              border-radius: 4px;
+              padding: 6px 6px 6px 30px;
+              background-color: white;
+              background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/ad/VisualEditor_-_Icon_-_Search-big.svg');
+              background-position: 5px 5px; 
+              background-repeat: no-repeat;
+              font-size: 14px;
+              -webkit-transition: width 0.4s ease-in-out;
+              transition: width 0.4s ease-in-out;
+              &:focus {
+                width: 180px;
+              }
+            }
+
+            .search {
+                border-radius: 2px;
+            }
         }
-      }
     }
 
-    .search-mobile{
-      text-align: center;
-      display: none;
-      margin-top: 30px;
+    .search-mobile {
+        text-align: center;
+        display: none;
+        margin-top: 30px;
 
-      .search-bar{
-        border-radius: 2px;
-      }
+        .search-bar {
+            border-radius: 2px;
+        }
 
-      .search{
-        border-radius: 2px;
-      }
+        .search {
+            border-radius: 2px;
+        }
     }
-
-
-
-
 }
 
 @media screen and (max-width: 768px) {
+    .nav-right .search-bar {
+        display: none;
+    }
 
-  .nav-right .search-bar{
-    display: none;
-  }
+    .nav-right .search {
+        display: none;
+    }
 
-  .nav-right .search{
-    display: none;
-  }
-
-  header .search-mobile{
-    display: block;
-  }
-
+    header .search-mobile {
+        display: block;
+    }
 }
