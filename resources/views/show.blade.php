@@ -171,7 +171,7 @@
         <div class="form-group">
           <span class="label"><label class='label' for="message">Messaggio</label></span>
           
-          <span><input class='input' type="text" name='message' placeholder="Messaggio" value="{{old('message')}}"></span>
+          <span><input class='input' type="text-area" name='message' placeholder="Messaggio" value="{{old('message')}}"></span>
           
         </div>
         <input type="hidden" name="id" value="{{$flats->id}}"> <input class='submit' type="submit" value="Submit">

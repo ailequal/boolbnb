@@ -115,7 +115,7 @@
     {{-- bottom container --}}
     <div class="bottom-container cont">
         <div class= "bottom-box hide-flat">
-            <p>Non sei sicuro del tuo annuncio? Puoi nasconderlo e renderlo pubblico più tardi<p>
+            <p>Vuoi Nascondere il tuo appartamento?<p>
                 <div class="radius-container">
                     <div class="radius">
                         <span>Yes</span>
@@ -129,7 +129,7 @@
         </div>
         <div class= "bottom-box extra-service-container">
             @foreach ($extra_services as $extra_service)
-                <div class="extra_services_box cont">
+                <div class="extra_services_box">
                     <span>@if($extra_service->name == 'wifi')
                         <span><i class="fas fa-wifi"></i></span>
                         @elseif($extra_service->name == 'smoking')
@@ -143,7 +143,7 @@
                         @elseif($extra_service->name == 'view')
                         <span><i class="fas fa-mountain"></i></span>
                         @endif{{$extra_service->name}}</span>
-                    <span><input type="checkbox" name="extra_service[]"value="{{$extra_service->id}}"></span>
+                    <span class="checkbox"><input type="checkbox" name="extra_service[]"value="{{$extra_service->id}}"></span>
                 </div>
                 @endforeach
         </div>
