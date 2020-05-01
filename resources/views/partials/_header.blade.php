@@ -10,7 +10,8 @@
     integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
   @yield('head')
   <script src="{{ asset('js/app.js') }}" defer></script>
-  <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
+    crossorigin="anonymous"></script>
   <title></title>
 </head>
 
@@ -50,18 +51,13 @@
               </ul>
             </div>
           </li>
-          <li class="hamburger-icon">
-            <a href="#"><i class="fas fa-bars"></i></a>
-          </li>
           @else
           <li>
-            @include('partials.login')
-            <a class="btn btn-primary"  href="#loginModal" style="cursor: pointer" data-toggle="modal">Accedi</a>
+            <a class="btn btn-primary" href="#loginModal" style="cursor: pointer" data-toggle="modal">Accedi</a>
           </li>
           @if (Route::has('register'))
           <li>
-            @include('partials.register')
-            <a class="btn btn-primary"  href="#registerModal" style="cursor: pointer" data-toggle="modal">Registrati</a>
+            <a class="btn btn-primary" href="#registerModal" style="cursor: pointer" data-toggle="modal">Registrati</a>
           </li>
           @endif
           @endauth
@@ -79,5 +75,44 @@
         <input type="submit" class="btn btn-primary" value="Cerca">
       </form>
     </div>
+
+    {{-- hamburger menu per mobile --}}
+    <nav class="hamburger-nav" role='navigation'>
+      <div id="menuToggle">
+        <input type="checkbox" />
+        <span></span>
+        <span></span>
+        <span></span>
+        <ul id="menu">
+          @if (Route::has('login'))
+          @auth
+          <li>
+            <a class="btn btn-primary" href="{{ route('account.index') }}">Account</a>
+          </li>
+          <li>
+            <a class="btn btn-primary" href="#">Impostazioni</a>
+          </li>
+          <li>
+            <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form-mobile').submit();">
+            {{ __('Logout') }}</a>
+          <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+          </form>
+          </li>
+          @else
+          <li>
+            <a class="btn btn-primary" href="#loginModal" style="cursor: pointer" data-toggle="modal">Accedi</a>
+          </li>
+          <li>
+            <a class="btn btn-primary" href="#registerModal" style="cursor: pointer" data-toggle="modal">Registrati</a>
+          </li>
+          @endauth
+          @endif
+        </ul>
+      </div>
+    </nav>
+    @include('partials.login')
+    @include('partials.register')
     @yield('scripts')
   </header>
