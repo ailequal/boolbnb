@@ -63,15 +63,7 @@
                             <input type="text" name="zip_code" placeholder="Cap" value="{{$flat->flat_address->zip_code}}"> 
                         </div>
                     
-                        <div class="form-group form-box insert-img">
-                            <span class= "label">
-                                <label class= "cover-custom" for="cover">
-                                    <input id="cover" type="file" name='cover' accept='image/*'>
-                                    Scegli l'immagine di copertina
-                                </label>
-                                
-                            </span>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
@@ -108,6 +100,15 @@
             <div class="form-group form-box">
                 <label for="beds">Numero di Letti</label>
                 <input type="number" name="beds" placeholder="Numero letti" value="{{$flat->beds}}">
+            </div>
+
+            <div class="form-group form-box insert-img">
+                <span class= "label">
+                    <label class= "cover-custom" for="cover">
+                        <input id="cover" type="file" name='cover' accept='image/*'>
+                        Scegli l'immagine di copertina
+                    </label>
+                </span>
             </div>
           
         </div>
