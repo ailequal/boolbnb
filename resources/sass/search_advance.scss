@@ -196,7 +196,7 @@ label {
       font-size: 18px;
   }
 }
-@media screen and (max-width: 550px) {
+@media screen and (min-width: 400px) {
   .generel_main {
     width: 100%;
     margin: auto;
