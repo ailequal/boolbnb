@@ -1,12 +1,37 @@
-.box-carousel{
-  width: 90%;
+.jumbotron{
+  position: relative;
+  padding-top: 2rem;
+  .promo-title{
+    h1{
+      text-align: center;
+    }
+  }
+  img{
+    width: 100%;
+  }
+  h2{
+    position: absolute;
+    left: 40%;
+    top: 35%;
+    transform: translate(-40%, -40%);
+    font-size: 50px;
+    text-shadow: 3px 3px 3px #484848;
+  }
+}
 
+.box-carousel{
+  // width: 90%;
+  max-width: 800px;
+  // height:360px;
   margin: 0 auto;
   border: 2px solid lightgrey;
   border-radius: 10px;
-  box-shadow: 6px 7px 10px -4px rgba(0,0,0,0.80);
+  box-shadow: 0 0 50px #5bbaff;
+  // box-shadow: 6px 7px 10px -4px #5bbaff;
 
   .carousel-inner img{
+    // width:640px;
+    // height: 450px;
     border-radius: 10px;
   }
 }

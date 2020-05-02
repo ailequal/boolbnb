@@ -1,6 +1,15 @@
 @extends('layouts.boolbnb')
  @section('main')
 {{-- PROVA CAROSELLO --}}
+<div class="jumbotron">
+  <div class="promo-title">
+    <h1>Dove ti porterà il tuo prossimo viaggio?</h1>
+  </div>
+  <img src="{{asset('images/il-tuo-prossimo-viaggio.jpg')}}"alt="Copertina">
+
+  <h2>Scoprilo con noi</h2>
+
+</div>
 <div class="container">
   {{-- CAROSELLO --}}
   <div class="">
