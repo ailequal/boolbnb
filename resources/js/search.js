@@ -126,6 +126,7 @@ function search(city, lat, long) {
                             bathrooms: flat.bathrooms,
                             beds: flat.beds,
                             description: flat.description,
+                            cover: window.location.protocol + '//' + window.location.host + '/storage/' + flat.cover,
                             slug: window.location.protocol + '//' + window.location.host + '/flats/' + flat.slug
                         };
                         var html = template(context);
@@ -151,6 +152,7 @@ function search(city, lat, long) {
                             bathrooms: flatPromo.bathrooms,
                             beds: flatPromo.beds,
                             description: flatPromo.description,
+                            cover: window.location.protocol + '//' + window.location.host + '/storage/' + flatPromo.cover,
                             slug: window.location.protocol + '//' + window.location.host + '/flats/' + flatPromo.slug
                         };
                         var html = template(context);
@@ -210,6 +212,7 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
                             bathrooms: flat.bathrooms,
                             beds: flat.beds,
                             description: flat.description,
+                            cover: window.location.protocol + '//' + window.location.host + '/storage/' + flat.cover,
                             slug: window.location.protocol + '//' + window.location.host + '/flats/' + flat.slug
                         };
                         var html = template(context);
@@ -235,6 +238,7 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
                             bathrooms: flatPromo.bathrooms,
                             beds: flatPromo.beds,
                             description: flatPromo.description,
+                            cover: window.location.protocol + '//' + window.location.host + '/storage/' + flatPromo.cover,
                             slug: window.location.protocol + '//' + window.location.host + '/flats/' + flatPromo.slug
                         };
                         var html = template(context);
