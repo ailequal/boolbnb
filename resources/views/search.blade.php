@@ -124,7 +124,7 @@
 							<li>Stanze: @{{'rooms'}}</li>
 							<li>Bagni: @{{'bathrooms'}}</li>
 							<li>Letti: @{{'beds'}}</li>
-							<li>Descrizione: @{{'description'}}</li>
+							{{-- <li>Descrizione: @{{'description'}}</li> --}}
 						</ul>
 					</div>
 				  </div>
@@ -143,7 +143,7 @@
 						<li>Stanze: @{{'rooms'}}</li>
 						<li>Bagni: @{{'bathrooms'}}</li>
 						<li>Letti: @{{'beds'}}</li>
-						<li>Descrizione: @{{'description'}}</li>
+						{{-- <li>Descrizione: @{{'description'}}</li> --}}
 					  </ul>
 					</div>
 				</div>
