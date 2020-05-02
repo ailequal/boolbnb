@@ -53,7 +53,7 @@ $(document).ready(function () {
             },
             success: function (data) {
                 if (data.results == 0) {
-                    // $('.empty h2').text('Nussun risulato trovato');
+                    // $('.empty h2').text('Nessun risulato trovato');
                 } else {
                     var lat = data.results[0].position.lat;
                     var long = data.results[0].position.lon;
@@ -81,7 +81,7 @@ function filter(city) {
         },
         success: function (data) {
             if (data.results == 0) {
-                // $('.empty h2').text('Nussun risulato trovato');
+                // $('.empty h2').text('Nessun risulato trovato');
             } else {
                 var lat = data.results[0].position.lat;
                 var long = data.results[0].position.lon;
@@ -108,7 +108,7 @@ function search(city, lat, long) {
         success: function (data, state) {
             if (data.flats.length > 0 || data.flatsPromo.length > 0) {
                 if (data.flats <= 0) {
-                    // $('.empty h2').text('Nussun risulato trovato');
+                    // $('.empty h2').text('Nessun risulato trovato');
                 } else {
                     // ordiare i data.flats per distance
                     data.flats.sort(function (a, b) {
@@ -134,7 +134,7 @@ function search(city, lat, long) {
                     };
                 };
                 if (data.flatsPromo <= 0) {
-                    // $('.empty h2').text('Nussun risulato trovato');
+                    // $('.empty h2').text('Nessun risulato trovato');
                 } else {
                     // ordiare i data.flats per distance
                     data.flatsPromo.sort(function (a, b) {
@@ -160,7 +160,7 @@ function search(city, lat, long) {
                     };
                 };
             } else {
-                $('.empty h2').text('Nussun risultato trovato');
+                $('.empty h2').text('Nessun risultato trovato');
             }
 
             // aggiungi i flat con info
@@ -246,7 +246,7 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
                     };
                 };
             } else {
-                $('.empty h2').text('Nussun risultato trovato');
+                $('.empty h2').text('Nessun risultato trovato');
             }
             $('#search-bar').val('');
         },

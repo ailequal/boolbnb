@@ -12,7 +12,7 @@
                     @csrf
 
                     <div class="form-group row">
-                        <label for="nameInput" class="col-md-4 col-form-label text-md-right">Username</label>
+                        <label for="nameInput" class="col-md-4 col-form-label text-md-right">Nome</label>
 
                         <div class="col-md-6">
                             <input id="nameInput" type="text" class="form-control" name="name" value="{{ old('name') }}"  autocomplete="name" autofocus>
@@ -24,7 +24,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="emailInput" class="col-md-4 col-form-label text-md-right">Indirizzo email</label>
+                        <label for="emailInput" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                         <div class="col-md-6">
                             <input id="emailInput" type="email" class="form-control" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -84,12 +84,10 @@ $(function () {
             },
             url: "{{ route('register') }}",
             data: formData,
-            success: () => window.location.assign("{{ route('account.index') }}"),
+            success: () => window.location.assign("{{ route('my-home') }}"),
             error: (response) => {
                 if(response.status === 422) {
                     let errors = response.responseJSON.errors;
-                    };
-                    console.log(errors);
                     Object.keys(errors).forEach(function (key) {
                         $("#" + key + "Input").addClass("is-invalid");
                         $("#" + key + "Error").children("strong").text(errors[key][0]);

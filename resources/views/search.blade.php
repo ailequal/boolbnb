@@ -99,11 +99,11 @@
 		<div class="button_padding">
 			<input class="btn button_padding button_center filter" type="button" value="Ricerca avanzata">
 		</div>
+		<div class="empty" style="margin-top: 20px">
+			<h2 style="text-align: center"></h2>
+		</div>
 	</div>
 	
-	<div class="empty">
-		<h2 style="margin-left: 38%"></h2>
-	</div>
 	<div class="flatsPromo">
 
 	</div>

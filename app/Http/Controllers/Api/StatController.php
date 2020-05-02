@@ -142,7 +142,6 @@ class StatController extends Controller
         for ($i=1; $i <= $days ; $i++) { 
             $daysArray[] = $i;
         }
-
         // calcolo messaggi totali
         $total = 0;
         foreach ($statsNew as $key => $statNew) {
