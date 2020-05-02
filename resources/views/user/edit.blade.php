@@ -62,8 +62,6 @@
                             <label for="zip_code">Cap</label>
                             <input type="text" name="zip_code" placeholder="Cap" value="{{$flat->flat_address->zip_code}}"> 
                         </div>
-                    
-                       
                     </div>
                 </div>
             </div>
@@ -87,9 +85,6 @@
                 <label for="price_day">Prezzo giornaliero</label>
                 <input type="text" name="price_day" placeholder="Prezzo giornaliero" value="{{$flat->price_day}}">
             </div>
-        
-          
-        
         </div>
         <div class="col-lg-6 col-md-12">
             <div class="form-group form-box">
@@ -118,7 +113,7 @@
        <div class="row">
             <div class="col-lg-6 col-md-12">
                 <div class="form-group form-box hide-flat-edit">
-                    <h2>Puoi rendere visibile il tuo appartamento in un secondo momento<</h2>
+                    <h2>Puoi rendere visibile il tuo appartamento in un secondo momento</h2>
                     <div class="radius-container">
                         <div class="radius">
                             <span>Yes</span>
