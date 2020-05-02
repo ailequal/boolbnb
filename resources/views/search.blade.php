@@ -101,7 +101,9 @@
 		</div>
 	</div>
 	
-	
+	<div class="empty">
+		<h2 style="margin-left: 38%"></h2>
+	</div>
 	<div class="flatsPromo">
 
 	</div>

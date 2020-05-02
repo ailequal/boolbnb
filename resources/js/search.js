@@ -7,6 +7,7 @@ $(document).ready(function () {
     filter(hiddenCity);
 
     $(document).on('click', '.filter', function () {
+        $('.empty h2').text('');
         $('.flats').html('');
         $('.flatsPromo').html('');
         var rooms = $('#rooms').val();
@@ -52,7 +53,7 @@ $(document).ready(function () {
             },
             success: function (data) {
                 if (data.results == 0) {
-                    alert('Citta\' non trovata');
+                    // $('.empty h2').text('Nussun risulato trovato');
                 } else {
                     var lat = data.results[0].position.lat;
                     var long = data.results[0].position.lon;
@@ -80,7 +81,7 @@ function filter(city) {
         },
         success: function (data) {
             if (data.results == 0) {
-                alert('Citta\' non trovata');
+                // $('.empty h2').text('Nussun risulato trovato');
             } else {
                 var lat = data.results[0].position.lat;
                 var long = data.results[0].position.lon;
@@ -107,7 +108,7 @@ function search(city, lat, long) {
         success: function (data, state) {
             if (data.flats.length > 0 || data.flatsPromo.length > 0) {
                 if (data.flats <= 0) {
-
+                    // $('.empty h2').text('Nussun risulato trovato');
                 } else {
                     // ordiare i data.flats per distance
                     data.flats.sort(function (a, b) {
@@ -133,7 +134,7 @@ function search(city, lat, long) {
                     };
                 };
                 if (data.flatsPromo <= 0) {
-
+                    // $('.empty h2').text('Nussun risulato trovato');
                 } else {
                     // ordiare i data.flats per distance
                     data.flatsPromo.sort(function (a, b) {
@@ -158,7 +159,7 @@ function search(city, lat, long) {
                     };
                 };
             } else {
-                alert('nessun risultato');
+                $('.empty h2').text('Nussun risultato trovato');
             }
 
             // aggiungi i flat con info
@@ -192,7 +193,7 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
 
             if (data.flats.length > 0 || data.flatsPromo.length > 0) {
                 if (data.flats <= 0) {
-
+                    // $('.empty h2').text('Nussun risulato trovato');
                 } else {
                     // ordiare i data.flats per distance
                     data.flats.sort(function (a, b) {
@@ -217,7 +218,7 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
                     };
                 };
                 if (data.flatsPromo <= 0) {
-
+                    // $('.empty h2').text('Nussun risulato trovato');
                 } else {
                     // ordiare i data.flats per distance
                     data.flatsPromo.sort(function (a, b) {
@@ -242,7 +243,7 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
                     };
                 };
             } else {
-                alert('nessun risultato');
+                $('.empty h2').text('Nussun risultato trovato');
             }
             $('#search-bar').val('');
         },

@@ -87,9 +87,7 @@ $(function () {
             success: () => window.location.assign("{{ route('account.index') }}"),
             error: (response) => {
                 if(response.status === 422) {
-                    let errors = {
-                        email: ['Questa email è gia stata utilizzata'],
-                        password: ['La password deve essere di almeno 8 caratteri', 'La conferma della password non corrisponde']
+                    let errors = response.responseJSON.errors;
                     };
                     console.log(errors);
                     Object.keys(errors).forEach(function (key) {

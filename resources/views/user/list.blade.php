@@ -17,6 +17,7 @@
    {{-- Lista appartamenti --}}
    <div class="list-flat container">
      <ul>
+       @if (!empty($flats[0]))
        @foreach ($flats as $flat)
           <li>
             <div class="flat-box mb-3">
@@ -52,6 +53,10 @@
             </div>
           </li>
         @endforeach
+           
+       @else
+           <h2 style="text-align: center">Non hai inserito ancora nessun appartamento</h2>
+       @endif
      </ul>
    </div>
  @endsection

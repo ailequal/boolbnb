@@ -1,6 +1,5 @@
 const $ = require('jquery');
 $(document).ready(function () {
-
   $(".button-show").click(function () {
      var id = $(this).closest('div').attr('id');
      $("#" + id + ' .hidden-box').show();

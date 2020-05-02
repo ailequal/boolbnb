@@ -19,6 +19,7 @@
 			@php
 				$i = 0;
 			@endphp
+			@if (!empty($userMessage))
 			@foreach ($userMessage as $message)
 				<li>
 					<div class="message">
@@ -46,11 +47,14 @@
 							</p>
 						</div>
 					</div>
-				</li>
+				</li>	
 				@php
 					$i++;
 				@endphp
 			@endforeach
+			@else
+				<h2 style="text-align: center">Nessun messaggio ricevuto</h2>
+			@endif
 		</ul>
 	</div>
 </div>
