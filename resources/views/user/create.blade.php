@@ -124,7 +124,7 @@
                             </span>
                             {{-- <input type="file" name='cover' accept='image/*'> --}}
                         </div>
-                        <div class="form-group form-box hide">
+                        <div class="form-group form-box hide-flat">
                             <label for="lat"></label>
                             <input class="lat" name="lat" type="hidden" value="">
                         </div>
@@ -139,11 +139,11 @@
         </div>
     </div>
     {{-- container bottom --}}
-    <div class="container cont-create">
+    <div class="container cont-create bottom-container">
         <div class="row">
             <div class= "col-lg-6 col-md-12">
                 <div class= "bottom-box hide-flat">
-                    <p>Vuoi Nascondere il tuo appartamento?<p>
+                    <h2>Vuoi Nascondere il tuo appartamento?</h2>
                         <div class="radius-container">
                             <div class="radius">
                                 <span>Yes</span>
@@ -158,6 +158,7 @@
 
             </div>
             <div class= "col-lg-6 col-md-12">
+                <h2>Aggiungi i servizi extra</h2>
                 <div class= "bottom-box extra-service-container">
                     @foreach ($extra_services as $extra_service)
                         <div class="extra_services_box">
