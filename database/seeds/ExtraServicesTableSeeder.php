@@ -21,8 +21,8 @@ class ExtraServicesTableSeeder extends Seeder
             'breakfast',
             'view'
         ];
-        for ($i=0; $i <= count($serviceName) -1; $i++) { 
 
+        for ($i=0; $i <= count($serviceName) -1; $i++) { 
             $newService = new Extra_Service;
             $newService->name = $serviceName[$i];
             $newService->save();

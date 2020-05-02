@@ -95,8 +95,8 @@ class SearchController extends Controller
             + sin(radians(" .$lat. ")) 
             * sin(radians(flats.lat))) AS distance"))
             ->having("distance", "<=", $radius)
-            ->join('extra_service_flat', 'flats.id', '=', 'extra_service_flat.flat_id')
-            ->join('extra_services', 'extra_service_flat.extra_service_id', '=', 'extra_services.id')
+            ->leftJoin('extra_service_flat', 'flats.id', '=', 'extra_service_flat.flat_id')
+            ->leftJoin('extra_services', 'extra_service_flat.extra_service_id', '=', 'extra_services.id')
             ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
             ->orderBy('code')
             ->leftJoin('flat_promo_service', 'flats.id', '=', 'flat_promo_service.flat_id')
@@ -114,7 +114,7 @@ class SearchController extends Controller
             })
             ->where('hidden', '=', 0)
             ->get();
-            
+
         // filtrare i flats sistemando i servizi extra
         // nuovo array per i flats con extra aggiornati
         $newFlats = [];
@@ -203,8 +203,8 @@ class SearchController extends Controller
             + sin(radians(" .$lat. ")) 
             * sin(radians(flats.lat))) AS distance"))
             ->having("distance", "<=", $radius)
-            ->join('extra_service_flat', 'flats.id', '=', 'extra_service_flat.flat_id')
-            ->join('extra_services', 'extra_service_flat.extra_service_id', '=', 'extra_services.id')
+            ->leftJoin('extra_service_flat', 'flats.id', '=', 'extra_service_flat.flat_id')
+            ->leftJoin('extra_services', 'extra_service_flat.extra_service_id', '=', 'extra_services.id')
             ->join('flat_addresses', 'flats.id', '=', 'flat_addresses.flat_id')
             ->join('flat_promo_service', 'flats.id', '=', 'flat_promo_service.flat_id')
             ->join('promo_services', 'flat_promo_service.promo_service_id', '=', 'promo_services.id')

@@ -13,11 +13,11 @@ class ImagesTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i < 40; $i++) { 
-            $newImage = new Image;
-            $newImage->flat_id = rand(1, 20);
-            $newImage->path_image = $faker->imageUrl(640, 480);
-            $newImage->save();
-        }
+        // for ($i=0; $i < 40; $i++) { 
+        //     $newImage = new Image;
+        //     $newImage->flat_id = rand(1, 20);
+        //     $newImage->path_image = $faker->imageUrl(640, 480);
+        //     $newImage->save();
+        // }
     }
 }

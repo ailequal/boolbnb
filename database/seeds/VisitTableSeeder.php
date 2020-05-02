@@ -4,9 +4,9 @@ use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use Carbon\Carbon;
 use App\Flat;
-use App\Message;
+use App\Visit;
 
-class MessagesTableSeeder extends Seeder
+class VisitTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class MessagesTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        // assegniamo messaggi random a tutti i flats
+        // assegniamo visite random a tutti i flats
         // richiamo tutti i flats
         $flats = Flat::all();
 
@@ -26,13 +26,11 @@ class MessagesTableSeeder extends Seeder
         for ($j=1; $j <= $totalMonth; $j++) { 
             // ciclio tutti i flats
             foreach ($flats as $flat) {
-                // per ogni flat assegno dai 30 ai 40 messaggi
+                // per ogni flat assegno dai 30 alle 40 visite
                 $e = random_int(30, 40);
                 for ($i=0; $i < $e; $i++) { 
-                    $newMessage = new Message;
-                    $newMessage->email = $faker->email();
-                    $newMessage->title = $faker->word();
-                    $newMessage->message = $faker->text(155);
+                    $newVisit = new Visit;
+                    $newVisit->ip_address = $faker->ipv4();
     
                     // prendi l'anno attuale
                     $year = Carbon::now()->year;
@@ -46,9 +44,9 @@ class MessagesTableSeeder extends Seeder
                     // prendi un giorno tra un range definito
                     $day = random_int(1, 28);
     
-                    $newMessage->created_at = $year . '-' . $month . '-' . $day . ' 12:00:00';
-                    $newMessage->updated_at = $year . '-' . $month . '-' . $day . ' 12:00:00';
-                    $flat->messages()->save($newMessage);
+                    $newVisit->created_at = $year . '-' . $month . '-' . $day . ' 12:00:00';
+                    $newVisit->updated_at = $year . '-' . $month . '-' . $day . ' 12:00:00';
+                    $flat->visits()->save($newVisit);
                 }
             }
         }

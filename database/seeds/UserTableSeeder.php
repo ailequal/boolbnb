@@ -14,20 +14,36 @@ class UserTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        // default user per test
-        $newUser = new User;
-        $newUser->name = 'Pippo';
-        $newUser->email = 'pippo@gmail.com';
-        $newUser->password = Hash::make('password');
-        $newUser->save();
+        // 5 utenti totali
+        $users = [
+            [
+                'Pippo',
+                'pippo@gmail.com'
+            ],
+            [
+                'Paperino',
+                'paperino@gmail.com'
+            ],
+            [
+                'Paperina',
+                'paperina@gmail.com'
+            ],
+            [
+                'Topolino',
+                'topolino@gmail.com'
+            ],
+            [
+                'Minnie',
+                'minnie@gmail.com'
+            ]
+        ];
 
-        // random users
-        for ($i=0; $i < 9; $i++) {
+        foreach ($users as $user) {
             $newUser = new User;
-            $newUser->name = $faker->name();
-            $newUser->email = $faker->email();
-            $newUser->password = Hash::make($faker->password());
+            $newUser->name = $user[0];
+            $newUser->email = $user[1];
+            $newUser->password = Hash::make('password');
             $newUser->save();
-          }
+        }
     }
 }

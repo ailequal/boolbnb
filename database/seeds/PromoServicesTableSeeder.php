@@ -33,6 +33,7 @@ class PromoServicesTableSeeder extends Seeder
                ]
   
           ];
+
           foreach ($services as $key => $service) {
             $newService = new Promo_Service;
             $newService->type = $service[0];
