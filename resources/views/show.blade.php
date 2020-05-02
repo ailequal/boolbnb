@@ -132,18 +132,18 @@
         @foreach ($flats->extra_service as $key => $extra)
           <div class='extra-box'>
            <h2>@if($extra->name == 'wifi')
-            <span><i class="fas fa-wifi"></i></span>
+            <span><i class="fas fa-wifi"></i></span>Wifi
             @elseif($extra->name == 'smoking')
-            <span><i class="fas fa-smoking"></i></span>
+            <span><i class="fas fa-smoking"></i></span>Fumatori
             @elseif($extra->name == 'parking')
-            <span><i class="fas fa-parking"></i></span>
+            <span><i class="fas fa-parking"></i></span>Parcheggio
             @elseif($extra->name == 'swimming_pool')
-            <span><i class="fas fa-swimming-pool"></i></span>
+            <span><i class="fas fa-swimming-pool"></i></span>Piscina
             @elseif($extra->name == 'breakfast')
-            <span><i class="fas fa-coffee"></i></span>
+            <span><i class="fas fa-coffee"></i></span>Colazione
             @elseif($extra->name == 'view')
-            <span><i class="fas fa-mountain"></i></span>
-            @endif{{$extra->name}}</h2>
+            <span><i class="fas fa-mountain"></i></span>Vista
+            @endif</h2>
           </div>
         @endforeach
     </div>
