@@ -115,7 +115,7 @@
 	<script id="flat-template" type="text/x-handlebars-template">
 		<a class="route_link" href="@{{'slug'}}">
 			<div class="flex_details">
-				<img src="@{{'cover'}}" alt="Copertina della casa">
+				<img class="images_search" src="@{{'cover'}}" alt="Copertina della casa">
 				  <div class="entry">
 					<h4>@{{'title'}}</h4>
 					<div class="body">
@@ -134,7 +134,7 @@
 	<script id="flatPromo-template" type="text/x-handlebars-template">
 		<a class="route_link" href="@{{'slug'}}">
 			<div class="special_promo">
-				<img src="@{{'cover'}}" alt="Copertina della casa">
+				<img class="images_search" src="@{{'cover'}}" alt="Copertina della casa">
 				<div class="entry">
 					<h4>@{{'title'}}</h4>
 					<div class="body">
