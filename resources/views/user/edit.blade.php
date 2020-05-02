@@ -116,47 +116,52 @@
    <div class="container cont-edit bottom-container-edit">
        <h2>Modifica i Servizi</h2>
        <div class="row">
-        <div class="col-lg-6 col-md-12">
-            <div class="form-group form-box hide-flat">
-                <label for="hidden">Nascosto</label>
-                <div class="radius">
-                    <span>Yes</span>
-                    <input type="radio" name="hidden"value="1" {{$flat->hidden == 1 ? 'checked' : ''}}>
-                </div>
-                <div class="radius">
-                    <span>No</span>
-                    <input type="radio" name="hidden"value="0" {{$flat->hidden == 0 ? 'checked' : ''}}>
-              </div>
-          </div>
-            </div>
-           <div class="col-lg-6 col-md-12 extra-edit">
-            <h2>Servizi extra</h2>
-
-            <div class="form-group form-box extra-service-container-edit">
-                <div class = "row">
-                    @foreach ($extra_services as $extra_service)
-                    <div class="extra_services_box_edit">
-                            <span>@if($extra_service->name == 'wifi')
-                                <span><i class="fas fa-wifi"></i></span>Wifi
-                                @elseif($extra_service->name == 'smoking')
-                                <span><i class="fas fa-smoking"></i></span>Fumatori
-                                @elseif($extra_service->name == 'parking')
-                                <span><i class="fas fa-parking"></i></span>Parcheggio
-                                @elseif($extra_service->name == 'swimming_pool')
-                                <span><i class="fas fa-swimming-pool"></i></span>Piscina
-                                @elseif($extra_service->name == 'breakfast')
-                                <span><i class="fas fa-coffee"></i></span>Colazione
-                                @elseif($extra_service->name == 'view')
-                                <span><i class="fas fa-mountain"></i></span>Vista
-                                @endif</span>
-                            <span class="checkbox"><input type="checkbox" name="extra_service[]"value="{{$extra_service->id}}"></span>
+            <div class="col-lg-6 col-md-12">
+                <div class="form-group form-box hide-flat-edit">
+                    <h2>Vuoi rendere visibile il tuo appartamento?</h2>
+                    <div class="radius-container">
+                        <div class="radius">
+                            <span>Yes</span>
+                            <input type="radio" name="hidden"value="1" {{$flat->hidden == 1 ? 'checked' : ''}}>
+                        </div>
+                        <div class="radius">
+                            <span>No</span>
+                            <input type="radio" name="hidden"value="0" {{$flat->hidden == 0 ? 'checked' : ''}}>
                         </div>
                     </div>
-                    @endforeach
                 </div>
-       </div>
-   </div>
-      </div>
-    <input type="submit" value="Submit">
+            </div>
+        
+            <div class="col-lg-6 col-md-12 extra-edit">
+                <h2>Servizi extra</h2>
+
+                <div class="form-group form-box extra-service-container-edit">
+                    <div class = "row">
+                        @foreach ($extra_services as $extra_service)
+                        <div class="extra_services_box_edit">
+                                <span>@if($extra_service->name == 'wifi')
+                                    <span><i class="fas fa-wifi"></i></span>Wifi
+                                    @elseif($extra_service->name == 'smoking')
+                                    <span><i class="fas fa-smoking"></i></span>Fumatori
+                                    @elseif($extra_service->name == 'parking')
+                                    <span><i class="fas fa-parking"></i></span>Parcheggio
+                                    @elseif($extra_service->name == 'swimming_pool')
+                                    <span><i class="fas fa-swimming-pool"></i></span>Piscina
+                                    @elseif($extra_service->name == 'breakfast')
+                                    <span><i class="fas fa-coffee"></i></span>Colazione
+                                    @elseif($extra_service->name == 'view')
+                                    <span><i class="fas fa-mountain"></i></span>Vista
+                                    @endif</span>
+                                <span class="checkbox"><input type="checkbox" name="extra_service[]"value="{{$extra_service->id}}"></span>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="submit-box">
+        <input class="btn btn-primary" id="submit"  type="submit" value="Submit">
+    </div>
 </form>
 @endsection

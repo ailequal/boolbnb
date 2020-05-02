@@ -1,11 +1,4 @@
 // general
-.submit-box{
-    text-align: center;
-    #submit{
-        margin-bottom: 30px;
-        background-color: $mainColor;
-    }
-}
 
 .form-box{
     display: flex;
@@ -80,7 +73,7 @@
 }
 .container.cont-create.bottom-container{
     .hide-flat{
-        
+
         text-align: center;
         padding: 10px;
         margin-bottom: 50px;
@@ -123,6 +116,13 @@
                 margin-left: 10px;
             }
         }
+    }
+}
+.submit-box{
+    text-align: center;
+    #submit{
+        margin-bottom: 30px;
+        background-color: $mainColor;
     }
 }
     

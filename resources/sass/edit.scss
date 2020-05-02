@@ -57,8 +57,7 @@
 }
 .container.cont-edit.bottom-container-edit{
    
-    .hide-flat{
-        
+    .form-group.form-box.hide-flat-edit{
         text-align: center;
         padding: 10px;
         margin-bottom: 50px;
@@ -102,6 +101,13 @@
                 margin-left: 10px;
             }
         }
+    }
+}
+.submit-box{
+    text-align: center;
+    #submit{
+        margin-bottom: 30px;
+        background-color: $mainColor;
     }
 }
 
