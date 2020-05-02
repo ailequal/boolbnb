@@ -53,63 +53,55 @@
           background-image: linear-gradient(to right, $mainColor 0%, $secondaryColor 51%, $mainColor 100%);
         }
     }
-
     
 }
-.extra-edit{
-    text-align: center;
-    h3{
-        margin: auto;
+.container.cont-edit.bottom-container-edit{
+   
+    .hide-flat{
+        
+        text-align: center;
+        padding: 10px;
+        margin-bottom: 50px;
+        p{
+            margin-bottom: 30px;
+        }
+        .radius-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 20px;
+            .radius {
+                width: calc(50% - 10px);
+            }
+        }  
     }
-    // .form-group.form-box.extra-service-container-edit{
-    //     display: flex;
-    //     // flex-direction: column;
-    //     flex-wrap: wrap;
-    //     align-items: center;
-    //     justify-content: space-around;
-    //     text-align: center;
-    //     .extra_services_box_edit{
+    .form-group.form-box.extra-service-container-edit{
+        
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+        padding: 20px;
+        text-align: center;
+        .extra_services_box_edit{
             
-    //         line-height: 80px;
-    //         display: flex;
-    //         flex-wrap: wrap;
-    //         width: calc(100% / 3 - 10px);
-    //         span{
-    //             text-align: center;
-    //             i{
-    //                 color: $mainColor;
-    //                 margin-right: 5px;
-    //             }
-    //         }
-    //         span.checkbox{
-    //             margin-left: 10px;
-    //         }
-    //     }
-    // }
+            line-height: 30px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            width: calc(100% / 3 - 10px);
+            span{
+                text-align: center;
+                i{
+                    color: $mainColor;
+                    margin-right: 5px;
+                }
+            }
+            span.checkbox{
+                margin-left: 10px;
+            }
+        }
+    }
 }
 
-// .extra-service-container-edit{
-//     display: flex;
-//     // flex-direction: column;
-//     flex-wrap: wrap;
-//     align-items: center;
-//     justify-content: space-around;
-//     text-align: center;
-//     .extra_services_box_edit{
-        
-//         line-height: 80px;
-//         display: flex;
-//         flex-wrap: wrap;
-//         width: calc(100% / 3 - 10px);
-//         span{
-//             text-align: center;
-//             i{
-//                 color: $mainColor;
-//                 margin-right: 5px;
-//             }
-//         }
-//         span.checkbox{
-//             margin-left: 10px;
-//         }
-//     }
-// }

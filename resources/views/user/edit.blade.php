@@ -113,42 +113,42 @@
         </div>
        </div>
    </div>
-   <div class="container cont-edit">
+   <div class="container cont-edit bottom-container-edit">
        <h2>Modifica i Servizi</h2>
        <div class="row">
         <div class="col-lg-6 col-md-12">
-            <div class="form-group form-box">
+            <div class="form-group form-box hide-flat">
                 <label for="hidden">Nascosto</label>
-                <div>
+                <div class="radius">
                     <span>Yes</span>
                     <input type="radio" name="hidden"value="1" {{$flat->hidden == 1 ? 'checked' : ''}}>
                 </div>
-                <div>
+                <div class="radius">
                     <span>No</span>
                     <input type="radio" name="hidden"value="0" {{$flat->hidden == 0 ? 'checked' : ''}}>
               </div>
           </div>
             </div>
            <div class="col-lg-6 col-md-12 extra-edit">
-            <h3>Servizi extra</h3>
+            <h2>Servizi extra</h2>
 
             <div class="form-group form-box extra-service-container-edit">
                 <div class = "row">
                     @foreach ($extra_services as $extra_service)
                     <div class="extra_services_box_edit">
                             <span>@if($extra_service->name == 'wifi')
-                                <span><i class="fas fa-wifi"></i></span>
+                                <span><i class="fas fa-wifi"></i></span>Wifi
                                 @elseif($extra_service->name == 'smoking')
-                                <span><i class="fas fa-smoking"></i></span>
+                                <span><i class="fas fa-smoking"></i></span>Fumatori
                                 @elseif($extra_service->name == 'parking')
-                                <span><i class="fas fa-parking"></i></span>
+                                <span><i class="fas fa-parking"></i></span>Parcheggio
                                 @elseif($extra_service->name == 'swimming_pool')
-                                <span><i class="fas fa-swimming-pool"></i></span>
+                                <span><i class="fas fa-swimming-pool"></i></span>Piscina
                                 @elseif($extra_service->name == 'breakfast')
-                                <span><i class="fas fa-coffee"></i></span>
+                                <span><i class="fas fa-coffee"></i></span>Colazione
                                 @elseif($extra_service->name == 'view')
-                                <span><i class="fas fa-mountain"></i></span>
-                                @endif{{$extra_service->name}}</span>
+                                <span><i class="fas fa-mountain"></i></span>Vista
+                                @endif</span>
                             <span class="checkbox"><input type="checkbox" name="extra_service[]"value="{{$extra_service->id}}"></span>
                         </div>
                     </div>

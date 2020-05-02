@@ -143,7 +143,7 @@
         <div class="row">
             <div class= "col-lg-6 col-md-12">
                 <div class= "bottom-box hide-flat">
-                    <h2>Vuoi Nascondere il tuo appartamento?</h2>
+                    <h2>Puoi rendere visibile il tuo appartamento in un secondo momento</h2>
                         <div class="radius-container">
                             <div class="radius">
                                 <span>Yes</span>
@@ -163,19 +163,19 @@
                     @foreach ($extra_services as $extra_service)
                         <div class="extra_services_box">
                             <span>@if($extra_service->name == 'wifi')
-                                <span><i class="fas fa-wifi"></i></span>
+                                <span><i class="fas fa-wifi"></i></span>Wifi
                                 @elseif($extra_service->name == 'smoking')
-                                <span><i class="fas fa-smoking"></i></span>
+                                <span><i class="fas fa-smoking"></i></span>Fumatori
                                 @elseif($extra_service->name == 'parking')
-                                <span><i class="fas fa-parking"></i></span>
+                                <span><i class="fas fa-parking"></i></span>Parcheggio
                                 @elseif($extra_service->name == 'swimming_pool')
-                                <span><i class="fas fa-swimming-pool"></i></span>
+                                <span><i class="fas fa-swimming-pool"></i></span>Piscina
                                 @elseif($extra_service->name == 'breakfast')
-                                <span><i class="fas fa-coffee"></i></span>
+                                <span><i class="fas fa-coffee"></i></span>Colazione
                                 @elseif($extra_service->name == 'view')
-                                <span><i class="fas fa-mountain"></i></span>
-                                @endif{{$extra_service->name}}</span>
-                            <span class="checkbox"><input type="checkbox" name="extra_service[]"value="{{$extra_service->id}}"></span>
+                                <span><i class="fas fa-mountain"></i></span>Vista
+                                @endif</span>
+                            <span class="checkbox"><input type="checkbox" name="extra_service[]" value="{{$extra_service->id}}"></span>
                         </div>
                         @endforeach
                 </div>
