@@ -8,6 +8,13 @@
     color: #888888;
     margin-bottom: 30px;
 }
+.form-group{
+    // display: flex;
+    // flex-direction: column;
+    // label{
+    //     text-align: center;
+    // }
+}
 
 .block{
     display: block;
@@ -111,6 +118,7 @@
     }
     .extra-service-container{
         display: flex;
+        // flex-direction: column;
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-around;
