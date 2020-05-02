@@ -158,7 +158,7 @@
 
             </div>
             <div class= "col-lg-6 col-md-12">
-                <h2>Aggiungi i servizi extra</h2>
+                <h2 id="s-extra">Aggiungi i servizi extra</h2>
                 <div class= "bottom-box extra-service-container">
                     @foreach ($extra_services as $extra_service)
                         <div class="extra_services_box">

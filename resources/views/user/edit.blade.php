@@ -28,14 +28,14 @@
                         </div>
                     
                         <div class="form-group form-box">
-                            <label for="rooms">Numero stanza</label>
-                            <input class="number" type="number" name="rooms" placeholder="Numero stanza" value="{{$flat->rooms}}">
+                            <label for="rooms">Numero di stanze</label>
+                            <input type="number" name="rooms" placeholder="Numero stanza" value="{{$flat->rooms}}">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="form-group form-box">
                             <label for="mq">Metri quadri</label>
-                            <input class="number" type="number" name="mq" placeholder="Metri quadri" value="{{$flat->mq}}">
+                            <input type="number" name="mq" placeholder="Metri quadri" value="{{$flat->mq}}">
                         </div>
                     
                         <div class="form-group form-box">
@@ -50,7 +50,7 @@
                     <div class= "col-lg-6 col-md-12">
                         <div class="form-group form-box">
                             <label for="street_number">Civico</label>
-                            <input class="number" type="text" name="street_number" placeholder="Civico" value="{{$flat->flat_address->street_number}}">
+                            <input type="text" name="street_number" placeholder="Civico" value="{{$flat->flat_address->street_number}}">
                         </div>
                         <div class="form-group form-box">
                             <label for="city">Città</label>
@@ -60,7 +60,7 @@
                     <div class= "col-lg-6 col-md-12">
                         <div class="form-group form-box">
                             <label for="zip_code">Cap</label>
-                            <input class="number" type="text" name="zip_code" placeholder="Cap" value="{{$flat->flat_address->zip_code}}"> 
+                            <input type="text" name="zip_code" placeholder="Cap" value="{{$flat->flat_address->zip_code}}"> 
                         </div>
                     
                         <div class="form-group form-box insert-img">
@@ -83,7 +83,7 @@
         <div class="col-lg-6 col-md-12">
             <div class="form-group form-box">
                 <label for="guest">Numero ospiti</label>
-                <input class="number" type="text" name="guest" placeholder="Numero ospiti" value="{{$flat->guest}}">
+                <input type="text" name="guest" placeholder="Numero ospiti" value="{{$flat->guest}}">
             </div>
         
             <div class="form-group form-box">
@@ -93,7 +93,7 @@
         
             <div class="form-group form-box">
                 <label for="price_day">Prezzo giornaliero</label>
-                <input class="number" type="text" name="price_day" placeholder="Prezzo giornaliero" value="{{$flat->price_day}}">
+                <input type="text" name="price_day" placeholder="Prezzo giornaliero" value="{{$flat->price_day}}">
             </div>
         
           
@@ -102,19 +102,18 @@
         <div class="col-lg-6 col-md-12">
             <div class="form-group form-box">
                 <label for="bathrooms">Numero bagni</label>
-                <input class="number" type="number" name="bathrooms" placeholder="Numero bagni" value="{{$flat->bathrooms}}">
+                <input type="number" name="bathrooms" placeholder="Numero bagni" value="{{$flat->bathrooms}}">
             </div>
 
             <div class="form-group form-box">
                 <label for="beds">Numero di Letti</label>
-                <input class="number" type="number" name="beds" placeholder="Numero letti" value="{{$flat->beds}}">
+                <input type="number" name="beds" placeholder="Numero letti" value="{{$flat->beds}}">
             </div>
           
         </div>
        </div>
    </div>
    <div class="container cont-edit bottom-container-edit">
-       <h2>Modifica i Servizi</h2>
        <div class="row">
             <div class="col-lg-6 col-md-12">
                 <div class="form-group form-box hide-flat-edit">
@@ -133,7 +132,7 @@
             </div>
         
             <div class="col-lg-6 col-md-12 extra-edit">
-                <h2>Servizi extra</h2>
+                <h2 id="s-extra">Servizi extra</h2>
 
                 <div class="form-group form-box extra-service-container-edit">
                     <div class = "row">

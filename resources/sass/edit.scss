@@ -8,12 +8,13 @@
         border: 1px solid $mainColor;
         border-radius: 5px;
         text-align: center;
-    }
-    input.number{
         width: 50%;
         margin: auto;
     }
     
+}
+#s-extra{
+    margin-top: 10px;
 }
 .cont-edit{
     border: 3px solid $mainColor;
@@ -75,8 +76,8 @@
             }
         }  
     }
+  
     .form-group.form-box.extra-service-container-edit{
-        
         display: flex;
         flex-wrap: wrap;
         align-items: center;
