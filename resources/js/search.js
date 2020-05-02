@@ -126,8 +126,7 @@ function search(city, lat, long) {
                             bathrooms: flat.bathrooms,
                             beds: flat.beds,
                             description: flat.description,
-                            slug: flat.slug
-                            
+                            slug: window.location.protocol + '//' + window.location.host + '/flats/' + flat.slug
                         };
                         var html = template(context);
                         $('.flats').append(html);
@@ -152,7 +151,7 @@ function search(city, lat, long) {
                             bathrooms: flatPromo.bathrooms,
                             beds: flatPromo.beds,
                             description: flatPromo.description,
-                            slug: flatPromo.slug
+                            slug: window.location.protocol + '//' + window.location.host + '/flats/' + flatPromo.slug
                         };
                         var html = template(context);
                         $('.flatsPromo').append(html);
@@ -211,7 +210,7 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
                             bathrooms: flat.bathrooms,
                             beds: flat.beds,
                             description: flat.description,
-                            slug: flat.slug
+                            slug: window.location.protocol + '//' + window.location.host + '/flats/' + flat.slug
                         };
                         var html = template(context);
                         $('.flats').append(html);
@@ -236,7 +235,7 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
                             bathrooms: flatPromo.bathrooms,
                             beds: flatPromo.beds,
                             description: flatPromo.description,
-                            slug: flatPromo.slug
+                            slug: window.location.protocol + '//' + window.location.host + '/flats/' + flatPromo.slug
                         };
                         var html = template(context);
                         $('.flatsPromo').append(html);

@@ -113,7 +113,7 @@
 	<input id="city" type="hidden" value="{{$data['city']}}">
 	{{-- handlebars --}}
 	<script id="flat-template" type="text/x-handlebars-template">
-		<a class="route_link" href="http://127.0.0.1:8000/flats/@{{'slug'}}">
+		<a class="route_link" href="@{{'slug'}}">
 			<div class="flex_details">
 				<img class="images_search" src="https://toscano.azureedge.net/imm/rszo_eb2c31d2-257c-4a49-aaa8-b83e7d17719c.jpg" alt="">
 				  <div class="entry">
@@ -132,7 +132,7 @@
 		</a>
 	</script>
 	<script id="flatPromo-template" type="text/x-handlebars-template">
-		<a class="route_link" href="http://127.0.0.1:8000/flats/@{{'slug'}}">
+		<a class="route_link" href="@{{'slug'}}">
 			<div class="special_promo">
 				<img class="images_search" src="https://toscano.azureedge.net/imm/rszo_eb2c31d2-257c-4a49-aaa8-b83e7d17719c.jpg" alt="">
 				<div class="entry">
