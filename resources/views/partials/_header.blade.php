@@ -19,7 +19,11 @@
   <header class="container">
     <nav>
       <div class="nav-left">
-        <a href="{{route('my-home')}}">Boolbnb</a>
+        <a href="{{route('my-home')}}">
+          <i class="far fa-compass"></i>
+          boolbnb
+          {{-- <i class="far fa-compass"></i> --}}
+        </a>
       </div>
       <div class="nav-right">
         <ul>
@@ -41,7 +45,7 @@
                   <a class="btn btn-primary" href="{{ route('account.index') }}">Account</a>
                 </li>
                 <li>
-                  @if (Auth::check())  
+                  @if (Auth::check())
                     @php
                         $id = Auth::User()->id;
                     @endphp
@@ -98,7 +102,7 @@
             <a class="btn btn-primary" href="{{ route('account.index') }}">Account</a>
           </li>
           <li>
-            @if (Auth::check())  
+            @if (Auth::check())
               @php
                   $id = Auth::User()->id;
               @endphp

@@ -8,45 +8,72 @@
   }
   img{
     width: 100%;
+    border-radius: 10px;
   }
-  h2{
+  .destination{
     position: absolute;
-    left: 40%;
+    left: 36%;
     top: 35%;
     transform: translate(-40%, -40%);
     font-size: 50px;
     text-shadow: 3px 3px 3px #484848;
   }
 }
+.container{
+  .container-carousel{
+    .promo h2{
+      margin-top: 80px;
+      margin-bottom: 40px;
+      text-align: center;
+      font-size: 35px;
+      line-height: 25px;
+      text-shadow: 1px 1px 2px #5bbaff;
+    }
+    // Carosello
+    .box-carousel{
+      // width: 90%;
+      max-width: 800px;
+      // height:360px;
+      margin: 0 auto;
+      border: 2px solid lightgrey;
+      border-radius: 10px;
+      box-shadow: 0 0 50px #5bbaff;
+      // box-shadow: 6px 7px 10px -4px #5bbaff;
 
-.box-carousel{
-  // width: 90%;
-  max-width: 800px;
-  // height:360px;
-  margin: 0 auto;
-  border: 2px solid lightgrey;
-  border-radius: 10px;
-  box-shadow: 0 0 50px #5bbaff;
-  // box-shadow: 6px 7px 10px -4px #5bbaff;
+      .carousel-inner img{
+        // width:640px;
+        // height: 450px;
+        width: 100%;
+        border-radius: 10px;
+      }
+    }
 
-  .carousel-inner img{
-    // width:640px;
-    // height: 450px;
-    border-radius: 10px;
+
   }
 }
-.promo{
-  margin-top: 100px;
-  text-align: center;
-  h1{
-    color: rgb(167, 25, 81);
-    margin-bottom: 30px;
-  }
 
-  .row {
-    display: flex;
-    align-items: center;
+// JUMBOTRON FLAT
+.jumbotron{
+  padding-top: 3rem;
+  h2{
+    text-align: center;
+    font-size: 35px;
+    line-height: 25px;
+    text-shadow: 1px 1px 2px rgb(167, 25, 81);
   }
+  .promo{
+    margin-top: 60px;
+
+    h1{
+      text-align: center;
+      color: rgb(167, 25, 81);
+      margin-bottom: 30px;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+    }
     a{
       margin-left: 10px;
       margin-right: 10px;
@@ -64,7 +91,7 @@
       }
 
       .box-flat{
-
+        min-height: 450px;
 
 
         h3{
@@ -84,10 +111,7 @@
         }
       }
     }
-
-
-
-
+  }
 }
 
 @media screen and (max-width: 768px) {

@@ -52,7 +52,7 @@
             </div>
           </li>
         @endforeach
-           
+
        @else
            <h2 style="text-align: center">Non hai inserito ancora nessun appartamento</h2>
        @endif
