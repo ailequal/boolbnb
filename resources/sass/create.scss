@@ -1,204 +1,80 @@
 // general
-.cont{
+.submit-box{
+    text-align: center;
+    #submit{
+        margin-bottom: 30px;
+        background-color: $mainColor;
+    }
+}
+
+.form-box{
     display: flex;
-    flex: wrap;
-    justify-content: space-around;
-    align-items: center;
-    font-weight: bold;
-    color: #888888;
-    margin-bottom: 30px;
-}
-.form-group{
-    // display: flex;
-    // flex-direction: column;
-    // label{
-    //     text-align: center;
-    // }
-}
-
-.block{
-    display: block;
+    flex-direction: column;
+    label{
+        text-align: center;
+    }
+    input{
+        border: 1px solid $mainColor;
+        border-radius: 5px;
+        text-align: center;
+    }
+    input.number{
+        width: 50%;
+        margin: auto;
+    }
 }
 
-#submit{
-    margin-bottom: 30px;
-    background-color: $mainColor;
-}
-
-.top-container.cont{
-    display: flex;
-    justify-content: space-between;
-    max-width:1200px;
-    height: 400px;
-    margin: auto;
-    .top-box{
-        display: flex;
-        
-        height: 300px;
-        &.address-check{
-            align-items: center;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
+.cont-create{
+    border: 3px solid $mainColor;
+    text-align: center;
+    padding: 20px;
+    h2{
+        color: $mainColor;
+        margin-bottom: 30px;
     }
     .map-button{
-        margin-bottom: 30px;
+        margin-top: 20px;
     }
     #map-map{
         width:100%;
-        height:300px;
-        margin-left: 20px;
+        height:250px;
         #map{
             width: 100%;
-            height:300px;
+            height:250px;
         }
     }
+
+    input[type="file"] {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        border: 0;
+    }
+    .cover-custom {
+        padding: 0 10px;
+        margin-top: 20px;
+        max-width: 200px;
+        height: 45px;
+        line-height: 45px;
+        border-radius: 10px;
+        color: white;
+        transition: 0.6s;
+        border: 1px solid lightgrey;
+        background-color: $mainColor;
+        background-size: 200% auto;
+        font-size: 12px;
+        &:hover{
+          color: white;
+          border: 1px solid lightgrey;
+          background-color: $secondaryColor;
+          background-position: right center;
+          background-image: linear-gradient(to right, $mainColor 0%, $secondaryColor 51%, $mainColor 100%);
+        }
+    }
+}
     
-}
-.medium-container.cont{
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-around;
-        padding: 10px;
-        max-width:1200px;
-        height: 300px;
-        margin: auto;
-        input[type="file"] {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0,0,0,0);
-            border: 0;
-        }
-        .cover-custom {
-            padding: 0 10px;
-            max-width: 200px;
-            height: 45px;
-            line-height: 45px;
-            border-radius: 10px;
-            color: white;
-            transition: 0.6s;
-            border: 1px solid lightgrey;
-            background-color: $mainColor;
-            background-size: 200% auto;
-            font-size: 12px;
-            &:hover{
-              color: white;
-              border: 1px solid lightgrey;
-              background-color: $secondaryColor;
-              background-position: right center;
-              background-image: linear-gradient(to right, $mainColor 0%, $secondaryColor 51%, $mainColor 100%);
-            }
-        }
-}
-.bottom-container.cont{
-    display: flex;
-    justify-content: space-between;
-    max-width:1200px;
-    margin: auto;
-    margin-bottom:30px;
-    font-size: 15px;
-    .hide-flat{
-        
-        text-align: center;
-        padding: 10px;
-        .radius-container{
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            text-align: center;
-            .radius {
-                width: calc(50% - 10px);
-            }
-        }  
-    }
-    .extra-service-container{
-        display: flex;
-        // flex-direction: column;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-around;
-        text-align: center;
-        .extra_services_box{
-            
-            line-height: 80px;
-            display: flex;
-            flex-wrap: wrap;
-            width: calc(100% / 3 - 10px);
-            span{
-                text-align: center;
-                i{
-                    color: $mainColor;
-                    margin-right: 5px;
-                }
-            }
-            span.checkbox{
-                margin-left: 10px;
-            }
-        }
-    }
-}
-.submit-box{
-    margin: auto;
-    text-align: center;
-}
-
-
-@media screen and (max-width: 930px){
-    .bottom-container.cont{
-        display:block;
-            .hide-falt{
-                text-align: center;
-                width: 100%;
-                margin-top: 30px;
-            }
-            .extra-service-container{
-                width: 100%;
-                text-align: center;
-                padding-left: 80px;
-                margin-top: 30px;
-                .extra_services_box{
-                    text-align: center;
-                    line-height: 30px;
-                    width: calc(100% / 2 - 10px);
-                }
-            }
-       }
-      
-    }
-
-@media screen and (max-width: 778px) {
-
-   .top-container.cont{
-        display: block;
-        margin-bottom:100px;
-        .address-check{
-        width: calc(100% - 40px);
-        }
-        #map-map{
-        width: calc(100% - 40px);
-            #map{
-                width: 100%;
-                max-height: 200px;
-            }
-        }
-   }
-   .medium-container.cont{
-       
-        width: 100%;
-   }
-
-}
-
-@media screen and (max-width: 506px) {
-    .medium-container.cont {
-        margin-bottom: 100px;
-    }
-}
-
-
 
