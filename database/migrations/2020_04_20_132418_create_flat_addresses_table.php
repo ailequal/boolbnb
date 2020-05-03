@@ -19,7 +19,7 @@ class CreateFlatAddressesTable extends Migration
             $table->foreign('flat_id')->references('id')->on('flats')->onDelete('cascade');
             $table->string('street');
             $table->integer('street_number');
-            $table->integer('zip_code');
+            $table->char('zip_code', 5);
             $table->string('city');
             $table->timestamps();
         });
