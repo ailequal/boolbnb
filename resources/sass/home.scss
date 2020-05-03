@@ -6,17 +6,20 @@
       text-align: center;
     }
   }
-  img{
-    width: 100%;
-    border-radius: 10px;
-  }
-  .destination{
-    position: absolute;
-    left: 36%;
-    top: 35%;
-    transform: translate(-40%, -40%);
-    font-size: 50px;
-    text-shadow: 3px 3px 3px #484848;
+  .image-contatiner{
+    position: relative;
+    img{
+      width: 100%;
+      border-radius: 10px;
+    }
+    .destination{
+      position: absolute;
+      left: 36%;
+      top: 10%;
+      transform: translate(-40%, -40%);
+      font-size: 50px;
+      text-shadow: 3px 3px 3px #484848;
+    }
   }
 }
 .container{
@@ -26,7 +29,7 @@
       margin-bottom: 40px;
       text-align: center;
       font-size: 35px;
-      line-height: 25px;
+      line-height: 35px;
       text-shadow: 1px 1px 2px #5bbaff;
     }
 
@@ -42,6 +45,10 @@
       // box-shadow: 6px 7px 10px -4px #5bbaff;
 
       .carousel-inner {
+        position: relative;
+        height: 530px;
+        overflow: hidden;
+
         a img{
           // width:640px;
           // height: 450px;
@@ -49,6 +56,8 @@
           border-radius: 10px;
         }
         .carousel-caption{
+          position: absolute;
+          top: 445px;
           h4{
             text-shadow: 1px 1px 2px black;
           }
@@ -64,7 +73,7 @@
   h2{
     text-align: center;
     font-size: 35px;
-    line-height: 25px;
+    line-height: 35px;
     text-shadow: 1px 1px 2px rgb(167, 25, 81);
   }
   .promo{
@@ -104,10 +113,14 @@
 
       .box-flat{
         min-height: 450px;
-        img{
-          height: 240px;
-          // width: 100%;
-          border-radius: 10px 10px 0 0;
+        border-radius: 10px 10px 0 0;
+        div{
+          width: 100%;
+          height: 230px;
+          overflow: hidden;
+          img{
+            width: 100%;
+          }
         }
         .flat-info{
           padding: 10px;
@@ -137,14 +150,92 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
+  //Federico
+  // .box-flat {
+  //   min-height: 600px;
+  //   img {
+  //     // height: 250px;
+  //   }
+  // }
+  //Tania
+  .jumbotron .promo a .box-flat div {
+    height: 210px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+//Tania
+  .jumbotron .promo a .box-flat div {
+    height: 180px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  //Federico
   .promo .row a{
     width: calc(100% / 2 - 20px);
+  }
+  .jumbotron .promo a .box-flat div {
+    height: 220px;
+  }
+  .container .container-carousel .box-carousel .carousel-inner{
+    height: 480px;
+  }
+  .container .container-carousel .box-carousel .carousel-inner .carousel-caption {
+    top: 400px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  //Tania
+  .promo .row a{
+    width: calc(100% / 2 - 20px);
+  }
+  .container .container-carousel .box-carousel .carousel-inner{
+    height: 395px;
+  }
+  .jumbotron .image-contatiner .destination{
+    font-size: 40px;
+  }
+  .jumbotron .promo a .box-flat div {
+    height: 180px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  //Federico
+  .promo .row a{
+    width: calc(100% - 20px);
+  }
+  //Tania
+  .container .container-carousel .box-carousel .carousel-inner{
+    height: 255px;
+  }
+
+  .jumbotron .image-contatiner .destination{
+    left: 30%;
+    top: 18%;
+    font-size: 38px;
+  }
+  .jumbotron .promo a .box-flat div {
+    height: 300px;
   }
 }
 
 @media screen and (max-width: 425px) {
+  //Tania
   .promo .row a{
     width: calc(100% - 20px);
+  }
+
+  // .container .container-carousel .box-carousel .carousel-inner{
+  //   height: 255px;
+  // }
+
+  .jumbotron .image-contatiner .destination{
+    left: 30%;
+    top: 17%;
+    font-size: 32px;
   }
 }

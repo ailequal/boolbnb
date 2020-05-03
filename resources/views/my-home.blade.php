@@ -5,8 +5,10 @@
   <div class="promo-title">
     <h1>Dove ti porterà il tuo prossimo viaggio?</h1>
   </div>
-  <img src="{{asset('images/il-tuo-prossimo-viaggio.jpg')}}"alt="Copertina">
-  <h2 class="destination">Scoprilo con noi</h2>
+  <div class="image-contatiner">
+    <img src="{{asset('images/il-tuo-prossimo-viaggio.jpg')}}"alt="Copertina">
+    <h2 class="destination">Scoprilo con noi</h2>
+  </div>
 </div>
 
 <div class="container">
@@ -18,11 +20,20 @@
     <div class="box-carousel">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-        </ol>
+          @php
+            $i = 0;
+          @endphp
+          @foreach ($flatsPromo as $promo)
+            @if ($i == 0)
+              <li data-target="#carouselExampleIndicators" data-slide-to="{{$i}}" class="active"></li>
+              @else
+              <li data-target="#carouselExampleIndicators" data-slide-to="{{$i}}" class=""></li>
+            @endif
+        @php
+          $i++;
+        @endphp
+        @endforeach
+      </ol>
 
         <div class="carousel-inner">
           @php
@@ -36,14 +47,12 @@
             @endif
             <a href="{{route('show.flat', $promo->slug)}}">
               <img class="d-block w-100 img-fluid" src="{{asset('storage/' . $promo->cover)}}" alt="Copertina della casa">
-              {{-- <img src="{{asset('storage/' . $promo->cover)}}" alt="Copertina della casa"> --}}
               <div class="carousel-caption d-none d-md-block">
-                <div>
                   <h4>{{$promo->title}}</h4>
                   {{-- <p>{{$promo->rooms}}</p>
                   <p>{{$promo->mq}}</p> --}}
-                 </div>
               </div>
+              {{-- <img src="{{asset('storage/' . $promo->cover)}}" alt="Copertina della casa"> --}}
            </a>
           </div>
           {{-- <div class="carousel-item">
@@ -85,7 +94,9 @@
           <a href="{{route('show.flat', $flat->slug)}}">
             <div class="box-flat">
               {{-- <img src="{{asset('images/world.jpg')}}" alt=""> --}}
-              <img src="{{asset('storage/' . $flat->cover)}}" alt="Copertina della casa">
+              <div>
+                <img src="{{asset('storage/' . $flat->cover)}}" alt="Copertina della casa">
+              </div>
               <div class="flat-info">
                 <h3>{{$flat->title}}</h3>
                 <p class="ellipsis">{{$flat->description}}</p>
@@ -96,10 +107,11 @@
     </div>
   </div>
 </div>
+@endsection
 
 
   {{-- PROVE --}}
-  <h1>promo flats</h1>
+  {{-- <h1>promo flats</h1>
    @foreach ($flatsPromo as $promo)
      <div>
         <p>{{$promo->title}}</p>
@@ -114,5 +126,4 @@
         <p>{{$flat->rooms}}</p>
         <p>{{$flat->mq}}</p>
       </div>
-     @endforeach
-@endsection
+     @endforeach --}}
