@@ -61,6 +61,7 @@ header {
                     top: 40px;
                     left: 50%;
                     transform: translateX(-50%);
+                    z-index: 3;
                     ul {
                         display: flex;
                         flex-direction: column;
