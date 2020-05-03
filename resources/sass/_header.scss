@@ -17,7 +17,6 @@ header {
         .nav-left a {
             color: rgb(255, 56, 92);
             font-size: 30px;
-
             &:hover {
                 text-decoration: none;
             }
@@ -267,7 +266,10 @@ header {
     // header nav {
     //     // margin: 20px auto 0 auto;
     // }
-
+    .nav-left a{
+        display: inline-block;
+        margin-top: 2px;
+    }
     .nav-right ul li {
         display: none;
     }
