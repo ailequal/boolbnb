@@ -120,7 +120,6 @@
 				<h4>Citt&agrave;: @{{'city'}}</h4>
 				<h4>Stanze: @{{'rooms'}}</h4>
 				<h4>Letti: @{{'beds'}}</h4>
-				<h4>Bagni: @{{'bathrooms'}}</h4>
 				<h4>Prezzo per giorno: @{{'price'}} &euro;</h4>
 			</div>
 		</a>
@@ -134,7 +133,6 @@
 				<h4>Citt&agrave;: @{{'city'}}</h4>
 				<h4>Stanze: @{{'rooms'}}</h4>
 				<h4>Letti: @{{'beds'}}</h4>
-				<h4>Bagni: @{{'bathrooms'}}</h4>
 				<h4>Prezzo per giorno: @{{'price'}} &euro;</h4>
 			</div>
 		</a>
