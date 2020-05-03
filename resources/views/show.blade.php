@@ -22,12 +22,10 @@
 
 {{-- container promo --}}
 
-
-  @php
+  @php 
     use Carbon\Carbon;
     $now = Carbon::now();
   @endphp
-
 {{-- controllo utente autenticato e se ha flat suo e se e' vuota la promo --}}
   @if (Auth::check() && Auth::User()->id == $flats->user_id && !empty($flats->promo_service[0]) == false)
   <div class="box-promo container">

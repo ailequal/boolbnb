@@ -26,13 +26,26 @@ class FlatController extends Controller
       ->where('end', '>', $now)
       ->where('hidden', '=', 0)
       ->get();
-      $flats = DB::table("flats")
-      ->select("*")
-      ->leftJoin('flat_promo_service', 'flats.id', '=', 'flat_promo_service.flat_id')
-      ->leftJoin('promo_services', 'flat_promo_service.promo_service_id', '=', 'promo_services.id')
-      ->where('promo_service_id', '=', null)
-      ->where('hidden', '=', 0)
-      ->get();
+
+      $flats = [];
+      $array = [];
+      
+      $flat = DB::table("flats")
+       ->select("*", 'flats.id AS code')
+       ->leftJoin('flat_promo_service', 'flats.id', '=', 'flat_promo_service.flat_id')
+       ->leftJoin('promo_services', 'flat_promo_service.promo_service_id', '=', 'promo_services.id')
+       ->where('promo_service_id', '=', null)
+       ->where('hidden', '=', 0)
+       ->get();
+    
+      for ($i=0; $i < count($flat); $i++) { 
+        $array[$i] = $flat[$i];
+      }
+      shuffle($array);
+      for ($i=0; $i < 6; $i++) { 
+        $flats[$i] = $array[$i]; 
+      }
+      
       return view ('my-home', compact('flats','flatsPromo'));
     }
 
