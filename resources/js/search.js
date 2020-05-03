@@ -8,8 +8,8 @@ $(document).ready(function () {
 
     $(document).on('click', '.filter', function () {
         $('.empty h2').text('');
-        $('.flats').html('');
-        $('.flatsPromo').html('');
+        $('.flats-standard-container').html('');
+        $('.flats-promo-container').html('');
         var rooms = $('#rooms').val();
         var beds = $('#beds').val();
         var radius = $('#radius').val();
@@ -126,11 +126,12 @@ function search(city, lat, long) {
                             bathrooms: flat.bathrooms,
                             beds: flat.beds,
                             description: flat.description,
+                            price: flat.price_day,
                             cover: window.location.protocol + '//' + window.location.host + '/storage/' + flat.cover,
                             slug: window.location.protocol + '//' + window.location.host + '/flats/' + flat.slug
                         };
                         var html = template(context);
-                        $('.flats').append(html);
+                        $('.flats-standard-container').append(html);
                     };
                 };
                 if (data.flatsPromo <= 0) {
@@ -152,11 +153,12 @@ function search(city, lat, long) {
                             bathrooms: flatPromo.bathrooms,
                             beds: flatPromo.beds,
                             description: flatPromo.description,
+                            price: flatPromo.price_day,
                             cover: window.location.protocol + '//' + window.location.host + '/storage/' + flatPromo.cover,
                             slug: window.location.protocol + '//' + window.location.host + '/flats/' + flatPromo.slug
                         };
                         var html = template(context);
-                        $('.flatsPromo').append(html);
+                        $('.flats-promo-container').append(html);
                     };
                 };
             } else {
@@ -212,11 +214,12 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
                             bathrooms: flat.bathrooms,
                             beds: flat.beds,
                             description: flat.description,
+                            price: flat.price_day,
                             cover: window.location.protocol + '//' + window.location.host + '/storage/' + flat.cover,
                             slug: window.location.protocol + '//' + window.location.host + '/flats/' + flat.slug
                         };
                         var html = template(context);
-                        $('.flats').append(html);
+                        $('.flats-standard-container').append(html);
                     };
                 };
                 if (data.flatsPromo <= 0) {
@@ -238,11 +241,12 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
                             bathrooms: flatPromo.bathrooms,
                             beds: flatPromo.beds,
                             description: flatPromo.description,
+                            price: flatPromo.price_day,
                             cover: window.location.protocol + '//' + window.location.host + '/storage/' + flatPromo.cover,
                             slug: window.location.protocol + '//' + window.location.host + '/flats/' + flatPromo.slug
                         };
                         var html = template(context);
-                        $('.flatsPromo').append(html);
+                        $('.flats-promo-container').append(html);
                     };
                 };
             } else {

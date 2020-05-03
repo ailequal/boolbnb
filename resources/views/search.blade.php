@@ -104,49 +104,39 @@
 		</div>
 	</div>
 	
-	<div class="flatsPromo">
-
+	<div class="flats-general-container flats-promo-container container ">
+		{{-- lista flats normali --}}
 	</div>
-	<div class="flats ">
-		{{-- lista tutti flat --}}
+	<div class="flats-general-container flats-standard-container container">
+		{{-- lista flats promo --}}
 	</div>
 	<input id="city" type="hidden" value="{{$data['city']}}">
 	{{-- handlebars --}}
 	<script id="flat-template" type="text/x-handlebars-template">
-		<a class="route_link" href="@{{'slug'}}">
-			<div class="flex_details">
-				<img class="images_search" src="@{{'cover'}}" alt="Copertina della casa">
-				  <div class="entry">
-					<h4>@{{'title'}}</h4>
-					<div class="body">
-						<ul>
-							<li>Citta': @{{'city'}}</li>
-							<li>Stanze: @{{'rooms'}}</li>
-							<li>Bagni: @{{'bathrooms'}}</li>
-							<li>Letti: @{{'beds'}}</li>
-							{{-- <li>Descrizione: @{{'description'}}</li> --}}
-						</ul>
-					</div>
-				  </div>
+		<a href="@{{'slug'}}" class="flat">
+			<div class="sx" style="background-image: url(@{{'cover'}});">
+			</div>
+			<div class="dx">
+				<h3>@{{'title'}}</h3>
+				<h4>Citt&agrave;: @{{'city'}}</h4>
+				<h4>Stanze: @{{'rooms'}}</h4>
+				<h4>Letti: @{{'beds'}}</h4>
+				<h4>Bagni: @{{'bathrooms'}}</h4>
+				<h4>Prezzo per giorno: @{{'price'}} &euro;</h4>
 			</div>
 		</a>
 	</script>
 	<script id="flatPromo-template" type="text/x-handlebars-template">
-		<a class="route_link" href="@{{'slug'}}">
-			<div class="special_promo">
-				<img class="images_search" src="@{{'cover'}}" alt="Copertina della casa">
-				<div class="entry">
-					<h4>@{{'title'}}</h4>
-					<div class="body">
-					  <ul>
-						<li>Citta': @{{'city'}}</li>
-						<li>Stanze: @{{'rooms'}}</li>
-						<li>Bagni: @{{'bathrooms'}}</li>
-						<li>Letti: @{{'beds'}}</li>
-						{{-- <li>Descrizione: @{{'description'}}</li> --}}
-					  </ul>
-					</div>
-				</div>
+		<a href="@{{'slug'}}" class="flat">
+			<div class="sx" style="background-image: url(@{{'cover'}});">
+			</div>
+			<div class="dx">
+				<h3>@{{'title'}}</h3>
+				<h4>Citt&agrave;: @{{'city'}}</h4>
+				<h4>Stanze: @{{'rooms'}}</h4>
+				<h4>Letti: @{{'beds'}}</h4>
+				<h4>Bagni: @{{'bathrooms'}}</h4>
+				<h4>Prezzo per giorno: @{{'price'}} &euro;</h4>
 			</div>
 		</a>
 	</script>
