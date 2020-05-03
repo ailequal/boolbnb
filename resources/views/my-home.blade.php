@@ -6,7 +6,7 @@
     <h1>Dove ti porterà il tuo prossimo viaggio?</h1>
   </div>
   <div class="image-contatiner">
-    <img src="{{asset('images/il-tuo-prossimo-viaggio.jpg')}}"alt="Copertina">
+    <img src="{{asset('storage/images/il-tuo-prossimo-viaggio.jpg')}}"alt="Copertina">
     <h2 class="destination">Scoprilo con noi</h2>
   </div>
 </div>
