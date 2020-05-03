@@ -48,25 +48,12 @@
             <a href="{{route('show.flat', $promo->slug)}}">
               <img class="d-block w-100 img-fluid" src="{{asset('storage/' . $promo->cover)}}" alt="Copertina della casa">
               <div class="carousel-caption d-none d-md-block">
-                  <h4>{{$promo->title}}</h4>
-                  {{-- <p>{{$promo->rooms}}</p>
-                  <p>{{$promo->mq}}</p> --}}
+                <h4>{{$promo->title}}</h4>
+                {{-- <p>{{$promo->rooms}}</p>
+                <p>{{$promo->mq}}</p> --}}
               </div>
-              {{-- <img src="{{asset('storage/' . $promo->cover)}}" alt="Copertina della casa"> --}}
-           </a>
+            </a>
           </div>
-          {{-- <div class="carousel-item">
-            <img class="d-block w-100" src="{{asset('images/appartamenti-porto-recanati_03.jpg')}}" alt="Second slide">
-          </div> --}}
-          {{-- <div class="carousel-item">
-            <img class="d-block w-100" src="{{asset('images/chalet-cortina.jpg')}}" alt="Third slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src="{{asset('images/appartamenti-porto-recanati_04.jpg')}}" alt="Fourth slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100" src="{{asset('images/Lago-Appartamento-Store-Arnhem-1.jpg')}}" alt="Fifth slide">
-          </div> --}}
           @php
             $i++;
           @endphp
