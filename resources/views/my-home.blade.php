@@ -54,6 +54,7 @@
     </div>
   </div>
 </div>
+
 {{-- JUMBOTRON FLAT --}}
 <div class="jumbotron">
   <h2>Vieni a scoprire altri appartamenti</h2>
@@ -62,65 +63,22 @@
           @foreach ($flats as $flat)
           <a href="{{route('show.flat', $flat->slug)}}">
             <div class="box-flat">
-              <img src="{{asset('images/world.jpg')}}" alt="">
-              {{-- <img src="{{asset('storage/' . $flat->cover)}}" alt="Copertina della casa"> --}}
-              <h3>{{$flat->title}}</h3>
-              <p>{{$flat->description}}</p>
+              {{-- <img src="{{asset('images/world.jpg')}}" alt=""> --}}
+              <img src="{{asset('storage/' . $flat->cover)}}" alt="Copertina della casa">
+              <div class="flat-info">
+                <h3>{{$flat->title}}</h3>
+                <p>{{$flat->description}}</p>
+              </div>
             </div>
           </a>
           @endforeach
-      {{-- <a href="{{route('show.flat', $flat->slug)}}">
-        <div class="box-flat">
-          <img src="{{asset('images/world.jpg')}}" alt="">
-          <h3>Titolo</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-      </a>
-      <a href="#">
-        <div class="box-flat">
-          <img src="{{asset('images/world.jpg')}}" alt="">
-          <h3>Titolo</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-      </a>
-      <a href="#">
-        <div class="box-flat">
-          <img src="{{asset('images/world.jpg')}}" alt="">
-          <h3>Titolo</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-      </a>
-
-      <a href="#">
-        <div class="box-flat">
-          <img src="{{asset('images/world.jpg')}}" alt="">
-          <h3>Titolo</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-      </a>
-
-      <a href="#">
-        <div class="box-flat">
-          <img src="{{asset('images/world.jpg')}}" alt="">
-          <h3>Titolo</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-      </a>
-
-      <a href="#">
-        <div class="box-flat">
-          <img src="{{asset('images/world.jpg')}}" alt="">
-          <h3>Titolo</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-      </a> --}}
     </div>
   </div>
 </div>
 
 
   {{-- PROVE --}}
-  {{-- <h1>promo flats</h1>
+  <h1>promo flats</h1>
    @foreach ($flatsPromo as $promo)
      <div>
         <p>{{$promo->title}}</p>
@@ -135,5 +93,5 @@
         <p>{{$flat->rooms}}</p>
         <p>{{$flat->mq}}</p>
       </div>
-     @endforeach --}}
+     @endforeach
 @endsection
