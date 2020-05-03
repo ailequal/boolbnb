@@ -17,8 +17,7 @@
   @if (isset($status)) @dd($status); {{$status}}
   @endif
 </div>
-<div class="box-cover container">
-  <img src="{{asset('storage/' . $flats->cover)}}" alt="Copertina della casa">
+<div class="box-cover container" style="background-image: url({{asset('storage/' . $flats->cover)}});">
 </div>
 
 {{-- container promo --}}
