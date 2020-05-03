@@ -3,13 +3,7 @@
   <div class="footer-left">
     <ul>
       <li>
-        <span>2020 Boolbnb All rights reserved</span>
-      </li>
-      <li>
-        <a href="#">Privacy</a>
-      </li>
-      <li>
-        <a href="#">Termini</a>
+        <span>Created with <i class="fas fa-heart"></i> by: <a href="https://github.com/TetyanaSergata" target="_blank">Tetyana Sergata</a>, <a href="https://github.com/stefanoriccio1" target="_blank">Stefano Riccio</a>, <a href="https://github.com/Manuel-Di-Pilla" target="_blank">Manuel Di Pilla</a>, <a href="https://github.com/ailequal" target="_blank">Elia Pari</a> e <a href="https://github.com/FedericoCaiello" target="_blank">Federico Caiello</a></span>
       </li>
     </ul>
   </div>
