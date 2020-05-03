@@ -102,7 +102,20 @@ class SearchController extends Controller
             ->orderBy('code')
             ->leftJoin('flat_promo_service', 'flats.id', '=', 'flat_promo_service.flat_id')
             ->leftJoin('promo_services', 'flat_promo_service.promo_service_id', '=', 'promo_services.id')
+            // caso con promozione mai attivata
             ->where('promo_service_id', '=', null)
+            ->where(function ($db) use($beds){
+                if($beds != null){
+                    $db->where('flats.beds', '=', $beds);
+                }
+            })
+            ->where(function ($db) use($rooms){
+                if($rooms != null){
+                    $db->where('flats.rooms', '=', $rooms);
+                }
+            })
+            ->where('hidden', '=', 0)
+            // caso con promozione scaduta
             ->orWhere('end', '<=', $now)
             ->where(function ($db) use($beds){
                 if($beds != null){
