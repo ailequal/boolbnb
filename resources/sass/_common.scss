@@ -1,6 +1,7 @@
 body{
   font-family: 'Roboto', sans-serif;
   main {
+    margin-top: 100px;
     min-height: calc(100vh - (167.273px + 68.806px));
   }
 }
@@ -39,6 +40,7 @@ h1{
 @media screen and (max-width: 768px) {
   body{
     main {
+      margin-top: 65px;
       min-height: calc(100vh - (197.614px + 108.443px + 30px));
     }
   }

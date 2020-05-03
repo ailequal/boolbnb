@@ -16,7 +16,7 @@
 </head>
 
 <body>
-  <header class="container">
+  <header>
     <nav>
       <div class="nav-left">
         <a href="{{route('my-home')}}">

@@ -1,11 +1,18 @@
 header {
     // height: 100px;
+    width: 100%;
     nav {
         display: flex;
+        width: 100%;
+        position: fixed;
+        background-color: #f8fafc;
+        z-index: 2;
+        top: 0;
+        left: 0;
         justify-content: space-between;
         align-items: center;
-        margin: 20px auto 80px auto;
-        padding: 10px 0;
+        // margin: 20px auto 80px auto;
+        padding: 10px 20px;
         
         .nav-left a {
             color: rgb(255, 56, 92);
@@ -143,7 +150,7 @@ header {
 #menuToggle {
     display: block;
     position: absolute;
-    top: 42px;
+    top: 25px;
     right: 24px;
 
     z-index: 1;
@@ -257,9 +264,9 @@ header {
         margin: 0;
     }
 
-    header nav {
-        margin: 20px auto 0 auto;
-    }
+    // header nav {
+    //     // margin: 20px auto 0 auto;
+    // }
 
     .nav-right ul li {
         display: none;
