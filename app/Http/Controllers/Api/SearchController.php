@@ -58,6 +58,7 @@ class SearchController extends Controller
             ->leftJoin('flat_promo_service', 'flats.id', '=', 'flat_promo_service.flat_id')
             ->leftJoin('promo_services', 'flat_promo_service.promo_service_id', '=', 'promo_services.id')
             ->where('promo_service_id', '=', null)
+            ->orWhere('end', '<=', $now)
             ->get();
         
         $result = [
@@ -102,6 +103,7 @@ class SearchController extends Controller
             ->leftJoin('flat_promo_service', 'flats.id', '=', 'flat_promo_service.flat_id')
             ->leftJoin('promo_services', 'flat_promo_service.promo_service_id', '=', 'promo_services.id')
             ->where('promo_service_id', '=', null)
+            ->orWhere('end', '<=', $now)
             ->where(function ($db) use($beds){
                 if($beds != null){
                     $db->where('flats.beds', '=', $beds);
