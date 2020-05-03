@@ -7,7 +7,6 @@
   </div>
   <img src="{{asset('images/il-tuo-prossimo-viaggio.jpg')}}"alt="Copertina">
   <h2 class="destination">Scoprilo con noi</h2>
-
 </div>
 
 <div class="container">
@@ -22,17 +21,35 @@
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="3" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="4" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
         </ol>
+
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="d-block w-100 img-fluid" src="{{asset('images/world.jpg')}}" alt="First slide">
+          @php
+            $i = 0;
+          @endphp
+          @foreach ($flatsPromo as $promo)
+            @if ($i == 0)
+              <div class="carousel-item active">
+              @else
+              <div class="carousel-item">
+            @endif
+            <a href="{{route('show.flat', $promo->slug)}}">
+              <img class="d-block w-100 img-fluid" src="{{asset('storage/' . $promo->cover)}}" alt="Copertina della casa">
+              {{-- <img src="{{asset('storage/' . $promo->cover)}}" alt="Copertina della casa"> --}}
+              <div class="carousel-caption d-none d-md-block">
+                <div>
+                  <h4>{{$promo->title}}</h4>
+                  {{-- <p>{{$promo->rooms}}</p>
+                  <p>{{$promo->mq}}</p> --}}
+                 </div>
+              </div>
+           </a>
           </div>
-          <div class="carousel-item">
+          {{-- <div class="carousel-item">
             <img class="d-block w-100" src="{{asset('images/appartamenti-porto-recanati_03.jpg')}}" alt="Second slide">
-          </div>
-          <div class="carousel-item">
+          </div> --}}
+          {{-- <div class="carousel-item">
             <img class="d-block w-100" src="{{asset('images/chalet-cortina.jpg')}}" alt="Third slide">
           </div>
           <div class="carousel-item">
@@ -40,7 +57,11 @@
           </div>
           <div class="carousel-item">
             <img class="d-block w-100" src="{{asset('images/Lago-Appartamento-Store-Arnhem-1.jpg')}}" alt="Fifth slide">
-          </div>
+          </div> --}}
+          @php
+            $i++;
+          @endphp
+          @endforeach
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -67,7 +88,7 @@
               <img src="{{asset('storage/' . $flat->cover)}}" alt="Copertina della casa">
               <div class="flat-info">
                 <h3>{{$flat->title}}</h3>
-                <p>{{$flat->description}}</p>
+                <p class="ellipsis">{{$flat->description}}</p>
               </div>
             </div>
           </a>

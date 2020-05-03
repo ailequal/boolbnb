@@ -41,15 +41,20 @@
       box-shadow: 0 0 50px #5bbaff;
       // box-shadow: 6px 7px 10px -4px #5bbaff;
 
-      .carousel-inner img{
-        // width:640px;
-        // height: 450px;
-        width: 100%;
-        border-radius: 10px;
+      .carousel-inner {
+        a img{
+          // width:640px;
+          // height: 450px;
+          width: 100%;
+          border-radius: 10px;
+        }
+        .carousel-caption{
+          h4{
+            text-shadow: 1px 1px 2px black;
+          }
+        }
       }
     }
-
-
   }
 }
 
@@ -98,7 +103,7 @@
       // }
 
       .box-flat{
-        min-height: 500px;
+        min-height: 450px;
         img{
           height: 240px;
           // width: 100%;
@@ -117,6 +122,14 @@
           }
           p{
             font-size: 16px;
+            height: 100px;
+          }
+
+          p.ellipsis {
+            display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 4;
+            overflow: hidden;
           }
         }
       }
