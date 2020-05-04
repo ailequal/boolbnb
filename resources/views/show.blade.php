@@ -59,9 +59,26 @@
   </div>
   @endif
 
-
-  {{-- controllo utente autenticato e se ha flat suo e se e' non e' vuota la promo --}}
+  {{-- controllo utente autenticato e se ha flat suo e se non e' vuota la promo --}}
   @if (Auth::check() && Auth::User()->id == $flats->user_id && !empty($flats->promo_service[0]) == true)
+    {{-- controlla che sia ancora valida la promo --}}
+      @if ($flats->promo_service[0]->pivot->end > $now)
+        @php
+            $scadenza = ($flats->promo_service[0]->pivot->end);
+            $scadenza = new Carbon($scadenza);
+            $tempoRimasto = $scadenza->diff($now);
+            $giorni = $tempoRimasto->d;
+            $ore = $tempoRimasto->h;
+            $minuti = $tempoRimasto->i;
+            $countdown = 'La tua promozione scade tra ' . $giorni . ' giorni, ' . $ore . ' ore e ' . $minuti . ' minuti.'
+        @endphp
+        <h1 class="text-center container" style="border: 1px solid #ff385c; padding: 10px; border-radius: 10px;">{{$countdown}}</h1>
+      @endif
+  @endif
+
+  {{-- controllo utente autenticato e se ha flat suo e se non e' vuota la promo --}}
+  @if (Auth::check() && Auth::User()->id == $flats->user_id && !empty($flats->promo_service[0]) == true)
+    {{-- controlla che sia scaduta la promo --}}
       @if ($flats->promo_service[0]->pivot->end < $now)
       <div class="box-promo container">
         <div>
