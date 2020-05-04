@@ -2,7 +2,8 @@ body{
   font-family: 'Roboto', sans-serif;
   main {
     margin-top: 100px;
-    min-height: calc(100vh - (167.273px + 68.806px));
+    // min-height: calc(100vh - (167.273px + 68.806px));
+    min-height: calc(100vh - (100px + 68.806px));
   }
 }
 
@@ -41,7 +42,7 @@ h1{
   body{
     main {
       margin-top: 65px;
-      min-height: calc(100vh - (197.614px + 108.443px + 30px));
+      min-height: calc(100vh - (208.98px + 159.977px - 40px));
     }
   }
 }
