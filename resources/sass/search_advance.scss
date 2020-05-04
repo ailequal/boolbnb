@@ -15,6 +15,7 @@ label {
   .category {
     font-size: 22px;
     font-weight: bolder;
+    color: #d31437;
   }
 }
 
@@ -23,7 +24,7 @@ label {
   justify-content: center;
 }
 #radius, #beds, #rooms {
-  border: 1px solid $blue;
+  border: 1px solid black;
   border-radius: 4px;
   font-size: 18px;
 }
