@@ -45,14 +45,14 @@
               @else
               <div class="carousel-item">
             @endif
-            <a href="{{route('show.flat', $promo->slug)}}">
-              <img class="d-block w-100 img-fluid" src="{{asset('storage/' . $promo->cover)}}" alt="Copertina della casa">
-              <div class="carousel-caption d-none d-md-block">
-                <h4>{{$promo->title}}</h4>
+                <a href="{{route('show.flat', $promo->slug)}}">
+                  <img class="d-block w-100 img-fluid" src="{{asset('storage/' . $promo->cover)}}" alt="Copertina della casa">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h4>{{$promo->title}}</h4>
                 {{-- <p>{{$promo->rooms}}</p>
                 <p>{{$promo->mq}}</p> --}}
-              </div>
-            </a>
+                </div>
+              </a>
           </div>
           @php
             $i++;
@@ -95,22 +95,3 @@
   </div>
 </div>
 @endsection
-
-
-  {{-- PROVE --}}
-  {{-- <h1>promo flats</h1>
-   @foreach ($flatsPromo as $promo)
-     <div>
-        <p>{{$promo->title}}</p>
-        <p>{{$promo->rooms}}</p>
-        <p>{{$promo->mq}}</p>
-      </div>
-     @endforeach
-     <h1>normali</h1>
-     @foreach ($flats as $flat)
-     <div>
-        <p>{{$flat->title}}</p>
-        <p>{{$flat->rooms}}</p>
-        <p>{{$flat->mq}}</p>
-      </div>
-     @endforeach --}}

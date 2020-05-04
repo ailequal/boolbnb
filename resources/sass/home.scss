@@ -17,11 +17,12 @@
       left: 36%;
       top: 10%;
       transform: translate(-40%, -40%);
-      font-size: 50px;
+      font-size: 45px;
       text-shadow: 3px 3px 3px #484848;
     }
   }
 }
+
 .container{
   .container-carousel{
     .promo h2{
@@ -35,25 +36,18 @@
 
     // Carosello
     .box-carousel{
-      // width: 90%;
       max-width: 800px;
-      // height:360px;
       margin: 0 auto;
       border: 2px solid lightgrey;
       border-radius: 10px;
       box-shadow: 0 0 50px #5bbaff;
-      // box-shadow: 6px 7px 10px -4px #5bbaff;
-
       .carousel-inner {
         position: relative;
         height: 530px;
         overflow: hidden;
-
+        border-radius: 10px;
         a img{
-          // width:640px;
-          // height: 450px;
           width: 100%;
-          border-radius: 10px;
         }
         .carousel-caption{
           position: absolute;
@@ -78,13 +72,6 @@
   }
   .promo{
     margin-top: 60px;
-
-    // h1{
-    //   text-align: center;
-    //   color: rgb(167, 25, 81);
-    //   margin-bottom: 30px;
-    // }
-
     .row {
       display: flex;
       align-items: center;
@@ -99,18 +86,10 @@
       border: 1px solid lightgrey;
       border-radius: 10px;
       box-shadow: 6px 7px 10px -4px rgba(0,0,0,0.60);
-
-
       &:hover{
         text-decoration: none;
         color: black;
       }
-
-      // img {
-      //   width: 100%;
-      //   border-radius: 10px 10px 0 0;
-      // }
-
       .box-flat{
         min-height: 450px;
         border-radius: 10px 10px 0 0;
@@ -129,20 +108,15 @@
         }
         .flat-info{
           padding: 10px;
-          // &:hover{
-          //   text-decoration: none;
-          // }
-
+          height: 100%;
           h3{
             font-size: 20px;
             margin-top: 10px;
-
           }
           p{
             font-size: 16px;
             height: 100px;
           }
-
           p.ellipsis {
             display: -webkit-box;
               -webkit-box-orient: vertical;
@@ -155,44 +129,56 @@
   }
 }
 
+// MEDIA QUERY
+// 992
 @media screen and (max-width: 992px) {
-  //Federico
-  .promo .row a{
-    width: calc(100% / 2 - 20px);
-  }
-
   .container .container-carousel .box-carousel .carousel-inner{
     height: 480px;
+    .carousel-caption {
+      top: 400px;
+    }
   }
-  .container .container-carousel .box-carousel .carousel-inner .carousel-caption {
-    top: 400px;
-  }
-}
 
-@media screen and (max-width: 768px) {
-  //Tania
   .promo .row a{
     width: calc(100% / 2 - 20px);
   }
+}
+
+// 768
+@media screen and (max-width: 768px) {
+
   .container .container-carousel .box-carousel .carousel-inner{
     height: 395px;
+    .carousel-item .d-md-block {
+      display: block!important;
+      .d-none {
+        display: none!important;
+      }
+    }
+    .carousel-caption {
+      top: 295px;
+    }
   }
-  .container .container-carousel .box-carousel .carousel-inner .carousel-caption {
-    top: 310px;
-  }
+
   .jumbotron .image-contatiner .destination{
-    font-size: 40px;
+    font-size: 38px;
+  }
+
+  .jumbotron {
+    padding-bottom: 25px;
+    .promo .row a{
+      width: calc(100% / 2 - 20px);
+    }
   }
 }
 
+// 640
 @media screen and (max-width: 640px) {
-  //Federico
-  .promo .row a{
-    width: calc(100% - 20px);
-  }
-  //Tania
   .container .container-carousel .box-carousel .carousel-inner{
     height: 255px;
+    .carousel-caption {
+      top: 150px;
+    }
   }
   .container .container-carousel .box-carousel .carousel-inner .carousel-caption {
     top: 150px;
@@ -201,19 +187,54 @@
   .jumbotron .image-contatiner .destination{
     left: 30%;
     top: 18%;
-    font-size: 38px;
+    font-size: 36px;
   }
-}
 
-@media screen and (max-width: 425px) {
-  //Tania
   .promo .row a{
     width: calc(100% - 20px);
   }
+}
 
-  .jumbotron .image-contatiner .destination{
-    left: 30%;
-    top: 17%;
-    font-size: 32px;
+// 425
+@media screen and (max-width: 425px) {
+  .jumbotron  {
+    .promo-title h1{
+      font-size: 30px;
+    }
+    .image-contatiner .destination{
+      left: 30%;
+      top: 17%;
+      font-size: 30px;
+    }
+  }
+
+  .container .container-carousel {
+    .promo h2{
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .box-carousel .carousel-inner{
+      height: 225px;
+      .carousel-caption {
+        top: 130px;
+        h4{
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+    // JUMBOTRON FLAT
+  .jumbotron{
+    padding-top: 2rem;
+    h2{
+      font-size: 28px;
+    }
+    .promo{
+      margin-top: 20px;
+      .row a{
+        width: calc(100% - 20px);
+      }
+    }
   }
 }
