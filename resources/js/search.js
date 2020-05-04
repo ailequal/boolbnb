@@ -269,6 +269,8 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
                         var template = Handlebars.compile(source);
                         var flat = data.flats[i];
 
+                        var distance = (Math.round(flat.distance * 100) / 100);
+
                         // gestire gli extra services
                         var arrayExtra = '';
                         if (flat.name != undefined) {
@@ -308,6 +310,7 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
                             description: flat.description,
                             price: flat.price_day,
                             extra: arrayExtra,
+                            distance: distance,
                             cover: window.location.protocol + '//' + window.location.host + '/storage/' + flat.cover,
                             slug: window.location.protocol + '//' + window.location.host + '/flats/' + flat.slug
                         };
@@ -328,6 +331,8 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
                         var template = Handlebars.compile(source);
                         var flatPromo = data.flatsPromo[i];
 
+                        var distancePromo = (Math.round(flatPromo.distance * 100) / 100);
+                        
                         // gestire gli extra services
                         var arrayExtraPromo = '';
                         if (flatPromo.name != undefined) {
@@ -367,6 +372,7 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
                             description: flatPromo.description,
                             price: flatPromo.price_day,
                             extra: arrayExtraPromo,
+                            distance: distancePromo,
                             cover: window.location.protocol + '//' + window.location.host + '/storage/' + flatPromo.cover,
                             slug: window.location.protocol + '//' + window.location.host + '/flats/' + flatPromo.slug
                         };
