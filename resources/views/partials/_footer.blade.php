@@ -3,7 +3,7 @@
   <div class="footer-left">
     <ul>
       <li>
-        <span>Created with <i class="fas fa-heart"></i> by: <a href="https://github.com/TetyanaSergata" target="_blank">Tetyana Sergata</a>, <a href="https://github.com/stefanoriccio1" target="_blank">Stefano Riccio</a>, <a href="https://github.com/Manuel-Di-Pilla" target="_blank">Manuel Di Pilla</a>, <a href="https://github.com/ailequal" target="_blank">Elia Pari</a> e <a href="https://github.com/FedericoCaiello" target="_blank">Federico Caiello</a></span>
+        <span>Made with <i class="fas fa-heart"></i> by: <a href="https://github.com/TetyanaSergata" target="_blank">Tetyana Sergata</a>, <a href="https://github.com/stefanoriccio1" target="_blank">Stefano Riccio</a>, <a href="https://github.com/Manuel-Di-Pilla" target="_blank">Manuel Di Pilla</a>, <a href="https://github.com/ailequal" target="_blank">Elia Pari</a> e <a href="https://github.com/FedericoCaiello" target="_blank">Federico Caiello</a></span>
       </li>
     </ul>
   </div>

@@ -6,7 +6,7 @@ header {
         width: 100%;
         position: fixed;
         background-color: #f8fafc;
-        z-index: 2;
+        z-index: 20;
         top: 0;
         left: 0;
         justify-content: space-between;
@@ -276,6 +276,7 @@ header {
 
     header .search-mobile {
         display: block;
+        margin-top: 100px;
     }
 
     .hamburger-nav {
