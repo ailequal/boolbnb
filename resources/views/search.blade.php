@@ -121,6 +121,9 @@
 				<h4>Stanze: @{{'rooms'}}</h4>
 				<h4>Letti: @{{'beds'}}</h4>
 				<h4>Prezzo per giorno: @{{'price'}} &euro;</h4>
+				<div class="flat-extra-services">
+					@{{{'extra'}}}
+				</div>
 			</div>
 		</a>
 	</script>
@@ -134,6 +137,9 @@
 				<h4>Stanze: @{{'rooms'}}</h4>
 				<h4>Letti: @{{'beds'}}</h4>
 				<h4>Prezzo per giorno: @{{'price'}} &euro;</h4>
+				<div class="flat-extra-services">
+					@{{{'extra'}}}
+				</div>
 			</div>
 		</a>
 	</script>

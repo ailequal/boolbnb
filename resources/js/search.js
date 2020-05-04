@@ -53,7 +53,7 @@ $(document).ready(function () {
             },
             success: function (data) {
                 if (data.results == 0) {
-                    // $('.empty h2').text('Nessun risulato trovato');
+                    $('.empty h2').text('Nessun risulato trovato');
                 } else {
                     var lat = data.results[0].position.lat;
                     var long = data.results[0].position.lon;
@@ -81,7 +81,7 @@ function filter(city) {
         },
         success: function (data) {
             if (data.results == 0) {
-                // $('.empty h2').text('Nessun risulato trovato');
+                $('.empty h2').text('Nessun risulato trovato');
             } else {
                 var lat = data.results[0].position.lat;
                 var long = data.results[0].position.lon;
@@ -106,67 +106,127 @@ function search(city, lat, long) {
             long: long
         },
         success: function (data, state) {
-            if (data.flats.length > 0 || data.flatsPromo.length > 0) {
-                if (data.flats <= 0) {
-                    // $('.empty h2').text('Nessun risulato trovato');
-                } else {
-                    // ordiare i data.flats per distance
-                    data.flats.sort(function (a, b) {
-                        return a.distance - b.distance;
-                    })
-
-                    for (var i = 0; i < data.flats.length; i++) {
-                        var source = $('#flat-template').html();
-                        var template = Handlebars.compile(source);
-                        var flat = data.flats[i];
-                        var context = {
-                            title: flat.title,
-                            city: flat.city,
-                            rooms: flat.rooms,
-                            bathrooms: flat.bathrooms,
-                            beds: flat.beds,
-                            description: flat.description,
-                            price: flat.price_day,
-                            cover: window.location.protocol + '//' + window.location.host + '/storage/' + flat.cover,
-                            slug: window.location.protocol + '//' + window.location.host + '/flats/' + flat.slug
-                        };
-                        var html = template(context);
-                        $('.flats-standard-container').append(html);
-                    };
-                };
-                if (data.flatsPromo <= 0) {
-                    // $('.empty h2').text('Nessun risulato trovato');
-                } else {
-                    // ordiare i data.flats per distance
-                    data.flatsPromo.sort(function (a, b) {
-                        return a.distance - b.distance;
-                    })
-
-                    for (var i = 0; i < data.flatsPromo.length; i++) {
-                        var source = $('#flatPromo-template').html();
-                        var template = Handlebars.compile(source);
-                        var flatPromo = data.flatsPromo[i];
-                        var context = {
-                            title: flatPromo.title,
-                            city: flatPromo.city,
-                            rooms: flatPromo.rooms,
-                            bathrooms: flatPromo.bathrooms,
-                            beds: flatPromo.beds,
-                            description: flatPromo.description,
-                            price: flatPromo.price_day,
-                            cover: window.location.protocol + '//' + window.location.host + '/storage/' + flatPromo.cover,
-                            slug: window.location.protocol + '//' + window.location.host + '/flats/' + flatPromo.slug
-                        };
-                        var html = template(context);
-                        $('.flats-promo-container').append(html);
-                    };
-                };
-            } else {
-                $('.empty h2').text('Nessun risultato trovato');
-            }
-
             // aggiungi i flat con info
             $('#search-bar').val('');
+
+            $('.empty h2').text('');
+            $('.flats-standard-container').html('');
+            $('.flats-promo-container').html('');
+            var rooms = $('#rooms').val();
+            var beds = $('#beds').val();
+            var radius = $('#radius').val();
+
+            var wifi = null
+            if ($('#wifi').is(":checked")) {
+                wifi = 'wifi';
+            }
+
+            var smoking = null
+            if ($('#smoking').is(":checked")) {
+                smoking = 'smoking';
+            }
+
+            var parking = null
+            if ($('#parking').is(":checked")) {
+                parking = 'parking';
+            }
+
+            var swimmingPool = null
+            if ($('#swimming-pool').is(":checked")) {
+                swimmingPool = 'swimming_pool';
+            }
+
+            var breakfast = null
+            if ($('#breakfast').is(":checked")) {
+                breakfast = 'breakfast';
+            }
+
+            var view = null
+            if ($('#view').is(":checked")) {
+                view = 'view';
+            }
+
+            $.ajax({
+                url: "https://api.tomtom.com/search/2/search/" + city + ".json?",
+                method: "GET",
+                data: {
+                    limit: 1,
+                    key: 'em63COYYAtRKh4NxqgeBdkGNHC8p1is8'
+                },
+                success: function (data) {
+
+                        if (data.results == 0) {
+                            // $('.empty h2').text('Nessun risulato trovato');
+                        } else {
+                            var lat = data.results[0].position.lat;
+                            var long = data.results[0].position.lon;
+                            advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmingPool, breakfast, view);
+                        }
+
+                },
+                error: function (request, state, error) {
+                    console.log(error);
+                }
+            });
+            // if (data.flats.length > 0 || data.flatsPromo.length > 0) {
+            // if (data.flats <= 0) {
+            // $('.empty h2').text('Nessun risulato trovato');
+            // } else {
+            // ordiare i data.flats per distance
+            // data.flats.sort(function (a, b) {
+            // return a.distance - b.distance;
+            // })
+
+            // for (var i = 0; i < data.flats.length; i++) {
+            //     var source = $('#flat-template').html();
+            //     var template = Handlebars.compile(source);
+            //     var flat = data.flats[i];
+
+            //     var context = {
+            //         title: flat.title,
+            //         city: flat.city,
+            //         rooms: flat.rooms,
+            //         bathrooms: flat.bathrooms,
+            //         beds: flat.beds,
+            //         description: flat.description,
+            //         price: flat.price_day,
+            //         cover: window.location.protocol + '//' + window.location.host + '/storage/' + flat.cover,
+            //         slug: window.location.protocol + '//' + window.location.host + '/flats/' + flat.slug
+            //     };
+            //     var html = template(context);
+            //     $('.flats-standard-container').append(html);
+            // };
+            // };
+            // if (data.flatsPromo <= 0) {
+            // $('.empty h2').text('Nessun risulato trovato');
+            // } else {
+            // ordiare i data.flats per distance
+            // data.flatsPromo.sort(function (a, b) {
+            //     return a.distance - b.distance;
+            // })
+
+            // for (var i = 0; i < data.flatsPromo.length; i++) {
+            //     var source = $('#flatPromo-template').html();
+            //     var template = Handlebars.compile(source);
+            //     var flatPromo = data.flatsPromo[i];
+            //     var context = {
+            //         title: flatPromo.title,
+            //         city: flatPromo.city,
+            //         rooms: flatPromo.rooms,
+            //         bathrooms: flatPromo.bathrooms,
+            //         beds: flatPromo.beds,
+            //         description: flatPromo.description,
+            //         price: flatPromo.price_day,
+            //         cover: window.location.protocol + '//' + window.location.host + '/storage/' + flatPromo.cover,
+            //         slug: window.location.protocol + '//' + window.location.host + '/flats/' + flatPromo.slug
+            //     };
+            //     var html = template(context);
+            //     $('.flats-promo-container').append(html);
+            // };
+            // };
+            // } else {
+            //     $('.empty h2').text('Nessun risultato trovato');
+            // }
         },
         error: function (request, state, error) {
             console.log(error);
@@ -195,6 +255,7 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
         success: function (data, state) {
 
             if (data.flats.length > 0 || data.flatsPromo.length > 0) {
+
                 if (data.flats <= 0) {
                     // $('.empty h2').text('Nussun risulato trovato');
                 } else {
@@ -207,6 +268,37 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
                         var source = $('#flat-template').html();
                         var template = Handlebars.compile(source);
                         var flat = data.flats[i];
+
+                        // gestire gli extra services
+                        var arrayExtra = '';
+                        if (flat.name != undefined) {
+                            var flatService = flat.name.split(" ");
+                            // controllo se il wifi e' presente nel flat
+                            if (flatService.includes('wifi')) {
+                                arrayExtra = arrayExtra + ' <i class="icone fas fa-wifi"></i>';
+                            }
+                            // controllo se lo smoking e' presente nel flat
+                            if (flatService.includes('smoking')) {
+                                arrayExtra = arrayExtra + ' <i class="icone fas fa-smoking"></i>';
+                            }
+                            // controllo se il parking e' presente nel flat
+                            if (flatService.includes('parking')) {
+                                arrayExtra = arrayExtra + ' <i class=" icone fas fa-parking"></i>';
+                            }
+                            // controllo se la swimmingPool e' presente nel flat
+                            if (flatService.includes('swimming_pool')) {
+                                arrayExtra = arrayExtra + ' <i class="icone fas fa-swimming-pool"></i>';
+                            }
+                            // controllo se il breakfast e' presente nel flat
+                            if (flatService.includes('breakfast')) {
+                                arrayExtra = arrayExtra + ' <i class="icone fas fa-coffee"></i>';
+                            }
+                            // controllo se la view e' presente nel flat
+                            if (flatService.includes('view')) {
+                                arrayExtra = arrayExtra + ' <i class="icone fas fa-mountain"></i>';
+                            }
+                        }
+
                         var context = {
                             title: flat.title,
                             city: flat.city,
@@ -215,6 +307,7 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
                             beds: flat.beds,
                             description: flat.description,
                             price: flat.price_day,
+                            extra: arrayExtra,
                             cover: window.location.protocol + '//' + window.location.host + '/storage/' + flat.cover,
                             slug: window.location.protocol + '//' + window.location.host + '/flats/' + flat.slug
                         };
@@ -234,6 +327,37 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
                         var source = $('#flatPromo-template').html();
                         var template = Handlebars.compile(source);
                         var flatPromo = data.flatsPromo[i];
+
+                        // gestire gli extra services
+                        var arrayExtraPromo = '';
+                        if (flatPromo.name != undefined) {
+                            var flatService = flatPromo.name.split(" ");
+                            // controllo se il wifi e' presente nel flat
+                            if (flatService.includes('wifi')) {
+                                arrayExtraPromo = arrayExtraPromo + ' <i class="icone fas fa-wifi"></i>';
+                            }
+                            // controllo se lo smoking e' presente nel flat
+                            if (flatService.includes('smoking')) {
+                                arrayExtraPromo = arrayExtraPromo + ' <i class="icone fas fa-smoking"></i>';
+                            }
+                            // controllo se il parking e' presente nel flat
+                            if (flatService.includes('parking')) {
+                                arrayExtraPromo = arrayExtraPromo + ' <i class=" icone fas fa-parking"></i>';
+                            }
+                            // controllo se la swimmingPool e' presente nel flat
+                            if (flatService.includes('swimming_pool')) {
+                                arrayExtraPromo = arrayExtraPromo + ' <i class="icone fas fa-swimming-pool"></i>';
+                            }
+                            // controllo se il breakfast e' presente nel flat
+                            if (flatService.includes('breakfast')) {
+                                arrayExtraPromo = arrayExtraPromo + ' <i class="icone fas fa-coffee"></i>';
+                            }
+                            // controllo se la view e' presente nel flat
+                            if (flatService.includes('view')) {
+                                arrayExtraPromo = arrayExtraPromo + ' <i class="icone fas fa-mountain"></i>';
+                            }
+                        }
+
                         var context = {
                             title: flatPromo.title,
                             city: flatPromo.city,
@@ -242,6 +366,7 @@ function advanced(lat, long, beds, rooms, radius, wifi, smoking, parking, swimmi
                             beds: flatPromo.beds,
                             description: flatPromo.description,
                             price: flatPromo.price_day,
+                            extra: arrayExtraPromo,
                             cover: window.location.protocol + '//' + window.location.host + '/storage/' + flatPromo.cover,
                             slug: window.location.protocol + '//' + window.location.host + '/flats/' + flatPromo.slug
                         };
