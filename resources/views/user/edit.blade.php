@@ -19,7 +19,7 @@
             </ul>
         </div>
         @endif
-    </div> 
+    </div>
 {{-- container top --}}
     <div class="container cont-create">
         <div class="row">
@@ -30,7 +30,7 @@
                             <span class="label"><label for="title">Titolo</label></span>
                             <span><input type="text" name="title" placeholder="Titolo" value="{{$flat->title}}"></span>
                         </div>
-            
+
                         <div class="form-group form-box">
                             <span class= "label"><label for="street">Via</label></span>
                             <span><input class="street" type="text" name="street" placeholder="Via" value="{{$flat->flat_address->street}}"></span>
@@ -51,10 +51,10 @@
                             <span class= "label"><label for="zip_code">Cap</label></span>
                             <span><input class="cap" type="text" name="zip_code" placeholder="Cap" value="{{$flat->flat_address->zip_code}}"></span>
                         </div>
-            
+
                         <input type="button" class="btn btn-primary map-button" value="Controlla indirizzo">
                     </div>
-                        
+
                     </div>
                 </div>
                 <div class= "col-lg-6 col-md-12">
@@ -63,7 +63,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
     {{-- container middle --}}
@@ -76,7 +76,7 @@
                             <span class= "label"><label for="rooms">Numero stanza</label></span>
                             <span><input type="number" name="rooms" placeholder="Numero stanza" value="{{$flat->rooms}}"></span>
                         </div>
-                
+
                         <div class="form-group form-box">
                             <span class= "label"><label for="mq">Metri quadri</label></span>
                             <span><input type="text" name="mq" placeholder="Metri quadri" value="{{$flat->mq}}"></span>
@@ -87,7 +87,7 @@
                             <span class= "label"><label for="guest">Numero ospiti</label></span>
                             <span><input type="number" name="guest" placeholder="Numero ospiti" value="{{$flat->guest}}"></span>
                         </div>
-                
+
                         <div class="form-group form-box">
                             <span class= "label"><label for="description">Descrizione</label></span>
                             <span><input type="text" name="description" placeholder="Descrizione" value="{{$flat->description}}"></span>
@@ -102,7 +102,7 @@
                             <span class= "label"><label for="price_day">Prezzo giornaliero</label></span>
                             <span><input type="text" name="price_day" placeholder="Prezzo giornaliero" value="{{$flat->price_day}}"></span>
                         </div>
-                
+
                         <div class="form-group form-box">
                             <span class= "label"><label for="bathrooms">Numero bagni</label></span>
                             <span><input type="number" name="bathrooms" placeholder="Numero bagni" value="{{$flat->bathrooms}}"></span>
@@ -113,14 +113,14 @@
                             <span class= "label"><label for="beds">Numero di Letti</label></span>
                             <span><input type="number" name="beds" placeholder="Numero letti" value="{{$flat->beds}}"></span>
                         </div>
-                
+
                         <div class="form-group form-box">
                             <span class= "label">
                                 <label class= "cover-custom" for="cover">
                                     <input id="cover" type="file" name='cover' accept='image/*'>
                                     Cambia l'immagine di copertina
                                 </label>
-                                
+
                             </span>
                             {{-- <input type="file" name='cover' accept='image/*'> --}}
                         </div>
@@ -128,7 +128,7 @@
                             <label for="lat"></label>
                             <input class="lat" name="lat" type="hidden" value="{{$flat->lat}}">
                         </div>
-                
+
                         <div class="form-group form-box hide">
                             <label for="long"></label>
                             <input class="long" name="long" type="hidden" value="{{$flat->long}}">
@@ -143,10 +143,10 @@
         <div class="row">
             <div class= "col-lg-6 col-md-12">
                 <div class= "bottom-box hide-flat">
-                    <h2>Puoi rendere visibile il tuo appartamento in un secondo momento</h2>
+                    <h2>Vuoi rendere visibile il tuo appartamento in un secondo momento?</h2>
                         <div class="radius-container">
                             <div class="radius">
-                                <span>Yes</span>
+                                <span>Sì</span>
                                 <input type="radio" name="hidden"value="1" {{$flat->hidden == 1 ? 'checked' : ''}}>
                             </div>
                             <div class="radius">
@@ -184,9 +184,9 @@
         </div>
     </div>
     <div class="submit-box">
-        <input class="btn btn-primary" id="submit" type="submit" value="Submit">
+        <input class="btn btn-primary" id="submit" type="submit" value="Salva">
     </div>
-</form> 
+</form>
 
     <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.52.0/maps/maps-web.min.js"></script>
     @endsection
@@ -239,7 +239,7 @@
                             <label for="title">Titolo</label>
                             <input type="text" name="title" placeholder="Titolo" value="{{$flat->title}}">
                         </div>
-                    
+
                         <div class="form-group form-box">
                             <label for="rooms">Numero di stanze</label>
                             <input type="number" name="rooms" placeholder="Numero stanza" value="{{$flat->rooms}}">
@@ -250,7 +250,7 @@
                             <label for="mq">Metri quadri</label>
                             <input type="number" name="mq" placeholder="Metri quadri" value="{{$flat->mq}}">
                         </div>
-                    
+
                         <div class="form-group form-box">
                             <label for="street">Via</label>
                             <input type="text" name="street" placeholder="Via" value="{{$flat->flat_address->street}}">
@@ -273,7 +273,7 @@
                     <div class= "col-lg-6 col-md-12">
                         <div class="form-group form-box">
                             <label for="zip_code">Cap</label>
-                            <input type="text" name="zip_code" placeholder="Cap" value="{{$flat->flat_address->zip_code}}"> 
+                            <input type="text" name="zip_code" placeholder="Cap" value="{{$flat->flat_address->zip_code}}">
                         </div>
                     </div>
                 </div>
@@ -288,12 +288,12 @@
                 <label for="guest">Numero ospiti</label>
                 <input type="text" name="guest" placeholder="Numero ospiti" value="{{$flat->guest}}">
             </div>
-        
+
             <div class="form-group form-box">
                 <label for="description">Descrizione</label>
                 <input type="text" name="description" placeholder="Descrizione" value="{{$flat->description}}">
             </div>
-        
+
             <div class="form-group form-box">
                 <label for="price_day">Prezzo giornaliero</label>
                 <input type="text" name="price_day" placeholder="Prezzo giornaliero" value="{{$flat->price_day}}">
@@ -322,12 +322,12 @@
                 <label for="lat"></label>
                 <input class="lat" name="lat" type="hidden" value="">
             </div>
-    
+
             <div class="form-group form-box hide">
                 <label for="long"></label>
                 <input class="long" name="long" type="hidden" value="">
             </div>
-          
+
         </div>
        </div>
    </div>
@@ -348,7 +348,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <div class="col-lg-6 col-md-12 extra-edit">
                 <h2 id="s-extra">Servizi extra</h2>
 

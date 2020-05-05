@@ -22,7 +22,7 @@
 
 {{-- container promo --}}
 
-  @php 
+  @php
     use Carbon\Carbon;
     $now = Carbon::now();
   @endphp
@@ -88,23 +88,23 @@
           <form action="{{route('payment.index')}}" method="post" class="promo-form">
         @csrf
         @method('POST')
-      
+
             <span>{{$promos[0]->type}}</span>
             <span>{{$promos[0]->price}}€ - 24 ore</span>
             <input type="radio" name="price" class="ciao" id="{{$promos[0]->id}}" value="{{$promos[0]->price}}">
-      
-      
-      
+
+
+
             <span>{{$promos[1]->type}}</span>
             <span>{{$promos[1]->price}}€ per - 72 ore</span>
             <input type="radio" name="price" class="ciao" id="{{$promos[1]->id}}" value="{{$promos[1]->price}}">
-      
-      
+
+
             <span>{{$promos[2]->type}}</span>
             <span>{{$promos[2]->price}}€ per - 144 ore</span>
             <input type="radio" name="price" class="ciao" id="{{$promos[2]->id}}" value="{{$promos[2]->price}}">
             <input type="hidden" name="flat_id" value="{{$flats->id}}">
-      
+
           <input type="submit" value="Vai al pagamento" class="hidden" class="btn btn-primary" id="bottone">
         </div>
         </form>
@@ -200,7 +200,7 @@
           </span>
         </div>
         <input type="hidden" name="id" value="{{$flats->id}}">
-        <input class='submit' type="submit" value="Submit">
+        <input class='submit' type="submit" value="Invia messaggio">
       </form>
     </div>
   </div>

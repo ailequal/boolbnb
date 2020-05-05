@@ -19,7 +19,7 @@
             </ul>
         </div>
         @endif
-    </div> 
+    </div>
 {{-- container top --}}
     <div class="container cont-create">
         <div class="row">
@@ -30,7 +30,7 @@
                             <span class="label"><label for="title">Titolo</label></span>
                             <span><input type="text" name="title" placeholder="Titolo" value="{{old('title')}}"></span>
                         </div>
-            
+
                         <div class="form-group form-box">
                             <span class= "label"><label for="street">Via</label></span>
                             <span><input class="street" type="text" name="street" placeholder="Via" value="{{old('street')}}"></span>
@@ -51,10 +51,10 @@
                             <span class= "label"><label for="zip_code">Cap</label></span>
                             <span><input class="cap" type="text" name="zip_code" placeholder="Cap" value="{{old('zip_code')}}"></span>
                         </div>
-            
+
                         <input type="button" class="btn btn-primary map-button" value="Controlla indirizzo">
                     </div>
-                        
+
                     </div>
                 </div>
                 <div class= "col-lg-6 col-md-12">
@@ -63,7 +63,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
     {{-- container middle --}}
@@ -76,7 +76,7 @@
                             <span class= "label"><label for="rooms">Numero stanza</label></span>
                             <span><input type="number" name="rooms" placeholder="Numero stanza" value="{{old('rooms')}}"></span>
                         </div>
-                
+
                         <div class="form-group form-box">
                             <span class= "label"><label for="mq">Metri quadri</label></span>
                             <span><input type="text" name="mq" placeholder="Metri quadri" value="{{old('mq')}}"></span>
@@ -87,7 +87,7 @@
                             <span class= "label"><label for="guest">Numero ospiti</label></span>
                             <span><input type="number" name="guest" placeholder="Numero ospiti" value="{{old('guest')}}"></span>
                         </div>
-                
+
                         <div class="form-group form-box">
                             <span class= "label"><label for="description">Descrizione</label></span>
                             <span><input type="text" name="description" placeholder="Descrizione" value="{{old('description')}}"></span>
@@ -102,7 +102,7 @@
                             <span class= "label"><label for="price_day">Prezzo giornaliero</label></span>
                             <span><input type="text" name="price_day" placeholder="Prezzo giornaliero" value="{{old('price_day')}}"></span>
                         </div>
-                
+
                         <div class="form-group form-box">
                             <span class= "label"><label for="bathrooms">Numero bagni</label></span>
                             <span><input type="number" name="bathrooms" placeholder="Numero bagni" value="{{old('bathrooms')}}"></span>
@@ -113,14 +113,14 @@
                             <span class= "label"><label for="beds">Numero di Letti</label></span>
                             <span><input type="number" name="beds" placeholder="Numero letti" value="{{old('beds')}}"></span>
                         </div>
-                
+
                         <div class="form-group form-box">
                             <span class= "label">
                                 <label class= "cover-custom" for="cover">
                                     <input id="cover" type="file" name='cover' accept='image/*'>
                                     Scegli l'immagine di copertina
                                 </label>
-                                
+
                             </span>
                             {{-- <input type="file" name='cover' accept='image/*'> --}}
                         </div>
@@ -128,7 +128,7 @@
                             <label for="lat"></label>
                             <input class="lat" name="lat" type="hidden" value="">
                         </div>
-                
+
                         <div class="form-group form-box hide">
                             <label for="long"></label>
                             <input class="long" name="long" type="hidden" value="">
@@ -143,10 +143,10 @@
         <div class="row">
             <div class= "col-lg-6 col-md-12">
                 <div class= "bottom-box hide-flat">
-                    <h2>Puoi rendere visibile il tuo appartamento in un secondo momento</h2>
+                    <h2>Vuoi rendere visibile il tuo appartamento in un secondo momento?</h2>
                         <div class="radius-container">
                             <div class="radius">
-                                <span>Yes</span>
+                                <span>Sì</span>
                                 <input type="radio" name="hidden"value="1">
                             </div>
                             <div class="radius">
@@ -184,9 +184,9 @@
         </div>
     </div>
     <div class="submit-box">
-        <input class="btn btn-primary" id="submit" type="submit" value="Submit">
+        <input class="btn btn-primary" id="submit" type="submit" value="Salva">
     </div>
-</form> 
+</form>
 
     <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.52.0/maps/maps-web.min.js"></script>
     @endsection
@@ -194,11 +194,3 @@
     @section('script')
     <script src="{{asset('js/create.js')}}"></script>
     @endsection
-
-
-
-
-
-
-
- 
